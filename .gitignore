@@ -1,0 +1,57 @@
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Personal notes (if you want to keep them private)
+**/personal-notes/
+**/private/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Log files
+*.log
+
+# IDE and editor files
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Compiled files (if any programming assignments)
+*.o
+*.exe
+*.out
+*.class
+*.pyc
+__pycache__/
+
+# Dependencies (if any)
+node_modules/
+.npm
+.cache/
+
+# Build artifacts
+dist/
+build/
+target/
+
+# Sensitive information
+*.env
+.env.local
+.env.production
+secrets.md
+passwords.txt
