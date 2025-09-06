@@ -1,2 +1,3 @@
 2025-09-05 ADD Week2_Children_of_the_Sea_post.txt - discussion post for Week 2 (Danticat). Commit: Add Week2 Danticat discussion post and update tracker
 2025-09-06 ADD discussions/Week2_Children_of_the_Sea_Enhanced_Discussion.md - comprehensive analysis incorporating letter exchanges, character contrasts, teaching obligations, soldier brutality, and butterfly symbolism. Mirrors story opening style.
+2025-09-06 ORGANIZE Week 1 discussions - parsed raw discussion forum data into structured markdown files. Created discussions/Week1_Hate_U_Give_Posts/ with 24 individual student posts and Week1_Hate_U_Give_Discussion_Summary.md. Moved original raw file to discussions/raw_week1_discussions_original.txt.
