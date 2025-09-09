@@ -1,0 +1,284 @@
+vCenter Lab: Change the Hostname
+
+The purpose of this lab is to have you learn how to manage a Linux system's hostname, how to reference other hosts on the network, and how to test network connectivity to other systems. In this lab you will:
+
+change the hostname
+update the /etc/hosts file
+ping other systems
+Create a new document. Read through the lab below in full, every word, then go back to the top and take action (doing or typing something) where the text is highlighted. Answer questions in green text by copy-and-pasting the question from the lab into your document, then answer the question, possibly adding a requested screenshot. When you're done with the lab, submit your document to the appropriate assignment folder (see the bottom of this document).
+
+Please carefully read each section BEFORE you take action. Everything you need to know is listed in each section. Some sections tell you exactly what to do, some sections are testing you on what you read in the textbook, and in some sections you may need to do more research (looking at man pages, looking at other chapters in your books, or even doing some Googling).
+
+Connect to the ITEC vCenter
+
+For this lab, you MUST use the ITEC vCenter (possibly by first remotely connecting to an ITEC remote desktop system if your own system is underpowered). Please follow the instructions in the OpenVPN and Access the ITEC vCenter document to run OpenVPN and get connected (remember to authenticate to the vCenter with mpls\starid and your StarID password). Then use the vCenter web interface (or the VMware window) to connect to the vCenter cluster. If you are in a web browser, it will look like something like this (NOTE: click on the "VM's and Templates" button for the best view):
+
+Web browser view of the ITEC vCenter
+
+If you connected with VMWare, you should see this:
+
+VMWare view of the ITEC vCenter
+
+NOTE: I have <double-clicked> on "MPLS," then scrolled down to and <double-clicked> on the "ITEC 1475" folder, then <double-clicked> on the "LinuxMint" folder to see these systems.
+
+Open a Terminal Window
+
+Once you've logged into your Linux Mint system (remember, the default login ID is itec and the password is itecitec), open a Terminal window by clicking on the icon in the "quick launch" area at the bottom of the screen:
+
+Image showing the Linux Mint terminal icon
+
+Alternatively, you could click on the "start" menu and then just type terminal to find the Terminal application:
+
+Running the LinuxMint terminal application from the start menu
+
+Remember, the command-line interface or CLI is the default way to interact with Linux systems. While modern Linux distributions allow you to do almost everything from a graphical user interface, or GUI, window, pointing-and-clicking with the mouse, the CLI is always the best way to get Linux to do what you want.
+
+Tips:
+
+Try pressing the up and down arrows in the Terminal. These keys cycle through previously entered commands.
+The left and right arrow keys can be used to move the cursor through a command if you need to modify it.
+Linux is case sensitive. Ping is not the same as ping.
+A Word about root
+
+Just like Windows, Linux has the concept of an "administrative" user who has full privileges on a multiuser system. Microsoft Windows uses the User Account Controls (UAC) to pop up a window asking you to either click "Yes," to allow an action to take place as the administrative user, or you have to authenticate with an ID / PW that does have administrative capabilities. macOS systems do the same thing by popping up a window asking you to enter your password. You have to do this anytime the action would effect the whole system, like installing software, changing systems settings, and the like.
+
+In Linux, the root user (with UID 0) has full administrative control. Since you are normally logging in as a regular user, itec in our systems, you need a way to become the root user in order for system-level commands to work. There are two ways to do that:
+
+directly login as root (rarely done!)
+temporarily get root privileges (PREFERRED)
+The sudo Command
+
+The typical way to temporarily get root privileges is to insert the sudo command before the actual command you want to run, like:
+
+itec@mint:~$ sudo reboot
+When you run commands with sudo, you are prompted to enter a password and you use YOUR password, for the user you're currently logged in as. You are authenticating that you are who you claim to be logged in as (the itec user in our case; this prevents someone from trying to run root commands if you happen to be away from your keyboard) and then sudo checks to see if you are even allowed to use the command by looking in the /etc/sudoers file. In Linux Mint, as with Microsoft Windows and Apple's macOS, the first user account created on the system is added to a special sudo group that allows that user to temporarily become root.
+
+Just to re-emphasize it, when using sudo, you enter the current user's password!
+
+The sudo command uses a (configurable) timer, so if you run another command with sudo within a few minutes, you won't have to enter your password again.
+
+The su Command
+
+If you do want to login in as root directly, you can use the su - command, even after you've already logged in as the itec user. That command does a "set user" to any user on the system. If you don't specify another username, it defaults to be the root user. The dash at the end of the command tells su to provide a login shell for the user. After running this, you'll be prompted to enter that users password, root in this case. However, that requires that the root user actually has a password that you would know. For security reasons, many Linux distributions, like Linux Mint, don't allow the root user to login with a password, or otherwise prevent the account from logging in directly.
+
+Just to re-emphasize it, when using su, you enter that specific user's password!
+
+We can "overcome" this "limitation" by also using the sudo command, which, as mentioned above, allows us to temporarily run a command as root. In a terminal window, you could type:
+
+itec@mint:~$ sudo su -
+That command uses sudo to run the su command. Because you started with sudo, it will prompt you for the current user's password (itec in our case), temporarily making us root, which means the su - command runs as root, causing a login shell to be run as the root user.
+
+NOTE: Your prompt changes from
+
+itec@mint:~$ █ 
+to
+
+root@mint:~# █ 
+replacing the $ prompt with a # prompt. By convention, a regular user has a dollar sign prompt ($) and the root user has a hash prompt (#).
+
+NOTE: There are times when you'll see a support forum online show a command like:
+
+root@linux:~# command
+where they are showing the command should be run as root. You might also just see:
+
+# command
+This indicates that you need to be root, so you should preface the command with a sudo. Be careful, because when you are root, commands you issue can completely disable your system, cause data loss, or very much break your system. USE YOUR root PRIVILEGES WITH CARE!!!!!!
+
+Just Use sudo
+
+For the rest of this lab and class just use sudo, since it's the easiest thing to do and is often shown when you search for support online.
+
+Change the Hostname
+
+Each computer on the Internet has a "human readable" name, like www.google.com, known as a "fully qualified domain name" (FQDN). For local area networks (LANs), like the one inside the ITEC vSphere cluster, each computer also has a simpler, single word, human-readable name that is just the first part of the FQDN. At install time, a Linux Mint system will ask what you want the hostname of your computer to be. During installation, I, or you, have set the hostname to mint. You're going to change the hostname of your system to match your StarID.
+
+The system's hostname is listed in the /etc/hostname file. The hostname command will also show the current hostname. So, to see the current hostname you can:
+
+itec@mint:~$ cat /etc/hostname 
+mint
+itec@mint:~$ hostname 
+mint
+itec@mint:~$ █ 
+You could just edit the text file /etc/hostname file and change the name, but that's the "old" way of doing things (and only takes effect on system boot). The "new" way to see and manage the hostname is to use the hostnamectl command (which is part of the overall systemd commands that you'll learn much more about later):
+
+itec@mint:~$ hostnamectl 
+ Static hostname: mint
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: 71f22df9928d4dd58d4fe9d6f3ead5ca
+         Boot ID: af499b07e3894dbebe02ce149eef954d
+  Virtualization: vmware
+Operating System: Linux Mint 22                     
+          Kernel: Linux 6.8.0-40-generic
+    Architecture: x86-64
+ Hardware Vendor: VMware, Inc.
+  Hardware Model: VMware20,1
+Firmware Version: VMW201.00V.21805430.B64.2305221830
+   Firmware Date: Mon 2023-05-22
+    Firmware Age: 1y 2month 2w 6d
+itec@mint:~$ █ 
+To actually change the hostname, you add set-hostname name to the command. Change your hostname to StarID-mint (using your own StarID) by doing:
+
+itec@mint:~$ sudo hostnamectl set-hostname gf4321yk-mint
+[sudo] password for itec: itecitec
+itec@mint:~$ hostname
+gf4321yk-mint
+itec@mint:~$ █ 
+NOTE: I'm artificially highlighting my StarID above, it won't look like that in your terminal, but I'm doing this to make sure you use your own StarID. You are using sudo because the /etc/hostname file is owned by the root user and because you're making a change that effects the whole system. You see that sudo prompts you for the current user's password (itec) so I'm typing the password itecitec. As you type, you'll see star (or splat) characters like this ******** and when you hit <ENTER> the stars go away, but I'm showing it in that output to remind you what to type.
+
+Also, notice that your prompt doesn't reflect the new hostname after you changed it, it still shows as itec@mint. This is because your prompt is actually controlled by the value of the $PS1 variable in the bash or zsh shells (something you'll learn more about later). That variable was set when you opened the Terminal application and the shell started to run, but it hasn't been updated.
+
+To update your prompt, simply close the Terminal window and open a new one.
+
+1. In a Terminal window, run the hostnamectl command to show the newly changed hostname of your Linux system then take a screenshot of the Terminal application, and paste it into your assignment document.
+
+What's Your IP Address?
+
+It's always important to be able to determine the IP address of the system you are using. Most systems obtain an IP address from a Dynamic Host Configuration Protocol (DHCP) server. Historically, the ifconfig command showed you IP configuration information. On some distributions, you might need to use sudo with that command because it can also be used to change IP configuration information. The modern way to see IP information is to use the ip command. You can also do an ip -c addr if you want a colorized output. Show your IP address by doing:
+
+itec@gf4321yk-mint:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: ens33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:50:56:b0:2d:9d brd ff:ff:ff:ff:ff:ff
+    altname enp2s1
+    inet 10.14.75.205/24 brd 10.14.75.255 scope global dynamic noprefixroute ens33
+       valid_lft 11478731sec preferred_lft 11478731sec
+    inet6 fe80::1e41:cf61:8b43:185a/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+itec@gf4321yk-mint:~$ █ 
+NOTE: Again, I have purposefully highlighted the IP address in that output to show you where to look, but yours won't show it like that.
+
+2. In a Terminal window, run a command to show the IP address of your Linux system then take a screenshot of the Terminal application, and paste it into your assignment document.
+
+Update the /etc/hosts File
+
+Historically, all networked computer systems had and used an /etc/hosts file (even modern Windows!). If a user tried to do something on the network using a computer's hostname, the system would look inside that /etc/hosts file to find that name and translate it into an IP address. There's a secondary system called DNS that does the same thing, translate system names into IP addresses, but we'll learn more about that later.
+
+Since we changed the hostname of our system, we need to edit the /etc/hosts file to reflect this new name. You won't learn about how to edit files in the command-line until Chapter 11 of the Shotts book, but for now just know that you can edit files with the old, found on every UNIX / Linux system (by default) vi (or vim) or the new(er) nano commands. We will use nano and I will give explicit instructions on what to do.
+
+Again, since we are changing a system level setting (a file -- just about EVERYTHING in Linux is a file or controlled by a simple text file) you need the sudo command first. Use nano to edit the /etc/hostsfile:
+
+itec@gf4321yk-mint:~$ sudo nano /etc/hosts 
+Your screen will change to something like this:
+
+  GNU nano 7.2                       /etc/hosts                                 
+127.0.0.1       localhost
+127.0.1.1       mint
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+
+
+
+
+
+
+
+
+
+
+
+^G Help      ^O Write Out ^W Where Is  ^K Cut       ^T Execute   ^C Location
+^X Exit      ^R Read File ^\ Replace   ^U Paste     ^J Justify   ^/ Go To Line
+A Brief Word About nano
+
+When in nano, you can use the arrow keys on your keyboard (↑ ↓ ← →) to move the cursor █ around, use <Backspace> or <delete> to erase text, and can start typing wherever your cursor is. The menu at the bottom shows keystrokes you can type to do additional things. The caret symbol ^ means you press the <CTRL> key along with the indicated letter. Again, you'll learn more about nano later on.
+
+In the file, you'll see a two lines with the 127.0.0.1 address:
+
+127.0.0.1       localhost
+127.0.1.1       mint
+Remembering your ITEC 1425 Introduction to Computer Networks class, you should recall that every computer will have entries like this because 127.0.0.1 is a special IPv4 address that never leaves the machine's network interface card (traffic to the IP address 127.0.0.1 is never transmitted on the network or is never routed). Because it's an IP address that never leaves the system, it's called a "local" IP address, also known as the localhost or loopback address. What the /etc/hosts file says is that if you use the name mint in any command that wants an IP address, that name should be translated into the IP address 127.0.0.1.
+
+Because we changed the hostname of our system, giving it a unique name on our network, we need to change the mint name to StarID-mint for the second 127.0.0.1 entry AND change the IP address to the IP address your system currently has (from question #2 above). My StarID is gf4321yk, and my system's IP address is 10.14.75.205, so I would have:
+
+127.0.0.1       localhost
+127.0.1.1       gf4321yk-mint
+10.14.75.205    gf4321yk-mint
+NOTE: these changes should be made on the second line, keeping the first line as it is.
+
+Once you are done editing, you should press <CTRL-X> to exit and then press Y when it asks if you want to save the file.
+
+3. In a Terminal window, type: cat /etc/hosts to show your edited file then take a screenshot of just the Terminal application, and paste it into your assignment document.
+
+Share With Your Group
+
+Each of you has been assigned to a group (under the Communications menu, select Groups). Each group has their own Linux Systems Groups Discussion area. Make a post in your discussion and share your StarID and your system's IP address (you can use my post as an example).
+
+Look in the discussion throughout the week and then re-edit your /etc/hosts file to add entries for the systems of each member of your group. For each group member, make an entry with their IP address and, for the hostname, use the same StarID-mint format we used when we changed the hostname. You should also add my hostname and IP address so your /etc/hosts file should have an entry like this:
+
+127.0.0.1       localhost
+10.14.75.xx     StarID-mint
+10.14.75.205     gf4321yk-mint
+where the second line is your IP address and StarID.
+
+ping Your Fellow Students
+
+To test our new /etc/hosts entries, we are going to ping the systems you added. You should have learned in ITEC 1425 that the ping command is used to generate ICMP packets that allow you to determine if a remote system is reachable across the network. If you have successfully and correctly entered your group members' system's IP information into the /etc/hosts file (see above), then you should be able to ping that system by it's name. For example, to ping my system, type:
+
+itec@gf4321yk-mint:~$ ping gf4321yk-mint 
+PING gf4321yk-mint (10.14.75.205) 56(84) bytes of data.
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=1 ttl=64 time=0.272 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=2 ttl=64 time=0.287 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=3 ttl=64 time=0.294 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=4 ttl=64 time=0.303 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=5 ttl=64 time=0.323 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=6 ttl=64 time=0.242 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=7 ttl=64 time=0.293 ms
+...
+You can see that the system translated the gf4321yk-mint to the correct IP address (10.14.75.205) by finding the entry in the /etc/hosts file. By default, the ping command in Linux will run forever which is different from Windows systems where ping will only send four packets by default. To stop the ping command you have running, press <CTRL-C> and the command will be killed and you'll be returned to your shell prompt:
+
+itec@gf4321yk-mint:~$ ping gf4321yk-mint 
+PING gf4321yk-mint (10.14.75.205) 56(84) bytes of data.
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=1 ttl=64 time=0.272 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=2 ttl=64 time=0.287 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=3 ttl=64 time=0.294 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=4 ttl=64 time=0.303 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=5 ttl=64 time=0.323 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=6 ttl=64 time=0.242 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=7 ttl=64 time=0.293 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=8 ttl=64 time=0.309 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=9 ttl=64 time=0.330 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=10 ttl=64 time=0.314 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=11 ttl=64 time=0.316 ms
+^C
+--- gf4321yk-mint ping statistics ---
+11 packets transmitted, 11 received, 0% packet loss, time 10130ms
+rtt min/avg/max/mdev = 0.242/0.298/0.330/0.024 ms
+itec@gf4321yk-mint:~$ █ 
+If, like in Windows, you only wanted to send four packets, you can add a command-line option, or switch, of -c <number> for the number of packets you want to send:
+
+itec@gf4321yk-mint:~$ ping -c 4 gf4321yk-mint 
+PING gf4321yk-mint (10.14.75.205) 56(84) bytes of data.
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=1 ttl=64 time=0.403 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=2 ttl=64 time=0.322 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=3 ttl=64 time=0.325 ms
+64 bytes from gf4321yk-mint (10.14.75.205): icmp_seq=4 ttl=64 time=0.294 ms
+
+--- gf4321yk-mint ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3085ms
+rtt min/avg/max/mdev = 0.294/0.336/0.403/0.040 ms
+itec@gf4321yk-mint:~$ █ 
+Remember, you can always get all the information about a command by reading the manual page for it: man ping.
+
+4. In a Terminal window, run two commands, one to show your new /etc/hosts file and another to ping a student's system ONLY TWO TIMES, and repeat for each member of your group, then take a screenshot of the Terminal application, (you may need to resize it to show all the content) and paste it into your assignment document.
+
+NOTE: You may only be able to ping my system if your classmates haven't completed the lab, and that's OK.
+
+Leave Your System Turned On
+
+In the video I share with you, I recommend suspending your system when you're done using it. In order for this lab to work, so other students can ping your system, I need you to leave your virtual machine turned on after this lab.
+
+Submit
+
+Submit the lab document you created to the vCenter Lab: Change the Hostname assignment folder.
