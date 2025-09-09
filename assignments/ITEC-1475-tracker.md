@@ -9,6 +9,7 @@
 
 | Assignment | Due Date | Status | Priority | Notes |
 |------------|----------|--------|----------|-------|
+| vCenter Lab: Change Hostname | TBD | Not Started | High | Linux system administration lab |
 | Assignment 1 | TBD | Not Started | Medium | Introduction assignment |
 | Project 1 | TBD | Not Started | High | Database design project |
 | Midterm Exam | TBD | Not Started | High | Covers chapters 1-5 |

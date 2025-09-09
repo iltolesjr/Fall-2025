@@ -1,2 +1,3 @@
 2025-09-05 ADD Week2_Children_of_the_Sea_post.txt - discussion post for Week 2 (Danticat). Commit: Add Week2 Danticat discussion post and update tracker
 2025-09-06 ADD discussions/Week2_Children_of_the_Sea_Enhanced_Discussion.md - comprehensive analysis incorporating letter exchanges, character contrasts, teaching obligations, soldier brutality, and butterfly symbolism. Mirrors story opening style.
+2025-09-09 ADD assignments/ITEC-1475/vcenter-lab-hostname.md - Linux system administration lab for hostname management, IP configuration, and network connectivity. Organized step-by-step guide with proper academic formatting.
