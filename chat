@@ -1,0 +1,91 @@
+Thanks for sharing the details of your homework assignment. Here's a structured step-by-step guide for completing the lab. You can directly copy and paste the commands provided below to complete the tasks:
+
+### 1. Change the Hostname
+```bash
+sudo hostnamectl set-hostname <YourStarID>-mint
+hostnamectl
+```
+Replace `<YourStarID>` with your actual StarID (e.g., `gf4321yk`).
+
+Take a screenshot showing the new hostname displayed by the `hostnamectl` command.
+
+---
+
+### 2. Find Your IP Address
+```bash
+ip a
+```
+Look for the IP address associated with your system (e.g., `10.14.75.205`) under the section starting with `inet`.
+
+Take a screenshot showing the IP address output.
+
+---
+
+### 3. Update the `/etc/hosts` File
+```bash
+sudo nano /etc/hosts
+```
+Modify the file as follows:
+1. Update the second line to include your new hostname and IP address.
+2. Add a new line with your system's IP address and hostname.
+
+Example updated `/etc/hosts` file:
+```
+127.0.0.1       localhost
+127.0.1.1       <YourStarID>-mint
+<YourIPAddress> <YourStarID>-mint
+```
+Replace `<YourStarID>` with your StarID and `<YourIPAddress>` with your system IP.
+
+Save and exit by pressing `CTRL-X`, then `Y`, and `ENTER`.
+
+To verify the changes:
+```bash
+cat /etc/hosts
+```
+Take a screenshot showing the updated `/etc/hosts` file.
+
+---
+
+### 4. Share and Add Group Members to `/etc/hosts`
+After posting your StarID and IP address in the group discussion, update your `/etc/hosts` file to include the IP addresses and hostnames of your group members. Example:
+```
+127.0.0.1       localhost
+127.0.1.1       <YourStarID>-mint
+10.14.75.205    gf4321yk-mint
+10.14.75.206    ab1234cd-mint
+10.14.75.207    ef5678gh-mint
+```
+Run the following command to verify:
+```bash
+cat /etc/hosts
+```
+Take a screenshot of the updated file.
+
+---
+
+### 5. Ping Other Systems
+For each group member, ping their system to check connectivity:
+```bash
+ping -c 2 <GroupMemberHostname>
+```
+Example:
+```bash
+ping -c 2 gf4321yk-mint
+```
+Take a screenshot showing the successful ping results for each group member.
+
+---
+
+### 6. Turn Off the System
+Ensure you leave the system running so others can ping your system.
+
+---
+
+### Submission
+Once all tasks are completed:
+- Combine all screenshots into a single document.
+- Ensure each task is labeled and the screenshots are clear.
+- Submit the document to the appropriate assignment folder.
+
+Let me know if you'd like help with specific commands or a walkthrough for any step!
