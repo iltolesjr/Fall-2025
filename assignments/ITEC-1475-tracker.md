@@ -9,7 +9,7 @@
 
 | Assignment | Due Date | Status | Priority | Notes |
 |------------|----------|--------|----------|-------|
-| vCenter Lab: Change Hostname | TBD | Not Started | High | Linux system administration lab |
+| vCenter Lab: Change Hostname | TBD | In Progress | High | Linux system administration lab - [Completion Guide](ITEC-1475/week2-linux-completion-guide.md) |
 | Assignment 1 | TBD | Not Started | Medium | Introduction assignment |
 | Project 1 | TBD | Not Started | High | Database design project |
 | Midterm Exam | TBD | Not Started | High | Covers chapters 1-5 |

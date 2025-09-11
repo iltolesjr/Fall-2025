@@ -1,3 +1,6 @@
 2025-09-05 ADD Week2_Children_of_the_Sea_post.txt - discussion post for Week 2 (Danticat). Commit: Add Week2 Danticat discussion post and update tracker
 2025-09-06 ADD discussions/Week2_Children_of_the_Sea_Enhanced_Discussion.md - comprehensive analysis incorporating letter exchanges, character contrasts, teaching obligations, soldier brutality, and butterfly symbolism. Mirrors story opening style.
 2025-09-09 ADD assignments/ITEC-1475/vcenter-lab-hostname.md - Linux system administration lab for hostname management, IP configuration, and network connectivity. Organized step-by-step guide with proper academic formatting.
+2025-09-11 ADD assignments/ITEC-1475/week2-linux-completion-guide.md - comprehensive completion checklist and progress tracker for Week 2 Linux assignment. Includes time estimates, troubleshooting, and step-by-step guidance.
+2025-09-11 ADD assignments/ITEC-1475/submission-template.md - organized submission template for vCenter lab documentation with screenshot placeholders and requirement checklist.
+2025-09-11 UPDATE assignments/ITEC-1475-tracker.md - changed vCenter lab status from "Not Started" to "In Progress" and added link to completion guide.

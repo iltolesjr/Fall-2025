@@ -11,6 +11,8 @@ This directory contains all assignments and lab materials for ITEC 1475.
 ### Lab Assignments
 
 - **[vCenter Lab: Change Hostname](vcenter-lab-hostname.md)** - Linux system administration lab focusing on hostname management, IP configuration, and network connectivity testing
+- **[Week 2 Linux Lab Completion Guide](week2-linux-completion-guide.md)** - Step-by-step checklist and progress tracker
+- **[Submission Template](submission-template.md)** - Organized template for screenshot documentation and lab submission
 
 ### Assignment Organization
 
