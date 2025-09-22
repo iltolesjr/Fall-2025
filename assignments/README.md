@@ -5,7 +5,9 @@ This directory is for storing course assignments and related materials.
 ## Organization Structure
 
 ### By Course
-- Create subdirectories for each course (e.g., `ITEC-1475/`, `COMP-1110/`)
+- **[ENGL-1110/](ENGL-1110/)** - College Composition: essays, discussions, reading assignments
+- **[ITEC-1475/](ITEC-1475/)** - Computer Technology: labs, assignments, projects
+- Create subdirectories for additional courses (e.g., `COMP-1110/`)
 
 ### By Type
 - `essays/` - Written assignments and papers
@@ -22,15 +24,18 @@ Use descriptive file names with dates:
 ## Copilot Usage Tips
 
 Ask Copilot to help you:
-- "Create an assignment tracker for this course"
-- "Break down this project into smaller tasks"
-- "Generate a template for this type of assignment"
-- "Help me organize my assignment files"
+- **For English class**: "Create an essay outline for analyzing [theme] in [text]"
+- **For technical courses**: "Break down this programming assignment into smaller tasks"
+- **General**: "Create an assignment tracker for this course"
+- **General**: "Generate a template for this type of assignment"
+- **General**: "Help me organize my assignment files"
 
 ## Template Files
 
 Copilot can help generate templates for:
-- Essay outlines
-- Project planning documents
-- Assignment checklists
-- Submission formatting guides
+- **Literary analysis essays** and comparative essays
+- **Research papers** with proper academic formatting
+- **Discussion posts** and reading responses
+- **Lab reports** and technical documentation
+- **Project planning documents** and progress trackers
+- **Assignment checklists** and submission guides
