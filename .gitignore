@@ -44,6 +44,11 @@ node_modules/
 .npm
 .cache/
 
+# MCP related files
+.mcp/node_modules/
+.mcp/npm-debug.log*
+.mcp/.npm
+
 # Build artifacts
 dist/
 build/

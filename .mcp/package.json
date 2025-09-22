@@ -1,0 +1,17 @@
+{
+  "name": "fall2025-mcp-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "MCP server for Fall 2025 academic workflow management",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --inspect server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0"
+  },
+  "keywords": ["mcp", "academic", "education", "workflow"],
+  "author": "Fall 2025 Course Management",
+  "license": "MIT"
+}
