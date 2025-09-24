@@ -62,6 +62,18 @@ This repository contains course materials and resources for Fall 2025 classes. G
 
 Simply start typing and mention what you need help with. Copilot is configured to understand academic workflows and can assist with course management, study strategies, and organization.
 
+### 🔧 Enhanced with MCP
+
+This repository includes Model Context Protocol (MCP) configuration for advanced AI assistance:
+
+- **Automated Assignment Tracking** - Real-time progress monitoring
+- **Smart Due Date Management** - Intelligent deadline reminders  
+- **Structured Note Templates** - Cornell notes, outlines, mind maps
+- **Study Schedule Generation** - Personalized planning assistance
+- **Academic Workflow Integration** - Seamless tool connectivity
+
+**Quick Setup**: Run `.mcp/setup.sh` to initialize MCP features, then see `.mcp/README.md` for detailed usage instructions.
+
 ---
 
 *This repository is enhanced with GitHub Copilot instructions for academic workflow management.*

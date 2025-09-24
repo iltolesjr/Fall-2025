@@ -1,0 +1,116 @@
+{
+  "name": "Fall2025AcademicAgent",
+  "version": "1.0.0",
+  "description": "Specialized MCP agent for Fall 2025 academic workflow management",
+  "capabilities": {
+    "assignment_management": {
+      "enabled": true,
+      "features": [
+        "track_progress",
+        "update_status",
+        "generate_templates",
+        "break_down_tasks"
+      ]
+    },
+    "due_date_tracking": {
+      "enabled": true,
+      "features": [
+        "upcoming_deadlines",
+        "priority_calculation",
+        "reminder_generation",
+        "schedule_optimization"
+      ]
+    },
+    "note_organization": {
+      "enabled": true,
+      "formats": [
+        "cornell",
+        "outline", 
+        "mindmap",
+        "summary"
+      ],
+      "features": [
+        "template_generation",
+        "structure_suggestions",
+        "content_organization"
+      ]
+    },
+    "discussion_support": {
+      "enabled": true,
+      "features": [
+        "question_formulation",
+        "argument_organization",
+        "collaboration_facilitation",
+        "participation_preparation"
+      ]
+    }
+  },
+  "workflow_patterns": {
+    "assignment_workflow": {
+      "steps": [
+        "requirement_analysis",
+        "task_breakdown",
+        "timeline_creation",
+        "progress_tracking",
+        "submission_preparation"
+      ]
+    },
+    "study_workflow": {
+      "steps": [
+        "material_organization",
+        "schedule_creation",
+        "progress_monitoring",
+        "review_planning"
+      ]
+    },
+    "discussion_workflow": {
+      "steps": [
+        "topic_preparation",
+        "question_development",
+        "argument_structuring",
+        "participation_execution"
+      ]
+    }
+  },
+  "integration": {
+    "file_systems": ["assignments", "notes", "schedules", "discussions"],
+    "supported_formats": [".md", ".txt", ".json", ".pdf", ".docx"],
+    "github_copilot": {
+      "compatible": true,
+      "enhanced_features": [
+        "academic_context_awareness",
+        "course_specific_suggestions",
+        "assignment_guided_completion"
+      ]
+    }
+  },
+  "academic_context": {
+    "semester": "Fall 2025",
+    "courses": ["ITEC-1475", "COMP-1110"],
+    "assignment_types": [
+      "essays",
+      "projects", 
+      "presentations",
+      "homework",
+      "labs",
+      "exams"
+    ],
+    "collaboration_modes": [
+      "individual",
+      "group_projects",
+      "peer_review",
+      "class_discussions"
+    ]
+  },
+  "prompts": {
+    "assignment_help": "I can help you manage your Fall 2025 assignments. What would you like assistance with?",
+    "note_organization": "Let me help you organize your course notes. Which format would work best for your current material?",
+    "schedule_planning": "I can create a study schedule based on your assignments and due dates. When would you like to start?",
+    "discussion_prep": "I can help you prepare for class discussions. What topic are you working on?"
+  },
+  "error_handling": {
+    "graceful_degradation": true,
+    "fallback_suggestions": true,
+    "user_friendly_messages": true
+  }
+}
