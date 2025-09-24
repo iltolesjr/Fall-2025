@@ -85,7 +85,7 @@ cat /etc/hosts
 
 **Group Collaboration Phase:**
 
-1. **Post your information**: Share your StarID and IP address in your group discussion area
+1. **Post your information**: Share your StarID and IP address in your [Systems Group #4 Discussion](../../discussions/ITEC-1475/systems-group-4.md)
 2. **Collect group member info**: Throughout the week, gather IP addresses from group members
 3. **Update hosts file**: Add entries for each group member
 

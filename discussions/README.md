@@ -5,8 +5,11 @@ This directory is for organizing class discussions, group work, and collaborativ
 ## Organization Structure
 
 ### By Course and Topic
-- `ITEC-1475/database-design-discussion/`
-- `COMP-1110/programming-concepts-discussion/`
+- `ITEC-1475/` - Linux System Administration group discussions and lab collaboration
+- `COMP-1110/` - Programming concepts discussions (future use)
+
+### Current Active Discussions
+- **ITEC 1475**: [Systems Group #4](ITEC-1475/systems-group-4.md) - vCenter Lab group coordination
 
 ### Discussion Types
 - `class-discussions/` - In-class discussion materials
