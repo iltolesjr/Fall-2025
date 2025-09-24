@@ -36,7 +36,8 @@
 - [ ] **📸 Screenshot**: Updated /etc/hosts file
 
 #### Step 4: Group Collaboration ⏱️ (~Throughout week)
-- [ ] Post your StarID and IP in group discussion
+- [ ] Post your StarID and IP in [Systems Group #4 Discussion](../../discussions/ITEC-1475/systems-group-4.md)
+- [ ] Use the [Group Member Template](../../discussions/ITEC-1475/group-member-template.md) to track information
 - [ ] Collect group members' information:
   - Member 1: StarID: _______ IP: _______
   - Member 2: StarID: _______ IP: _______

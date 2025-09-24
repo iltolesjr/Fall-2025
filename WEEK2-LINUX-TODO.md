@@ -19,7 +19,7 @@
    - Take screenshots of each step
 
 3. **Group Coordination** (throughout the week)
-   - Share your StarID and IP address with group members
+   - Share your StarID and IP address in [Systems Group #4 Discussion](discussions/ITEC-1475/systems-group-4.md)
    - Collect their information and add to your hosts file
    - Test connectivity by pinging their systems
 
