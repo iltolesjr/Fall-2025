@@ -11,10 +11,12 @@ This directory contains all assignments and lab materials for ITEC 1475.
 ### Lab Assignments
 
 - **[vCenter Lab: Change Hostname](vcenter-lab-hostname.md)** - Linux system administration lab focusing on hostname management, IP configuration, and network connectivity testing
+- **[On-Campus Lab: Other Software Managers](other-software-managers-lab.md)** - Introduction to snap, flatpak, and alternative package managers (Due: October 5, 2025)
 - **[Lennox Server Setup Lab](lennox-server-setup.md)** - Comprehensive server configuration lab covering initial setup, security, services, and monitoring
 - **[Week 2 Linux Lab Completion Guide](week2-linux-completion-guide.md)** - Step-by-step checklist and progress tracker for vCenter lab
 - **[Lennox Server Completion Guide](lennox-server-completion-guide.md)** - Step-by-step checklist and progress tracker for server setup lab
 - **[Submission Template](submission-template.md)** - Organized template for screenshot documentation and lab submission (vCenter lab)
+- **[Other Software Managers Submission Template](other-software-managers-submission-template.md)** - Organized template for software managers lab documentation and submission
 - **[Lennox Server Submission Template](lennox-server-submission-template.md)** - Organized template for server setup lab documentation and submission
 
 ### Assignment Organization

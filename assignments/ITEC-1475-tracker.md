@@ -10,6 +10,7 @@
 | Assignment | Due Date | Status | Priority | Notes |
 |------------|----------|--------|----------|-------|
 | vCenter Lab: Change Hostname | TBD | In Progress | High | Linux system administration lab - [Completion Guide](ITEC-1475/week2-linux-completion-guide.md) |
+| On-Campus Lab: Other Software Managers | October 5, 2025 | Not Started | High | Snap, flatpak, and package managers - [Lab Instructions](ITEC-1475/other-software-managers-lab.md) |
 | Assignment 1 | TBD | Not Started | Medium | Introduction assignment |
 | Project 1 | TBD | Not Started | High | Database design project |
 | Midterm Exam | TBD | Not Started | High | Covers chapters 1-5 |

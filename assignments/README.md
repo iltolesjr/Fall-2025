@@ -6,8 +6,9 @@ This directory is for storing course assignments and related materials.
 
 ### By Course
 - **[ENGL-1110/](ENGL-1110/)** - College Composition: essays, discussions, reading assignments
-- **[ITEC-1475/](ITEC-1475/)** - Computer Technology: labs, assignments, projects
-- Create subdirectories for additional courses (e.g., `COMP-1110/`)
+- **[ITEC-1475/](ITEC-1475/)** - Linux System Administration: labs, assignments, projects
+- **[NSF-STEM/](NSF-STEM/)** - NSF S-STEM Scholarship Program: forms, reflections, mentor meetings
+- Create subdirectories for additional courses as needed
 
 ### By Type
 - `essays/` - Written assignments and papers

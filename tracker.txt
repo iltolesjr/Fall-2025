@@ -4,3 +4,15 @@
 2025-09-11 ADD assignments/ITEC-1475/week2-linux-completion-guide.md - comprehensive completion checklist and progress tracker for Week 2 Linux assignment. Includes time estimates, troubleshooting, and step-by-step guidance.
 2025-09-11 ADD assignments/ITEC-1475/submission-template.md - organized submission template for vCenter lab documentation with screenshot placeholders and requirement checklist.
 2025-09-11 UPDATE assignments/ITEC-1475-tracker.md - changed vCenter lab status from "Not Started" to "In Progress" and added link to completion guide.
+2025-09-30 ADD assignments/ITEC-1475/other-software-managers-lab.md - On-campus lab for ITEC 1475-60 covering snap, flatpak, and alternative package managers. Due October 5, 2025.
+2025-09-30 ADD assignments/ITEC-1475/other-software-managers-submission-template.md - submission template for Other Software Managers lab with screenshots and reflection questions.
+2025-09-30 UPDATE assignments/ITEC-1475-tracker.md - added "On-Campus Lab: Other Software Managers" assignment with due date October 5, 2025.
+2025-09-30 UPDATE assignments/ITEC-1475/README.md - added Other Software Managers lab and submission template to lab assignments list.
+2025-09-30 ADD assignments/NSF-STEM/ - created directory for NSF S-STEM scholarship program assignments and requirements.
+2025-09-30 ADD assignments/NSF-STEM-tracker.md - comprehensive tracker for NSF STEM program with First Set of Expectations (4 assignments due October 24, 2025).
+2025-09-30 ADD assignments/NSF-STEM/plan-of-study.md - Plan of Study Form assignment with detailed instructions for academic pathway documentation.
+2025-09-30 ADD assignments/NSF-STEM/release-form.md - S-STEM Release Form assignment for data collection authorization and FERPA compliance.
+2025-09-30 ADD assignments/NSF-STEM/stem-event-reflection-1.md - STEM Event Reflection #1 assignment with guidelines for reflective writing on STEM experiences.
+2025-09-30 ADD assignments/NSF-STEM/mentor-meeting-1.md - Mentor Meeting Form #1 assignment documenting first meeting with assigned mentor.
+2025-09-30 ADD assignments/NSF-STEM/README.md - comprehensive overview of NSF STEM program, assignments, requirements, and resources.
+2025-09-30 UPDATE assignments/README.md - added NSF-STEM directory to course organization structure.
