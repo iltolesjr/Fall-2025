@@ -34,9 +34,21 @@ This repository contains course materials and resources for Fall 2025 classes. G
 - **Course Materials**: Readings, assignments, and resources
 - **Audio Files**: Recorded lectures and course content
 - **Schedules**: Class schedules and important dates
+- **Assignments**: Organized by course (ENGL-1110, ITEC-1475) with tracker files
+- **Scripts**: Automation tools for project board management
 
 ## 🚀 Getting Started
 
+### Quick Start Options:
+
+**Option 1: Use the Automated Project Board** (Recommended!)
+- 📊 Track all 20 assignments across both courses
+- 🏷️ Organize by class with labels (ENGL-1110, ITEC-1475)  
+- 📝 Auto-sync status: Todo → In Progress → Done
+- ⚡ **Setup in 5 minutes**: See [QUICK-START-PROJECT-BOARD.md](QUICK-START-PROJECT-BOARD.md)
+- 📖 **Full guide**: See [PROJECT-BOARD-SETUP.md](PROJECT-BOARD-SETUP.md)
+
+**Option 2: Use Copilot for Daily Tasks**
 1. **Ask Copilot for help** with any course-related task
 2. **Use natural language** to describe what you need assistance with
 3. **Be specific** about assignments, due dates, or topics you're working on
@@ -44,11 +56,18 @@ This repository contains course materials and resources for Fall 2025 classes. G
 
 ## 💡 Example Prompts
 
+### For Copilot Chat:
 - "Help me break down this research paper assignment into smaller tasks"
 - "Create a study schedule for my upcoming exams"
 - "Generate a template for taking Cornell notes on this reading"
 - "Help me organize discussion points for tomorrow's class"
 - "What's the best way to prioritize my assignments this week?"
+
+### For Project Board Management:
+- "Update ENGL-1110 tracker to mark Essay 1 as In Progress"
+- "Show me all completed ITEC-1475 assignments"
+- "What assignments are due this week?"
+- "Run the project board sync script"
 
 ## 🎓 Academic Success Tips
 
