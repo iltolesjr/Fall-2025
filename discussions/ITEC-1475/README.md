@@ -12,6 +12,7 @@ This directory contains group collaboration areas for ITEC 1475 Linux lab assign
 
 ### vCenter Lab: Create User Accounts and SSH
 - **Systems Group #4**: [Group 4 Discussion](systems-group-4.md)
+- **Systems Group #5**: [Group 5 Discussion](systems-group-5.md)
 
 ## Usage Guidelines
 
