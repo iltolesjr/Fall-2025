@@ -1,394 +1,172 @@
 #!/usr/bin/env node
+// prodesk86 unified academic utility + static file server (single script)
+import http from 'node:http';
+import { readdir, stat, readFile } from 'node:fs/promises';
+import { createReadStream } from 'node:fs';
+import { extname, join, resolve } from 'node:path';
 
-/**
- * Fall 2025 Academic MCP Server
- * 
- * This MCP server provides academic workflow management tools specifically
- * designed for the Fall 2025 course repository structure.
- */
+// -------- Configuration --------
+const HOST = process.env.PRODESK_HOST || 'prodesk86';
+const PORT = Number(process.env.PRODESK_PORT || 8086);
+const ROLE = process.env.REPO_ROLE || 'school';
+const ROOT = resolve(process.env.REPO_PATH || '.');
 
-import { Server } from '@modelcontextprotocol/sdk/server/index.js';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import {
-  CallToolRequestSchema,
-  ListToolsRequestSchema,
-} from '@modelcontextprotocol/sdk/types.js';
-import fs from 'fs/promises';
-import path from 'path';
+// -------- Helpers --------
+const MIME = {
+  '.html': 'text/html; charset=utf-8',
+  '.md': 'text/markdown; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8'
+};
 
-class Fall2025AcademicServer {
-  constructor() {
-    this.server = new Server(
-      {
-        name: 'fall2025-academic',
-        version: '0.1.0',
-      },
-      {
-        capabilities: {
-          tools: {},
-        },
+function sendJSON(res, code, obj) {
+  res.writeHead(code, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify(obj, null, 2));
+}
+
+// -------- Tool Implementations --------
+async function tool_listAssignments() {
+  const base = join(ROOT, 'assignments');
+  let out = [];
+  try {
+    const entries = await readdir(base, { withFileTypes: true });
+    for (const d of entries) {
+      if (!d.isDirectory()) continue;
+      const sub = join(base, d.name);
+      const files = await readdir(sub);
+      for (const f of files) {
+        if (/tracker\.md$/i.test(f)) out.push({ course: d.name, tracker: f, path: join('assignments', d.name, f) });
       }
-    );
-
-    this.setupToolHandlers();
-    this.setupErrorHandling();
-  }
-
-  setupErrorHandling() {
-    this.server.onerror = (error) => console.error('[MCP Error]', error);
-    process.on('SIGINT', async () => {
-      await this.server.close();
-      process.exit(0);
-    });
-  }
-
-  setupToolHandlers() {
-    this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
-      tools: [
-        {
-          name: 'get_assignment_tracker',
-          description: 'Get assignment tracking information for a specific course',
-          inputSchema: {
-            type: 'object',
-            properties: {
-              course: {
-                type: 'string',
-                description: 'Course identifier (e.g., ITEC-1475, COMP-1110)',
-              },
-            },
-            required: ['course'],
-          },
-        },
-        {
-          name: 'update_assignment_status',
-          description: 'Update the status of an assignment',
-          inputSchema: {
-            type: 'object',
-            properties: {
-              course: {
-                type: 'string',
-                description: 'Course identifier',
-              },
-              assignment: {
-                type: 'string',
-                description: 'Assignment name',
-              },
-              status: {
-                type: 'string',
-                enum: ['Not Started', 'In Progress', 'Completed'],
-                description: 'New status for the assignment',
-              },
-            },
-            required: ['course', 'assignment', 'status'],
-          },
-        },
-        {
-          name: 'get_due_dates',
-          description: 'Get upcoming due dates across all courses',
-          inputSchema: {
-            type: 'object',
-            properties: {
-              days_ahead: {
-                type: 'number',
-                description: 'Number of days to look ahead (default: 7)',
-                default: 7,
-              },
-            },
-          },
-        },
-        {
-          name: 'create_study_schedule',
-          description: 'Create a study schedule for upcoming assignments and exams',
-          inputSchema: {
-            type: 'object',
-            properties: {
-              course: {
-                type: 'string',
-                description: 'Course identifier (optional, for course-specific schedule)',
-              },
-              week_start: {
-                type: 'string',
-                description: 'Start date for the schedule (YYYY-MM-DD format)',
-              },
-            },
-            required: ['week_start'],
-          },
-        },
-        {
-          name: 'organize_notes',
-          description: 'Help organize and structure course notes',
-          inputSchema: {
-            type: 'object',
-            properties: {
-              course: {
-                type: 'string',
-                description: 'Course identifier',
-              },
-              topic: {
-                type: 'string',
-                description: 'Topic or week identifier',
-              },
-              format: {
-                type: 'string',
-                enum: ['cornell', 'outline', 'mindmap', 'summary'],
-                description: 'Note format type',
-              },
-            },
-            required: ['course', 'format'],
-          },
-        },
-      ],
-    }));
-
-    this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
-      switch (request.params.name) {
-        case 'get_assignment_tracker':
-          return this.getAssignmentTracker(request.params.arguments);
-        case 'update_assignment_status':
-          return this.updateAssignmentStatus(request.params.arguments);
-        case 'get_due_dates':
-          return this.getDueDates(request.params.arguments);
-        case 'create_study_schedule':
-          return this.createStudySchedule(request.params.arguments);
-        case 'organize_notes':
-          return this.organizeNotes(request.params.arguments);
-        default:
-          throw new Error(`Unknown tool: ${request.params.name}`);
-      }
-    });
-  }
-
-  async getAssignmentTracker(args) {
-    try {
-      const trackerPath = path.join(process.cwd(), 'assignments', `${args.course}-tracker.md`);
-      const content = await fs.readFile(trackerPath, 'utf-8');
-      
-      return {
-        content: [
-          {
-            type: 'text',
-            text: `Assignment tracker for ${args.course}:\n\n${content}`,
-          },
-        ],
-      };
-    } catch (error) {
-      return {
-        content: [
-          {
-            type: 'text',
-            text: `Could not find assignment tracker for ${args.course}. Error: ${error.message}`,
-          },
-        ],
-        isError: true,
-      };
     }
+  } catch (e) {
+    return { error: 'scan_failed', detail: e.message };
   }
+  return { assignments: out };
+}
 
-  async updateAssignmentStatus(args) {
-    try {
-      const trackerPath = path.join(process.cwd(), 'assignments', `${args.course}-tracker.md`);
-      let content = await fs.readFile(trackerPath, 'utf-8');
-      
-      // Simple status update - in a real implementation, this would be more robust
-      const assignmentRegex = new RegExp(`(\\|\\s*${args.assignment}\\s*\\|[^|]*\\|)\\s*([^|]+)(\\|)`, 'i');
-      content = content.replace(assignmentRegex, `$1 ${args.status} $3`);
-      
-      await fs.writeFile(trackerPath, content);
-      
-      return {
-        content: [
-          {
-            type: 'text',
-            text: `Updated ${args.assignment} status to "${args.status}" in ${args.course}`,
-          },
-        ],
-      };
-    } catch (error) {
-      return {
-        content: [
-          {
-            type: 'text',
-            text: `Failed to update assignment status: ${error.message}`,
-          },
-        ],
-        isError: true,
-      };
-    }
-  }
-
-  async getDueDates(args) {
-    const daysAhead = args.days_ahead || 7;
-    const today = new Date();
-    const futureDate = new Date(today);
-    futureDate.setDate(today.getDate() + daysAhead);
-
-    try {
-      // Scan assignment trackers for due dates
-      const assignmentsDir = path.join(process.cwd(), 'assignments');
-      const files = await fs.readdir(assignmentsDir);
-      const trackers = files.filter(f => f.endsWith('-tracker.md'));
-      
-      let dueDates = [];
-      
-      for (const tracker of trackers) {
-        const content = await fs.readFile(path.join(assignmentsDir, tracker), 'utf-8');
-        const course = tracker.replace('-tracker.md', '');
-        
-        // Simple due date extraction - could be enhanced with proper parsing
-        const lines = content.split('\n');
-        for (const line of lines) {
-          if (line.includes('|') && line.includes('TBD') === false) {
-            const match = line.match(/\|\s*([^|]+)\s*\|\s*([^|]+)\s*\|/);
-            if (match) {
-              dueDates.push({
-                course,
-                assignment: match[1].trim(),
-                dueDate: match[2].trim(),
-              });
-            }
+async function tool_dueDates({ days = 7 } = {}) {
+  const base = join(ROOT, 'assignments');
+  const cutoff = Date.now() + days * 86400000;
+  const results = [];
+  try {
+    const files = await readdir(base);
+    for (const f of files) {
+      if (!f.endsWith('-tracker.md')) continue;
+      const course = f.replace('-tracker.md', '');
+      const content = await readFile(join(base, f), 'utf-8');
+      const lines = content.split(/\r?\n/);
+      for (const line of lines) {
+        // naive pattern: | Assignment | YYYY-MM-DD | or similar
+        const m = line.match(/\|\s*([^|]+?)\s*\|\s*(\d{4}-\d{2}-\d{2})\s*\|/);
+        if (m) {
+          const when = new Date(m[2]).getTime();
+          if (!isNaN(when) && when <= cutoff) {
+            results.push({ course, assignment: m[1].trim(), due: m[2] });
           }
         }
       }
-      
-      return {
-        content: [
-          {
-            type: 'text',
-            text: `Upcoming due dates (next ${daysAhead} days):\n\n${dueDates.map(d => 
-              `• ${d.course}: ${d.assignment} - ${d.dueDate}`
-            ).join('\n') || 'No specific due dates found in trackers.'}`,
-          },
-        ],
-      };
-    } catch (error) {
-      return {
-        content: [
-          {
-            type: 'text',
-            text: `Error retrieving due dates: ${error.message}`,
-          },
-        ],
-        isError: true,
-      };
     }
+  } catch (e) {
+    return { error: 'parse_failed', detail: e.message };
   }
+  return { windowDays: days, upcoming: results };
+}
 
-  async createStudySchedule(args) {
-    const weekStart = new Date(args.week_start);
-    const schedule = [];
-    
-    // Generate a basic weekly study schedule template
-    for (let i = 0; i < 7; i++) {
-      const day = new Date(weekStart);
-      day.setDate(weekStart.getDate() + i);
-      const dayName = day.toLocaleDateString('en-US', { weekday: 'long' });
-      
-      schedule.push(`**${dayName} (${day.toLocaleDateString()})**`);
-      schedule.push('- Morning: Review previous day\'s notes (30 min)');
-      schedule.push('- Afternoon: Work on assignments (1-2 hours)');
-      schedule.push('- Evening: Prepare for next day\'s classes (30 min)');
-      schedule.push('');
-    }
-    
-    return {
-      content: [
-        {
-          type: 'text',
-          text: `Study Schedule for week starting ${args.week_start}:\n\n${schedule.join('\n')}`,
-        },
-      ],
-    };
+function tool_outline({ kind = 'essay' } = {}) {
+  return {
+    kind,
+    outline: kind === 'discussion'
+      ? ['Hook (anecdote fragment)', 'Pivot/Claim', 'Evidence + mechanism', 'Synthesis', 'Forward question']
+      : ['Intro (thesis last)', 'Body 1 (mechanism→effect→theme)', 'Body 2 (complication)', 'Body 3 (contrast/escalation)', 'Conclusion (return + extension)']
+  };
+}
+
+function tool_voiceAdapt({ text = '', mode = 'light' } = {}) {
+  if (!text.trim()) return { original: text, adapted: '', note: 'empty' };
+  let adapted = text.replace(/\s+/g, ' ').trim();
+  if (!/[.!?]$/.test(adapted)) adapted += '.';
+  if (mode === 'academic') adapted = adapted.replace(/^\b(And|But|So)\b\s+/i, '');
+  return { original: text, adapted, mode };
+}
+
+function tool_studySchedule({ start }) {
+  if (!start) return { error: 'missing_start', hint: 'Provide start=YYYY-MM-DD' };
+  const weekStart = new Date(start);
+  if (isNaN(weekStart.getTime())) return { error: 'bad_date' };
+  const blocks = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(weekStart); d.setDate(weekStart.getDate() + i);
+    const label = d.toLocaleDateString('en-US', { weekday: 'long' });
+    blocks.push({ day: label, date: d.toISOString().slice(0,10), plan: ['Review prior notes (30m)', 'Focused assignment block (60–90m)', 'Light preview next topic (20m)'] });
   }
+  return { start, schedule: blocks };
+}
 
-  async organizeNotes(args) {
-    const templates = {
-      cornell: `# Cornell Notes Template - ${args.course}${args.topic ? ` - ${args.topic}` : ''}
+function tool_notesTemplate({ format = 'outline', course = '', topic = '' } = {}) {
+  const header = `# ${format.charAt(0).toUpperCase()+format.slice(1)} Notes${course?` – ${course}`:''}${topic?` – ${topic}`:''}`;
+  const templates = {
+    cornell: `${header}\n\n## Cue Column | Notes Column\n### Questions / Keywords | Details / Explanations\n\n---\n\n### Summary\nKey takeaways...`,
+    outline: `${header}\n\nI. Main Point\n   A. Subpoint\n      1. Detail\n\nII. Next Point\n`,
+    summary: `${header}\n\n## Key Concepts\n1. ...\n2. ...\n\n## Details\n- ...\n- ...\n\n## Questions\n1. ...\n`,
+    mindmap: `${header}\n\nCentral: [Topic]\n- Branch 1: details\n- Branch 2: details\n- Branch 3: details\n`
+  };
+  return { format, template: templates[format] || templates.outline };
+}
 
-## Cue Column | Notes Column
-### Questions and Keywords | Main Notes and Details
+// Registry mapping
+const TOOL_REGISTRY = {
+  ping: () => ({ ok: true, host: HOST, role: ROLE, time: new Date().toISOString() }),
+  assignments: tool_listAssignments,
+  due: tool_dueDates,
+  outline: tool_outline,
+  voice: tool_voiceAdapt,
+  study: tool_studySchedule,
+  notes: tool_notesTemplate
+};
 
----
-
-### Summary Section
-Key takeaways and main concepts:
-
-`,
-      outline: `# Outline Notes - ${args.course}${args.topic ? ` - ${args.topic}` : ''}
-
-## I. Main Topic
-   A. Subtopic 1
-      1. Detail
-      2. Detail
-   B. Subtopic 2
-      1. Detail
-      2. Detail
-
-## II. Secondary Topic
-   A. Subtopic 1
-   B. Subtopic 2
-
-`,
-      mindmap: `# Mind Map Structure - ${args.course}${args.topic ? ` - ${args.topic}` : ''}
-
-## Central Concept: [Main Topic]
-
-### Branch 1: [Subtopic]
-- Detail 1
-- Detail 2
-- Connection to other concepts
-
-### Branch 2: [Subtopic]
-- Detail 1
-- Detail 2
-- Related examples
-
-### Branch 3: [Subtopic]
-- Detail 1
-- Detail 2
-- Practical applications
-
-`,
-      summary: `# Summary Notes - ${args.course}${args.topic ? ` - ${args.topic}` : ''}
-
-## Key Concepts
-1. **Concept 1**: Brief explanation
-2. **Concept 2**: Brief explanation
-3. **Concept 3**: Brief explanation
-
-## Important Details
-- Detail 1
-- Detail 2
-- Detail 3
-
-## Review Questions
-1. Question 1
-2. Question 2
-3. Question 3
-
-## Action Items
-- [ ] Task 1
-- [ ] Task 2
-- [ ] Task 3
-
-`
-    };
-
-    return {
-      content: [
-        {
-          type: 'text',
-          text: templates[args.format] || 'Unknown note format requested.',
-        },
-      ],
-    };
-  }
-
-  async run() {
-    const transport = new StdioServerTransport();
-    await this.server.connect(transport);
-    console.error('Fall 2025 Academic MCP server running on stdio');
+// -------- HTTP Router --------
+async function handleApi(pathname, searchParams, res) {
+  const name = pathname.slice('/api/'.length);
+  const fn = TOOL_REGISTRY[name];
+  if (!fn) return sendJSON(res, 404, { error: 'unknown_tool', tool: name });
+  const args = Object.fromEntries(searchParams.entries());
+  try {
+    const data = await fn(args);
+    return sendJSON(res, 200, data);
+  } catch (e) {
+    return sendJSON(res, 500, { error: 'tool_error', detail: e.message });
   }
 }
 
-const server = new Fall2025AcademicServer();
-server.run().catch(console.error);
+async function serveStatic(pathname, res) {
+  let pth = decodeURIComponent(pathname);
+  if (pth === '/') pth = '/README.md';
+  const filePath = join(ROOT, pth);
+  try {
+    const st = await stat(filePath);
+    if (st.isDirectory()) {
+      res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
+      return res.end('Directory browsing disabled');
+    }
+    const ext = extname(filePath).toLowerCase();
+    res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream' });
+    createReadStream(filePath).pipe(res);
+  } catch {
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('Not found');
+  }
+}
+
+function requestListener(req, res) {
+  const url = new URL(req.url, `http://${req.headers.host}`);
+  if (url.pathname.startsWith('/api/')) return void handleApi(url.pathname, url.searchParams, res);
+  return void serveStatic(url.pathname, res);
+}
+
+http.createServer(requestListener).listen(PORT, HOST, () => {
+  console.log(`[prodesk86] unified server http://${HOST}:${PORT} role=${ROLE}`);
+  console.log('Tools:', Object.keys(TOOL_REGISTRY).join(', '));
+  console.log('Example: /api/outline?kind=discussion');
+});
