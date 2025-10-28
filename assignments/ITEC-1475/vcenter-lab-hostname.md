@@ -23,11 +23,11 @@ This lab focuses on Linux system hostname management, network configuration, and
 Change your system hostname to include your StarID:
 
 ```bash
-sudo hostnamectl set-hostname <YourStarID>-mint
+sudo hostnamectl set-hostname fj3453rb-mint
 hostnamectl
 ```
 
-**Replace `<YourStarID>` with your actual StarID** (e.g., `gf4321yk`).
+**Replace `fj3453rb` with your actual StarID** (e.g., `gf4321yk`).
 
 **📸 Screenshot Required**: Take a screenshot showing the new hostname displayed by the `hostnamectl` command.
 
@@ -62,12 +62,12 @@ sudo nano /etc/hosts
 **Example updated `/etc/hosts` file:**
 ```
 127.0.0.1       localhost
-127.0.1.1       <YourStarID>-mint
-<YourIPAddress> <YourStarID>-mint
+127.0.1.1       fj3453rb-mint
+<YourIPAddress> fj3453rb-mint
 ```
 
 **Replace:**
-- `<YourStarID>` with your StarID 
+- `fj3453rb` with your StarID 
 - `<YourIPAddress>` with your system IP
 
 **Save and exit**: Press `CTRL-X`, then `Y`, and `ENTER`.
@@ -92,7 +92,7 @@ cat /etc/hosts
 **Example updated file:**
 ```
 127.0.0.1       localhost
-127.0.1.1       <YourStarID>-mint
+127.0.1.1       fj3453rb-mint
 10.14.75.205    gf4321yk-mint
 10.14.75.206    ab1234cd-mint
 10.14.75.207    ef5678gh-mint
