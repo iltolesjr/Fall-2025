@@ -1,16 +1,16 @@
 Param(
   [int]$Port = 8086,
-  [string]$ServerHost = 'prodesk86',
+  [string]$ServerHost = 'localhost',
   [string]$Role = 'school',
   [string]$RepoPath = '.',
   [switch]$Open
 )
 
 # Set environment variables for this session only
-$env:PRODESK_PORT = $Port
-$env:PRODESK_HOST = $ServerHost
-$env:REPO_ROLE    = $Role
-$env:REPO_PATH    = $RepoPath
+$env:APP_PORT    = $Port
+$env:APP_HOST    = $ServerHost
+$env:REPO_ROLE   = $Role
+$env:REPO_PATH   = $RepoPath
 $env:ACADEMIC_MODE = 'true'
 
 Write-Host "[academic] Launching server on http://${ServerHost}:$Port role=$Role root=$RepoPath" -ForegroundColor Cyan
@@ -24,11 +24,12 @@ if (-not (Test-Path $server)) {
   exit 1
 }
 
-# Start the server
-node $server
+# Start the server and capture exit code without using $LASTEXITCODE
+$process = Start-Process -FilePath "node" -ArgumentList $server -NoNewWindow -Wait -PassThru
+$exitCode = $process.ExitCode
 
-if ($LASTEXITCODE -ne 0) {
-  Write-Warning "Server exited with code $LASTEXITCODE"
+if ($exitCode -ne 0) {
+  Write-Warning "Server exited with code $exitCode"
 } elseif ($Open) {
   Start-Process "http://${ServerHost}:$Port/api/ping"
 }
