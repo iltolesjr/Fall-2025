@@ -106,7 +106,7 @@ sudo systemctl start apache2
 **Create documentation:**
 ```bash
 sudo nano /etc/server-info.txt
-# Add required information (see lab instructions)
+# Add required information (see lennox-server-setup.md Step 7)
 ```
 
 ### Step 2: Run script again WITH SUDO
@@ -145,11 +145,11 @@ You're on the right track! Keep going! 🚀
 
 I've created detailed guides to help you:
 
-1. **[how-it-look-quick-answer.md](how-it-look-quick-answer.md)** - Extended version of this answer
-2. **[lennox-output-analysis-feedback.md](lennox-output-analysis-feedback.md)** - Detailed line-by-line analysis
-3. **[output-interpretation-guide.md](output-interpretation-guide.md)** - Learn to read output yourself
+1. **[how-it-look-quick-answer.md](how-it-look-quick-answer.md)** - Friendly, detailed explanation with FAQ
+2. **[lennox-output-analysis-feedback.md](lennox-output-analysis-feedback.md)** - Complete line-by-line analysis of your output
+3. **[output-interpretation-guide.md](output-interpretation-guide.md)** - Reference guide to learn how to read any output
 
-Start with #1 if you want more details but still keep it simple.
+Choose #1 if you want encouragement and more context. Choose #2 if you need a detailed action plan.
 
 ---
 
