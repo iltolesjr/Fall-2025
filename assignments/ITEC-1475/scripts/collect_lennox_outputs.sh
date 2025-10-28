@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # collect_lennox_outputs.sh
-# Run this as root (sudo) from the server. It collects non-interactive outputs into a log file
-# Usage: sudo ./collect_lennox_outputs.sh
+# Collects non-interactive outputs into a log file
+# Usage: ./collect_lennox_outputs.sh
+# Note: Some commands require sudo and will prompt for password if needed
 
 OUTFILE="lennox-lab-outputs.txt"
 rm -f "$OUTFILE"
@@ -27,13 +28,13 @@ else
 fi
 
 echo "\n=== SSH config summary ==="
-grep -E "PermitRootLogin|PasswordAuthentication|Port" /etc/ssh/sshd_config || true
+sudo grep -E "PermitRootLogin|PasswordAuthentication|Port" /etc/ssh/sshd_config || true
 
 echo "\n=== UFW status ==="
-ufw status verbose || true
+sudo ufw status verbose || true
 
 echo "\n=== Apache status ==="
-systemctl status apache2 --no-pager || true
+sudo systemctl status apache2 --no-pager || true
 
 echo "\n=== curl localhost ==="
 curl -I localhost || true
@@ -48,16 +49,16 @@ echo "\n=== ps aux (top 15) ==="
 ps aux | head -15 || true
 
 echo "\n=== journalctl (last 1 hour, top 30) ==="
-journalctl --since "1 hour ago" | head -30 || true
+sudo journalctl --since "1 hour ago" | head -30 || true
 
 echo "\n=== /etc/server-info.txt ==="
 cat /etc/server-info.txt 2>/dev/null || echo "/etc/server-info.txt not found"
 
 echo "\n=== Active services matching apache2|ssh|ufw ==="
-systemctl list-units --type=service --state=active | grep -E "apache2|ssh|ufw" || true
+sudo systemctl list-units --type=service --state=active | grep -E "apache2|ssh|ufw" || true
 
 echo "\n=== netstat (listening) ==="
-netstat -tlnp | head -20 || true
+sudo netstat -tlnp | head -20 || true
 
 echo "\n=== ping (3 to google.com) ==="
 ping -c 3 google.com || true
