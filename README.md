@@ -30,6 +30,12 @@ This repository contains course materials and resources for Fall 2025 classes. G
 
 ## 📁 Repository Contents
 
+- **Lab Assignments** 📂: **Ready-to-run scripts for ITEC 1475 labs** in `/lab-assignments/`
+  - Week 2 Lab 1: Hostname Configuration
+  - Week 2 Lab 2: Software Managers
+  - Lennox Server Complete Setup
+  - Interactive menu system for all labs
+  - [Quick Reference Guide](lab-assignments/QUICK-REFERENCE.md)
 - **Syllabi**: Course syllabi and schedules
 - **Course Materials**: Readings, assignments, and resources
 - **Audio Files**: Recorded lectures and course content
@@ -41,14 +47,27 @@ This repository contains course materials and resources for Fall 2025 classes. G
 
 ### Quick Start Options:
 
-**Option 1: Use the Automated Project Board** (Recommended!)
+**Option 1: Run ITEC 1475 Lab Assignments** 🖥️ (New!)
+- ⚡ **Interactive menu system** for all labs
+- 📝 **Automated scripts** with step-by-step guidance
+- 📸 **Screenshot prompts** at every required step
+- 🎯 **Server pre-configured**: Hostname `fj3453rb-mint`, IP `10.14.75.235`
+- ⏱️ **Quick setup**: See [lab-assignments/README.md](lab-assignments/README.md)
+- 📖 **Quick Reference**: See [lab-assignments/QUICK-REFERENCE.md](lab-assignments/QUICK-REFERENCE.md)
+
+```bash
+cd lab-assignments
+sudo ./run-all-labs.sh  # Interactive menu for all labs
+```
+
+**Option 2: Use the Automated Project Board**
 - 📊 Track all 20 assignments across both courses
 - 🏷️ Organize by class with labels (ENGL-1110, ITEC-1475)  
 - 📝 Auto-sync status: Todo → In Progress → Done
 - ⚡ **Setup in 5 minutes**: See [QUICK-START-PROJECT-BOARD.md](QUICK-START-PROJECT-BOARD.md)
 - 📖 **Full guide**: See [PROJECT-BOARD-SETUP.md](PROJECT-BOARD-SETUP.md)
 
-**Option 2: Use Copilot for Daily Tasks**
+**Option 3: Use Copilot for Daily Tasks**
 1. **Ask Copilot for help** with any course-related task
 2. **Use natural language** to describe what you need assistance with
 3. **Be specific** about assignments, due dates, or topics you're working on
