@@ -28,6 +28,8 @@ This directory contains all assignments and lab materials for ITEC 1475.
 ### Learning Resources
 
 - **[Why Read Instructions First?](why-read-instructions-first.md)** - Detailed explanation of why instructors emphasize reading the entire lab before starting, with specific examples and benefits
+- **[Lennox Output Interpretation Guide](output-interpretation-guide.md)** - Learn how to read and understand the collect_lennox_outputs.sh script results
+- **[Lennox Output Analysis & Feedback](lennox-output-analysis-feedback.md)** - Sample analysis of script output with detailed feedback on what's complete and what needs work
 
 ### Assignment Organization
 
@@ -49,6 +51,9 @@ You can ask Copilot for assistance with:
 - "Help me understand server security configuration"
 - "What should I include in my server documentation?"
 - "Compare different Linux package managers"
+- "How do I interpret my Lennox lab output?"
+- "What does this error in my output mean?"
+- "Is my lab complete based on the output?"
 
 ### Submission Guidelines
 
