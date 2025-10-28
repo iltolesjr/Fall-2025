@@ -28,6 +28,7 @@ This directory contains all assignments and lab materials for ITEC 1475.
 ### Learning Resources
 
 - **[Why Read Instructions First?](why-read-instructions-first.md)** - Detailed explanation of why instructors emphasize reading the entire lab before starting, with specific examples and benefits
+- **["How It Look" - Quick Answer](how-it-look-quick-answer.md)** - Quick feedback on your Lennox lab output - is it good or needs work?
 - **[Lennox Output Interpretation Guide](output-interpretation-guide.md)** - Learn how to read and understand the collect_lennox_outputs.sh script results
 - **[Lennox Output Analysis & Feedback](lennox-output-analysis-feedback.md)** - Sample analysis of script output with detailed feedback on what's complete and what needs work
 
