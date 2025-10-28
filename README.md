@@ -39,7 +39,30 @@ This repository contains course materials and resources for Fall 2025 classes. G
 
 ## 🚀 Getting Started
 
-### Quick Start Options:
+### ⚡ ONE-COMMAND SETUP (Easiest!)
+
+Run this single command to set up everything:
+
+```bash
+# Linux/Mac:
+./setup.sh
+
+# Windows:
+setup.bat
+```
+
+This will:
+- ✅ Check all prerequisites (Node.js, GitHub CLI, PowerShell)
+- ✅ Install MCP server dependencies
+- ✅ Verify directory structure
+- ✅ Optionally set up GitHub Project Board
+- ✅ Show you a complete summary of your setup
+
+**That's it!** Your entire course management system is ready to use.
+
+---
+
+### Alternative Setup Options:
 
 **Option 1: Use the Automated Project Board** (Recommended!)
 - 📊 Track all 20 assignments across both courses
