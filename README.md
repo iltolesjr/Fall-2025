@@ -60,6 +60,8 @@ This will:
 
 **That's it!** Your entire course management system is ready to use.
 
+📖 **Detailed Setup Documentation**: See [SETUP-GUIDE.md](SETUP-GUIDE.md) for complete script documentation, troubleshooting, and advanced usage.
+
 ---
 
 ### Alternative Setup Options:
