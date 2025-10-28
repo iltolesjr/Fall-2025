@@ -1,5 +1,8 @@
 # Fall 2025 Course Repository
 
+> **⚡ Quick Setup**: Run `./setup.sh` (or `setup.bat` on Windows) to set up everything in one command!  
+> **📋 Quick Commands**: See [QUICK-COMMANDS.md](QUICK-COMMANDS.md) for a cheat sheet of common commands.
+
 This repository contains course materials and resources for Fall 2025 classes. GitHub Copilot has been configured to assist with academic workflow management.
 
 ## 🎯 What Copilot Can Help You With
