@@ -13,7 +13,7 @@
 | **Week 1 Discussion: Introduction & HUG Ch. 1-5** | Sept 7 | 10 | Completed | - | Initial posts submitted, replies pending |
 | **Week 2 Discussion: Children of the Sea** | Sept 14 | 10 | In Progress | - | Enhanced analysis developed |
 | **Reading Response 1: HUG Ch. 6-10** | Sept 21 | 15 | Not Started | - | Focus on character development |
-| **Essay 1: Literary Analysis** | Sept 28 | 100 | Not Started | - | Choose HUG or Children of the Sea |
+| **Essay 1: Literary Analysis** | Sept 28 | 100 | Revision | B (initial) | Lubrano chapter; needs refocus on analysis |
 | **Week 3 Discussion: HUG Ch. 11-15** | Oct 5 | 10 | Not Started | - | Activism and community response |
 | **Peer Review Workshop** | Oct 12 | 10 | Not Started | - | Essay 1 peer feedback |
 | **Reading Response 2: Contemporary Issues** | Oct 19 | 15 | Not Started | - | Connect literature to current events |
@@ -30,38 +30,68 @@
 
 ## Current Priorities
 
-### This Week (Week 2):
-1. **HIGH PRIORITY**: Complete Children of the Sea enhanced discussion (Due Sept 14)
-2. **MEDIUM**: Begin reading HUG Chapters 6-10 for next week
-3. **LOW**: Start brainstorming ideas for Literary Analysis essay
+### This Week (Oct 18-20):
+1. **URGENT**: Revise Essay 1 using instructor feedback (B → A- target)
+   - Cut paragraphs 3 (English class) and 6 (strip club story)
+   - Refocus paragraphs 5, 7, 9 on Lubrano's concepts
+   - Add explicit thesis with mechanism + cost
+   - See: `assignments/ENGL-1110/essays/essay-1-detailed-revision-map.md`
+2. **HIGH PRIORITY**: Complete Reading Response 2 (Due Oct 19)
+3. **MEDIUM**: Prepare for Essay 2 comparative analysis
 
-### Next Week (Week 3):
-1. **HIGH PRIORITY**: Submit Reading Response 1 (Due Sept 21)
-2. **HIGH PRIORITY**: Choose topic and begin Essay 1 outline
-3. **MEDIUM**: Participate in Week 3 Discussion
+### Next Week (Oct 21-27):
+1. **HIGH PRIORITY**: Submit revised Essay 1 for regrade consideration
+2. **HIGH PRIORITY**: Draft Essay 2: Comparative Analysis (Due Oct 26)
+3. **MEDIUM**: Prepare for Midterm Portfolio (Nov 2)
 
 ### Upcoming Deadlines:
-- **Sept 21**: Reading Response 1 due
-- **Sept 28**: Essay 1 Literary Analysis due (1000 words)
-- **Oct 5**: Week 3 Discussion due
+- **Oct 19**: Reading Response 2 due
+- **Oct 26**: Essay 2 Comparative Analysis due (1000-1250 words)
+- **Nov 2**: Midterm Portfolio due (reflection + revised Essay 1)
 
 ## Assignment Details & Planning
 
-### Essay 1: Literary Analysis (Due Sept 28)
-**Status**: Planning Phase
-**Word Count**: 750-1000 words
-**Options**: 
-- [ ] "The Hate U Give" character development analysis
-- [ ] "Children of the Sea" narrative structure analysis
-- [x] Chosen topic: [To be decided by Sept 21]
+### Essay 1: Literary Analysis — Revision Phase
 
-**Task Breakdown**:
-- [ ] **Sept 15-16**: Choose text and narrow topic
-- [ ] **Sept 17-18**: Create detailed outline and gather quotes
-- [ ] **Sept 19-22**: Write first draft
-- [ ] **Sept 23-25**: Revise for content and organization
-- [ ] **Sept 26-27**: Edit and proofread
-- [ ] **Sept 28**: Submit final draft
+**Original Due Date**: Sept 28  
+**Status**: Submitted; instructor feedback received Oct 17  
+**Grade**: B (initial draft)  
+**Revision Target**: A- or higher  
+**Revision Due**: Submit revised version by Oct 25 for Midterm Portfolio consideration
+
+**Instructor Feedback Summary**:
+- Strong connection to Lubrano when focused (paragraphs 8, 10)
+- 4 of 10 paragraphs drift into personal narrative without analyzing Lubrano
+- Cut: English class paragraph (¶3), strip club story (¶6)
+- Refocus: WorldVentures (¶5), Lexus (¶7), slurs/trauma (¶9)
+- Goal: Move from reacting to the reading → analyzing Lubrano's chapter
+
+**Revision Resources**:
+- **Detailed paragraph map**: `assignments/ENGL-1110/essays/essay-1-detailed-revision-map.md`
+- **Sample revisions**: `assignments/ENGL-1110/essays/essay-1-sample-revisions.md`
+- **General revision plan**: `assignments/ENGL-1110/essays/essay-1-revision-plan.md`
+
+**Revision Checklist**:
+- [ ] Cut ¶3 (English class / slavery / Roots) entirely
+- [ ] Cut ¶6 (strip club / $100) entirely
+- [ ] Compress ¶5 (WorldVentures) to 2-3 sentences; refocus on "cost of mobility"
+- [ ] Compress ¶7 (Lexus) to 2-3 sentences; refocus on "vocabulary gap"
+- [ ] Refocus ¶9 (slurs) on legitimacy surveillance; cut English-class meta-commentary
+- [ ] Add explicit thesis at end of ¶1 naming mechanism + cost
+- [ ] Add page numbers to all Lubrano quotes (¶2 and throughout)
+- [ ] Expand ¶8 (father/ties) with code-switching language
+- [ ] Expand ¶10 (conclusion) with thesis callback and implications
+- [ ] Run final self-check: Does each body paragraph lead with Lubrano?
+
+**New Structure** (10 → 8 paragraphs):
+1. Intro with explicit thesis (mobility as hinge, cost in belonging)
+2. Three-beat arc analysis (outside/inside, hinge, rhythm)
+3. Corporate norms + two playbooks (Lubrano-focused)
+4. Cost of mobility (compress WorldVentures)
+5. Vocabulary gap (compress Lexus)
+6. Family transmission + code-switching (expand ties example)
+7. Legitimacy surveillance (refocus slurs paragraph)
+8. Conclusion (expand with thesis callback)
 
 ### Essay 2: Comparative Analysis (Due Oct 26)
 **Status**: Not Started
