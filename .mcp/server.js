@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 // prodesk86 unified academic utility + static file server (single script)
+// Note: This server is designed for LOCAL USE ONLY on a student's machine.
+// CORS and host settings are configured for local development and should not be exposed to the internet.
 import http from 'node:http';
 import { readdir, stat, readFile } from 'node:fs/promises';
 import { createReadStream } from 'node:fs';
