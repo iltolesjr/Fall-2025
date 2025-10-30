@@ -105,8 +105,7 @@ If not installed, install it:
 
 ```bash
 sudo apt update
-sudo apt install snapd
-```
+sudo apt install snap
 
 **📸 Screenshot Required**: Output of `snap --version`
 
