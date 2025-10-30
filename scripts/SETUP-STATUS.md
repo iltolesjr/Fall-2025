@@ -9,8 +9,10 @@ The original script attempt **did NOT work** due to multiple issues. However, a 
 ### 1. Corrupted Script Syntax ✗
 **Problem:**
 ```bash
-sudo ./setup_ldap_nfs.shshred and the test file"nfs defaults 0 0" | sudo tee -a
+sudo ./setup_ldap_nfs.sh shred and the test file"nfs defaults 0 0" | sudo tee -a
 ```
+*Note: The above is the actual corrupted text from the problem statement.*
+
 This line was completely malformed - appears to be a corrupted heredoc or copy-paste error.
 
 **Solution:** ✓
@@ -24,6 +26,7 @@ This line was completely malformed - appears to be a corrupted heredoc or copy-p
 E: The repository 'https://download.docker.com/linux/ubuntu xia Release' does not have a Release file.
 N: Updating from such a repository can't be done securely, and is therefore disabled by default.
 ```
+*Note: 'xia' appears to be an invalid Ubuntu codename in the user's repository configuration.*
 
 **Solution:** ✓
 - Implemented `safe_apt_update()` function with error recovery
