@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+branch=$(git rev-parse --abbrev-ref HEAD)
+if [ -z "$branch" ]; then
+  exit 0
+fi
+# push current branch after every commit
+git push origin "$branch" >/dev/null 2>&1 || true
