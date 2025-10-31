@@ -10,6 +10,7 @@
 | Assignment | Due Date | Status | Priority | Notes |
 |------------|----------|--------|----------|-------|
 | vCenter Lab: Change Hostname | TBD | In Progress | High | Linux system administration lab - [Completion Guide](ITEC-1475/week2-linux-completion-guide.md) |
+| vCenter Lab: LDAP Server | Oct 30, 2025 | Completed | High | Directory services lab - [Lab Instructions](ITEC-1475/vcenter-lab-ldap-server.md) - Submitted Oct 30, 2025 |
 | Assignment 1 | TBD | Not Started | Medium | Introduction assignment |
 | Project 1 | TBD | Not Started | High | Database design project |
 | Midterm Exam | TBD | Not Started | High | Covers chapters 1-5 |
