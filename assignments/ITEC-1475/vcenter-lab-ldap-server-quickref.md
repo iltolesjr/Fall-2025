@@ -105,7 +105,7 @@ loginShell: /bin/bash
 uidNumber: 10000
 gidNumber: 10000
 homeDirectory: /home/testuser
-userPassword: {SSHA}generated_hash_here
+userPassword: {SSHA}REPLACE_WITH_SLAPPASSWD_OUTPUT
 mail: testuser@school.edu
 ```
 
@@ -119,19 +119,19 @@ description: Container for user accounts
 
 ### Add User in OU (user_in_ou.ldif)
 ```ldif
-dn: uid=yourstariid,ou=users,dc=school,dc=edu
+dn: uid=yourstarid,ou=users,dc=school,dc=edu
 objectClass: inetOrgPerson
 objectClass: posixAccount
 objectClass: shadowAccount
-uid: yourstariid
+uid: yourstarid
 cn: Your Full Name
 sn: LastName
 loginShell: /bin/bash
 uidNumber: 10001
 gidNumber: 10000
-homeDirectory: /home/yourstariid
-userPassword: {SSHA}generated_hash_here
-mail: yourstariid@school.edu
+homeDirectory: /home/yourstarid
+userPassword: {SSHA}REPLACE_WITH_SLAPPASSWD_OUTPUT
+mail: yourstarid@school.edu
 ```
 
 ### Modify User (modify_user.ldif)
@@ -149,7 +149,7 @@ objectClass: posixGroup
 cn: students
 gidNumber: 10000
 memberUid: testuser
-memberUid: yourstariid
+memberUid: yourstarid
 ```
 
 ---

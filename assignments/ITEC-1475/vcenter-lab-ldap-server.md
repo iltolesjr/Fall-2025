@@ -201,11 +201,11 @@ loginShell: /bin/bash
 uidNumber: 10000
 gidNumber: 10000
 homeDirectory: /home/testuser
-userPassword: {SSHA}hashed_password_here
+userPassword: {SSHA}REPLACE_WITH_SLAPPASSWD_OUTPUT
 mail: testuser@school.edu
 ```
 
-**Note**: Don't use the password shown above. We'll generate a proper password hash in the next step.
+**Note**: Don't use the placeholder above. We'll generate a proper password hash with `slappasswd` in the next step.
 
 ### Generate Password Hash
 
@@ -217,7 +217,7 @@ slappasswd
 
 Enter a password when prompted. Copy the generated hash (it will look like `{SSHA}randomstring`).
 
-**Highlighted Action**: Edit your `testuser.ldif` file and replace `{SSHA}hashed_password_here` with the hash you just generated.
+**Highlighted Action**: Edit your `testuser.ldif` file and replace `{SSHA}REPLACE_WITH_SLAPPASSWD_OUTPUT` with the hash you just generated.
 
 **📸 Screenshot Required**: Terminal showing the slappasswd command and generated hash (you can partially obscure the hash for security)
 
@@ -293,19 +293,19 @@ nano user_in_ou.ldif
 Add content for a new user (use your StarID or another username):
 
 ```ldif
-dn: uid=yourstariid,ou=users,dc=school,dc=edu
+dn: uid=yourstarid,ou=users,dc=school,dc=edu
 objectClass: inetOrgPerson
 objectClass: posixAccount
 objectClass: shadowAccount
-uid: yourstariid
+uid: yourstarid
 cn: Your Full Name
 sn: LastName
 loginShell: /bin/bash
 uidNumber: 10001
 gidNumber: 10000
-homeDirectory: /home/yourstariid
-userPassword: {SSHA}generated_hash
-mail: yourstariid@school.edu
+homeDirectory: /home/yourstarid
+userPassword: {SSHA}REPLACE_WITH_SLAPPASSWD_OUTPUT
+mail: yourstarid@school.edu
 ```
 
 **Highlighted Action**: Generate a password hash with `slappasswd` and update the LDIF file.
@@ -395,7 +395,7 @@ objectClass: posixGroup
 cn: students
 gidNumber: 10000
 memberUid: testuser
-memberUid: yourstariid
+memberUid: yourstarid
 ```
 
 **Highlighted Action**: Add the group:
