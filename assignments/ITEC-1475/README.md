@@ -28,6 +28,11 @@ This directory contains all assignments and lab materials for ITEC 1475.
 - **[LDAP Server Submission Template](vcenter-lab-ldap-server-submission-template.md)** - Organized template for LDAP lab documentation and submission
 - **[Lennox Server Submission Template](lennox-server-submission-template.md)** - Organized template for server setup lab documentation and submission
 
+### Quick Reference Guides
+
+- **[vCenter Lab Quick Reference](vcenter-lab-quick-reference.md)** - Quick command guide for hostname lab
+- **[LDAP Server Quick Reference](vcenter-lab-ldap-server-quickref.md)** - Quick command guide and LDIF templates for LDAP lab
+
 ### Learning Resources
 
 - **[Why Read Instructions First?](why-read-instructions-first.md)** - Detailed explanation of why instructors emphasize reading the entire lab before starting, with specific examples and benefits
