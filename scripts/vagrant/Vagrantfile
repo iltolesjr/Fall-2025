@@ -1,0 +1,25 @@
+# two ubuntu jammy vms with private network
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/jammy64"
+  config.vm.synced_folder "../../", "/vagrant", disabled: true
+
+  config.vm.define "lab-srv" do |srv|
+    srv.vm.hostname = "lab-srv"
+    srv.vm.network :private_network, ip: "192.168.56.10"
+    srv.vm.provider "virtualbox" do |vb|
+      vb.memory = 3072
+      vb.cpus = 2
+    end
+    srv.vm.provision "shell", path: "provision-server.sh"
+  end
+
+  config.vm.define "lab-cli" do |cli|
+    cli.vm.hostname = "lab-cli"
+    cli.vm.network :private_network, ip: "192.168.56.11"
+    cli.vm.provider "virtualbox" do |vb|
+      vb.memory = 2048
+      vb.cpus = 2
+    end
+    cli.vm.provision "shell", path: "provision-client.sh"
+  end
+end
