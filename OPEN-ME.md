@@ -26,6 +26,11 @@ copy/paste these links in a browser to open directly on GitHub.
 - samba to windows: https://github.com/iltolesjr/Fall-2025/blob/main/assignments/ITEC-1475/vcenter-lab-samba-to-windows.md
 - quizzes sprint checklist: https://github.com/iltolesjr/Fall-2025/blob/main/assignments/ITEC-1475/quizzes-sprint-checklist.md
 - ITEC tracker snapshot: https://github.com/iltolesjr/Fall-2025/blob/main/assignments/ITEC-1475-tracker.md
+- templates: screenshots and submission
+  - screenshots template: https://github.com/iltolesjr/Fall-2025/blob/main/assignments/ITEC-1475/templates/vlab-screenshots-template.md
+  - submission template: https://github.com/iltolesjr/Fall-2025/blob/main/assignments/ITEC-1475/templates/vlab-submission-template.md
+  - sample hostname submission: https://github.com/iltolesjr/Fall-2025/blob/main/assignments/ITEC-1475/templates/sample-hostname-submission.md
+  - sample users+ssh submission: https://github.com/iltolesjr/Fall-2025/blob/main/assignments/ITEC-1475/templates/sample-users-ssh-submission.md
 
 ## combined lab helpers
 - week 4 to now all-in-one (ldap + nfs script): https://github.com/iltolesjr/Fall-2025/blob/main/week4_to_now_all_in_one.md
