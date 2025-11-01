@@ -38,7 +38,7 @@ ipconfig | Select-String -Pattern "VMware Network Adapter VMnet1|IPv4"
 - network adapters:
   - network adapter 1: nat (vmnet8)
   - add network adapter 2: host-only (vmnet1)
-- install "minimal install". set hostname: rocky-srv. enable network during install. create an admin user in wheel.
+- install "minimal install". set hostname: rocky-srv (bootstrap will change it to fj3453rb). enable network during install. create an admin user in wheel.
 
 ## step 3 - create mint desktop vm
 - name: mint-desktop-local
@@ -51,65 +51,35 @@ ipconfig | Select-String -Pattern "VMware Network Adapter VMnet1|IPv4"
   - add network adapter 2: host-only (vmnet1)
 - install normally. user: student.
 
-## step 4 - set static ip on host-only nics (keep nat as default route)
-first, discover the vmnet1 subnet from the host (example shows 192.168.56.0/24; adjust addresses if yours differs):
-- if host ip is 192.168.56.1, use 192.168.56.10 for rocky and 192.168.56.11 for mint.
+## step 4 - one-liners to configure
 
-rocky post-install
+on rocky (as your admin user)
 ```bash
-sudo -i
-# updates and confirm network manager is active
-dnf -y update
-nmcli con show
-# identify which connection is the host-only nic (usually the one without internet after install)
-# set static ip on host-only, no gateway, set higher route-metric than nat so nat stays default
-nmcli con mod "Wired connection 2" ipv4.method manual ipv4.addresses 192.168.56.10/24 ipv4.gateway "" ipv4.dns "1.1.1.1" connection.autoconnect yes
-nmcli con mod "Wired connection 1" ipv4.route-metric 100
-nmcli con mod "Wired connection 2" ipv4.route-metric 200
-nmcli con up "Wired connection 2"
-# verify
-ip -4 a
-ip r
+sudo bash -c "curl -fsSL https://raw.githubusercontent.com/iltolesjr/Fall-2025/main/scripts/rocky/bootstrap.sh | bash"
+sudo bash -c "curl -fsSL https://raw.githubusercontent.com/iltolesjr/Fall-2025/main/scripts/rocky/run-all.sh -o /root/run-all.sh && chmod +x /root/run-all.sh && curl -fsSL https://raw.githubusercontent.com/iltolesjr/Fall-2025/main/scripts/rocky/lab-check.sh -o /root/lab-check.sh && chmod +x /root/lab-check.sh && mkdir -p /root/labs && for f in users_ssh ntp_dns nfs samba ldap; do curl -fsSL https://raw.githubusercontent.com/iltolesjr/Fall-2025/main/scripts/rocky/labs/$f.sh -o /root/labs/$f.sh; chmod +x /root/labs/$f.sh; done && /root/run-all.sh"
 ```
 
-mint post-install
+on mint
 ```bash
-# update packages
-sudo apt update && sudo apt -y upgrade
-# optional: tools
-sudo apt -y install openssh-client net-tools
-nmcli con show
-# set static ip on host-only, no gateway
-sudo nmcli con mod "Wired connection 2" ipv4.method manual ipv4.addresses 192.168.56.11/24 ipv4.gateway "" ipv4.dns "1.1.1.1" connection.autoconnect yes
-sudo nmcli con up "Wired connection 2"
+sudo bash -c "curl -fsSL https://raw.githubusercontent.com/iltolesjr/Fall-2025/main/scripts/mint/bootstrap.sh | bash"
 ```
 
 notes
-- if your vmnet1 subnet is not 192.168.56.0/24, replace the .10 and .11 addresses with ones inside your actual vmnet1 subnet. keep the gateway empty on host-only.
-- if connection names differ (ens33/ens34), use `nmcli dev status` and `nmcli con show` to find the right profile, then substitute the profile name above.
+- defaults set hostname fj3453rb on rocky, fj3453rb-cli on mint, passwords 1212 for root and your user on rocky and your user on mint, host-only ips 192.168.56.53 and 192.168.56.54. change by exporting HOSTONLY_IP or USER_PASS before running if you need.
+- example override on rocky: `sudo HOSTONLY_IP=192.168.200.53/24 USER_PASS=supersecret bash -c "curl -fsSL .../bootstrap.sh | bash"`
 
 ## step 5 - connectivity checks
 ```bash
 # from mint to rocky
-ping -c 3 192.168.56.10
-ssh <your-user>@192.168.56.10
+ping -c 3 192.168.56.53
+ssh <your-rocky-user>@192.168.56.53
 # from rocky to mint
-ping -c 3 192.168.56.11
+ping -c 3 192.168.56.54
 ```
 
 ## step 6 - snapshots
 - after post-install and networking, take a snapshot named clean-base on both vms.
 - take a snapshot before each lab; revert if needed.
-
-## which vm for which lab (local practice)
-- users and ssh: rocky
-- ntp and dns: rocky
-- ldap server: rocky
-- network filesystems: rocky (server) + mint (client) or a second rocky
-- samba to windows: rocky (server) + your windows host (client)
-- log server: rocky
-- web server: rocky
-- different desktops: mint (optionally add mate/xfce for comparison)
 
 ## troubleshooting
 - virtual network editor requires administrator; changes may not apply otherwise.
