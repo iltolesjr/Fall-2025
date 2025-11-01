@@ -4,9 +4,9 @@ keep it simple and clean. this is a short, polished check-in of your best work s
 
 ## what to submit
 - revised essay 1 (clean copy, with title and mla header)
-- reflection (300–400 words)
+- reflection (300-400 words)
 - proof of peer review participation (screenshot or brief note)
-- reading response highlights (2–3 quotes you used well)
+- reading response highlights (2-3 quotes you used well)
 
 ## reflection prompt (pick 3 and answer in full sentences)
 - what changed the most in your essay and why did you change it

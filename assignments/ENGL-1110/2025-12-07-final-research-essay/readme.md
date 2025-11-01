@@ -2,7 +2,7 @@
 
 purpose: submit a revised, polished version of your research essay.
 
-## must‑haves
+## must-haves
 - clear, arguable thesis
 - focused paragraphs with topic sentences
 - accurate, ethical source use and consistent citations

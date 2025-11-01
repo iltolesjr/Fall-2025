@@ -5,7 +5,7 @@ purpose: show growth across the term and reflect on your learning.
 ## contents
 - revised research essay
 - one earlier essay with revisions marked or explained
-- brief cover letter (400–600 words)
+- brief cover letter (400-600 words)
   - what you learned, with examples
   - how feedback changed your writing
   - goals for next semester

@@ -5,17 +5,17 @@ purpose: compare how two texts handle one shared idea or technique.
 ## steps
 - choose one focused lens (theme, device, or problem)
 - write a precise thesis that names both texts and the claim
-- organize point‑by‑point (recommended): claim → text a → text b → mini‑synthesis
+- organize point-by-point (recommended): claim -> text a -> text b -> mini-synthesis
 - include a counterpoint paragraph and your reply
 
 ## requirements
-- 1000–1250 words
+- 1000-1250 words
 - quotes from both texts with page numbers
 - clear topic sentences that point back to the thesis
 
 ## quick outline
 - intro with thesis
-- 3–4 comparison sections
+- 3-4 comparison sections
 - counterpoint and reply
 - conclusion that explains significance
 

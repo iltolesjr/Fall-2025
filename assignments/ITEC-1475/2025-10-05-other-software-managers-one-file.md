@@ -1,6 +1,6 @@
-# itec‑1475 other software managers — one‑file pack (due 2025-10-05)
+# itec-1475 other software managers - one-file pack (due 2025-10-05)
 
-plain, short answers; minimal screenshots; one paste‑once block per tool. use debian/ubuntu.
+plain, short answers; minimal screenshots; one paste-once block per tool. use debian/ubuntu.
 
 ## quick install (once)
 ```bash
@@ -43,9 +43,9 @@ sudo rm -f /usr/local/bin/jq
 
 ## short answers (paste into submission)
 - apt: uses distro repos; integrates with dpkg; easy updates
-- snap: sandboxed apps; auto‑updates; larger disk use
-- flatpak: cross‑distro; per‑app runtimes; flathub catalog
-- tarball: manual; fastest control; no auto‑updates
+- snap: sandboxed apps; auto-updates; larger disk use
+- flatpak: cross-distro; per-app runtimes; flathub catalog
+- tarball: manual; fastest control; no auto-updates
 
 ## screenshots to include (keep ui private)
 - apt: version line from htop or any cli output
