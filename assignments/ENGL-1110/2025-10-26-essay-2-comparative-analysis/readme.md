@@ -1,6 +1,8 @@
-# engl 1110 essay 2: comparative analysis (due 2025-10-26)
+# engl 1110 essay 2: comparative analysis (due 2025-10-31)
 
 purpose: compare how two texts handle one shared idea or technique.
+
+note: date aligned to instructor announcement (week 10). if it is past 2025-10-31, submit as late and move on to midterm portfolio.
 
 ## steps
 - choose one focused lens (theme, device, or problem)

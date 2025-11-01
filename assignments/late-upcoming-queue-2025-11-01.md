@@ -3,7 +3,9 @@
 links point to one-file packs created today.
 
 ## english 1110
-- late: 2025-10-26 essay 2 - comparative analysis -> `assignments/ENGL-1110/2025-10-26-essay-2-comparative-analysis/readme.md`
+- late: 2025-10-31 essay 2 - comparative analysis -> `assignments/ENGL-1110/2025-10-26-essay-2-comparative-analysis/readme.md`
+- late: 2025-10-10 reading log 3 -> `assignments/ENGL-1110/2025-10-10-reading-log-3/readme.md`
+- late: 2025-10-24 reading log 4 -> `assignments/ENGL-1110/2025-10-24-reading-log-4/readme.md`
 - due 2025-11-02: midterm portfolio -> `assignments/ENGL-1110/2025-11-02-midterm-portfolio/readme.md`
 - due 2025-11-09: research topic proposal -> `assignments/ENGL-1110/2025-11-09-research-topic-proposal/readme.md`
 - due 2025-11-16: annotated bibliography -> `assignments/ENGL-1110/2025-11-16-annotated-bibliography/readme.md`
