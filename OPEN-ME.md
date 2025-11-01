@@ -37,7 +37,8 @@ copy/paste these links in a browser to open directly on GitHub.
 - nfs client helper script: https://github.com/iltolesjr/Fall-2025/blob/main/nfs_client_mount.sh
 
 ## local practice setup
-- rocky + mint setup (windows host): https://github.com/iltolesjr/Fall-2025/blob/main/scripts/local-rocky-mint-setup.md
+- rocky + mint (generic): https://github.com/iltolesjr/Fall-2025/blob/main/scripts/local-rocky-mint-setup.md
+- vmware specific: https://github.com/iltolesjr/Fall-2025/blob/main/scripts/vmware/local-setup-vmware.md
 
 ## always-on push (optional for local clones)
 - enable git hooks helper (powershell): https://github.com/iltolesjr/Fall-2025/blob/main/scripts/enable-git-hooks.ps1
