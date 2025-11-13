@@ -1,0 +1,129 @@
+Lennox Lab outputs collected on: Tue Oct 28 07:38:47 AM CDT 2025
+\n=== Hostnamectl ===
+ Static hostname: fj3453rb-mint
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: 8c6e837f55634ae5922907eecccec3b8
+         Boot ID: 3d0db85e235c46d18c81b9ff0013d326
+  Virtualization: vmware
+Operating System: Linux Mint 22.1
+          Kernel: Linux 6.8.0-51-generic
+    Architecture: x86-64
+ Hardware Vendor: VMware, Inc.
+  Hardware Model: VMware20,1
+Firmware Version: VMW201.00V.24224532.B64.2408191502
+   Firmware Date: Mon 2024-08-19
+    Firmware Age: 1y 2month 1w 2d
+\n=== uname -a ===
+Linux fj3453rb-mint 6.8.0-51-generic #52-Ubuntu SMP PREEMPT_DYNAMIC Thu Dec  5 13:09:44 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+\n=== ip addr show ===
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: ens33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:50:56:b0:67:ad brd ff:ff:ff:ff:ff:ff
+    altname enp2s1
+    inet 10.14.75.235/24 brd 10.14.75.255 scope global dynamic noprefixroute ens33
+       valid_lft 7943559sec preferred_lft 7943559sec
+    inet6 fe80::7b7a:f15b:dd57:ce40/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+\n=== id serveradmin (if exists) ===
+serveradmin user not found
+\n=== SSH config summary ===
+grep: /etc/ssh/sshd_config: No such file or directory
+\n=== UFW status ===
+ERROR: You need to be root to run this script
+\n=== Apache status ===
+Unit apache2.service could not be found.
+\n=== curl localhost ===
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+curl: (7) Failed to connect to localhost port 80 after 0 ms: Couldn't connect to server
+\n=== df -h ===
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           298M  1.2M  296M   1% /run
+efivarfs        256K   63K  189K  25% /sys/firmware/efi/efivars
+/dev/sda2        31G   12G   18G  39% /
+tmpfs           1.5G     0  1.5G   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/sda1       511M  6.2M  505M   2% /boot/efi
+tmpfs           298M  208K  297M   1% /run/user/1000
+\n=== free -h ===
+               total        used        free      shared  buff/cache   available
+Mem:           2.9Gi       1.8Gi       303Mi        70Mi       1.0Gi       1.1Gi
+Swap:          3.3Gi       853Mi       2.5Gi
+\n=== ps aux (top 15) ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.3  22508 10196 ?        Ss   Sep17   0:52 /sbin/init splash
+root           2  0.0  0.0      0     0 ?        S    Sep17   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    Sep17   0:00 [pool_workqueue_release]
+root           4  0.0  0.0      0     0 ?        I<   Sep17   0:00 [kworker/R-rcu_g]
+root           5  0.0  0.0      0     0 ?        I<   Sep17   0:00 [kworker/R-rcu_p]
+root           6  0.0  0.0      0     0 ?        I<   Sep17   0:00 [kworker/R-slub_]
+root           7  0.0  0.0      0     0 ?        I<   Sep17   0:00 [kworker/R-netns]
+root           9  0.0  0.0      0     0 ?        I<   Sep17   0:00 [kworker/0:0H-events_highpri]
+root          11  0.0  0.0      0     0 ?        I    Sep17   0:07 [kworker/u12:0-efi_rts_wq]
+root          12  0.0  0.0      0     0 ?        I<   Sep17   0:00 [kworker/R-mm_pe]
+root          13  0.0  0.0      0     0 ?        I    Sep17   0:00 [rcu_tasks_kthread]
+root          14  0.0  0.0      0     0 ?        I    Sep17   0:00 [rcu_tasks_rude_kthread]
+root          15  0.0  0.0      0     0 ?        I    Sep17   0:00 [rcu_tasks_trace_kthread]
+root          16  0.0  0.0      0     0 ?        S    Sep17   0:00 [ksoftirqd/0]
+\n=== journalctl (last 1 hour, top 30) ===
+Oct 28 06:55:32 fj3453rb-mint sudo[391606]:      ira : PWD=/home/ira ; USER=root ; COMMAND=/usr/bin/mint-refresh-cache
+Oct 28 06:55:32 fj3453rb-mint sudo[391606]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)
+Oct 28 06:55:34 fj3453rb-mint dbus-daemon[709]: [system] Activating via systemd: service name='org.freedesktop.PackageKit' unit='packagekit.service' requested by ':1.2658' (uid=0 pid=392059 comm="/usr/bin/gdbus call --system --dest org.freedeskto" label="unconfined")
+Oct 28 06:55:34 fj3453rb-mint systemd[1]: Starting packagekit.service - PackageKit Daemon...
+Oct 28 06:55:34 fj3453rb-mint PackageKit[392063]: daemon start
+Oct 28 06:55:34 fj3453rb-mint dbus-daemon[709]: [system] Successfully activated service 'org.freedesktop.PackageKit'
+Oct 28 06:55:34 fj3453rb-mint systemd[1]: Started packagekit.service - PackageKit Daemon.
+Oct 28 06:55:37 fj3453rb-mint sudo[391606]: pam_unix(sudo:session): session closed for user root
+Oct 28 06:56:32 fj3453rb-mint sudo[392118]:      ira : PWD=/home/ira ; USER=root ; COMMAND=/usr/bin/mint-refresh-cache
+Oct 28 06:56:32 fj3453rb-mint sudo[392118]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)
+Oct 28 06:56:39 fj3453rb-mint sudo[392118]: pam_unix(sudo:session): session closed for user root
+Oct 28 07:01:40 fj3453rb-mint PackageKit[392063]: daemon quit
+Oct 28 07:01:40 fj3453rb-mint systemd[1]: packagekit.service: Deactivated successfully.
+Oct 28 07:17:01 fj3453rb-mint CRON[392992]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+Oct 28 07:17:01 fj3453rb-mint CRON[392993]: (root) CMD (cd / && run-parts --report /etc/cron.hourly)
+Oct 28 07:17:02 fj3453rb-mint CRON[392992]: pam_unix(cron:session): session closed for user root
+Oct 28 07:22:35 fj3453rb-mint org.cinnamon.ScreenSaver[387397]: AccountsService ready
+Oct 28 07:22:35 fj3453rb-mint org.cinnamon.ScreenSaver[387397]: Fractional scaling active: False
+Oct 28 07:22:35 fj3453rb-mint org.cinnamon.ScreenSaver[387397]: Fractional scaling active: False
+Oct 28 07:22:35 fj3453rb-mint org.cinnamon.ScreenSaver[387397]: Fractional scaling active: False
+Oct 28 07:22:35 fj3453rb-mint org.cinnamon.ScreenSaver[387397]: Screen rect (0,0-1232x526) and 1 monitor rects (0,0-1232x526) add up, sending change notification
+Oct 28 07:22:35 fj3453rb-mint org.cinnamon.ScreenSaver[387397]: Screen rect (0,0-1232x526) and 1 monitor rects (0,0-1232x526) add up, sending change notification
+Oct 28 07:22:35 fj3453rb-mint cinnamon-screensaver-pam-helper[393108]: pam_unix(cinnamon-screensaver:auth): conversation failed
+Oct 28 07:22:35 fj3453rb-mint cinnamon-screensaver-pam-helper[393108]: pam_unix(cinnamon-screensaver:auth): auth could not identify password for [ira]
+Oct 28 07:22:42 fj3453rb-mint cinnamon-screensaver-pam-helper[393119]: pam_ecryptfs: seteuid error
+Oct 28 07:22:42 fj3453rb-mint cinnamon-screensaver-pam-helper[393119]: gkr-pam: unlocked login keyring
+Oct 28 07:23:12 fj3453rb-mint org.cinnamon.ScreenSaver[387397]: Error in sys.excepthook:
+Oct 28 07:23:12 fj3453rb-mint org.cinnamon.ScreenSaver[387397]: Original exception was:
+Oct 28 07:23:12 fj3453rb-mint org.cinnamon.ScreenSaver[387397]: Error in sys.excepthook:
+Oct 28 07:23:12 fj3453rb-mint org.cinnamon.ScreenSaver[387397]: Original exception was:
+\n=== /etc/server-info.txt ===
+/etc/server-info.txt not found
+\n=== Active services matching apache2|ssh|ufw ===
+  ufw.service                                           loaded active exited  Uncomplicated firewall
+\n=== netstat (listening) ===
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.54:53           0.0.0.0:*               LISTEN      -                   
+tcp6       0      0 ::1:631                 :::*                    LISTEN      -                   
+\n=== ping (3 to google.com) ===
+PING google.com (142.250.190.14) 56(84) bytes of data.
+64 bytes from ord37s32-in-f14.1e100.net (142.250.190.14): icmp_seq=1 ttl=114 time=13.5 ms
+64 bytes from ord37s32-in-f14.1e100.net (142.250.190.14): icmp_seq=2 ttl=114 time=13.5 ms
+64 bytes from ord37s32-in-f14.1e100.net (142.250.190.14): icmp_seq=3 ttl=114 time=13.5 ms
+
+--- google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 13.476/13.511/13.533/0.025 ms
+\n=== Done. Outputs saved to lennox-lab-outputs.txt ===
+ira@fj3453rb-mint:~$ 

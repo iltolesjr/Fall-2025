@@ -1,0 +1,1854 @@
+iltolesjr: vCenter Lab: LDAP Server and vCenter Lab: Network Filesystems
+ can it be combined into one assignment. no special characters like - -- () etc unless manadatory. i need plain font simple answers to his questions. keep it short. dont want it to sound ai wrote it. give me instructions like before to run cmds in bulk inside vm or whatever the assignment requires. move all old assignments to a new folder out the way and delete empty folders. clean it up and push and sync
+
+GitHub Copilot: I will prepare a single combined assignment you can drop into the repo, short plain answers for the questions, a bulk command script to run inside the lab VM, and PowerShell git steps to move old assignments into an archive folder and push changes. All filenames use plain characters and underscores only. Keep it short and direct.
+
+## 1) Combined assignment file (paste into `assignments/ITEC1475/vcenter_lab_ldap_and_network_filesystems.md`)
+
+Title line and headings are plain. Save this exact text as the new file.
+
+Contents to paste:
+---
+VCenter Lab LDAP Server and Network Filesystems
+
+Course: ITEC 1475
+Instructor: Brian Huilman
+Semester: Fall 2025
+
+Overview
+This lab combines LDAP server setup and basic network filesystem setup. Follow each step, collect required screenshots and outputs, answer the questions, and submit the document.
+
+Tasks
+1. LDAP server
+  - Install slapd and ldap-utils
+  - Configure base domain and admin password
+  - Add one user entry
+  - Test with ldapsearch
+  - Enable simple TLS for LDAP (optional but recommended)
+
+2. Network filesystems
+  - Install NFS server on server VM
+  - Create an export and export it
+  - Mount the export on a client VM
+  - Test read write permissions
+  - Show persistent mount using /etc/fstab
+
+Deliverables
+1. Document with all questions and answers copied from the lab
+2. Screenshots and labeled outputs
+  - slapd installation output
+  - ldapsearch showing the test user entry
+  - NFS export list on server
+  - mount output on client
+  - fstab entry screenshot
+3. One combined comparison or reflection paragraph at the end
+
+Submission
+Place the final document in the assignment folder indicated by the instructor.
+
+---
+
+## 2) Plain short answers to likely lab questions
+
+Use these as-is in the document. Keep them short and plain.
+
+LDAP questions and answers
+- What is LDAP
+  Lightweight Directory Access Protocol. Centralized directory for users groups and attributes.
+
+- How do you test LDAP
+  Use ldapsearch with the base DN and admin bind. Example:
+  ldapsearch -x -LLL -H ldap://localhost -b dc=example,dc=edu
+
+- How to add a user
+  Create a small LDIF and use ldapadd with the admin DN and password.
+
+- How to secure LDAP
+  Use TLS. Create or import a certificate and enable TLS in slapd configuration. Require bind over ldaps or StartTLS.
+
+Network filesystems questions and answers
+- What is NFS
+  Network File System. Shares directories from a server to clients over the network. Clients see remote files as local.
+
+- How to export a directory
+  Add a line to /etc/exports and run exportfs -a.
+
+- How to mount on client
+  Use mount server:/export/path /mnt/point or add entry to /etc/fstab for persistence.
+
+- Differences between NFS and Samba
+  NFS is unix style permissions and good for linux clients. Samba is for Windows compatibility and SMB protocol.
+
+Security and best practice short notes
+- Use firewall rules and restrict exports by client IP.
+- Use root_squash on NFS exports to map remote root to nobody.
+- For LDAP use TLS and strong admin passwords.
+
+## 3) Bulk commands to run inside the VM (run as root or prefix with sudo)
+Run these in the lab VMs where appropriate. They are grouped by task. Run them in the server VM for server steps and in the client VM for client steps.
+
+LDAP server setup (Debian/Ubuntu)
+```bash
+# update and install
+sudo apt update
+sudo apt install -y slapd ldap-utils
+
+# reconfigure slapd if you need to set domain and admin password interactively
+sudo dpkg-reconfigure slapd
+
+# create a test user ldif example
+cat > /tmp/test_user.ldif <<'LDIF'
+dn: uid=testuser,ou=people,dc=example,dc=edu
+objectClass: inetOrgPerson
+sn: User
+cn: Test User
+uid: testuser
+userPassword: password
+LDIF
+
+# add the test user (will prompt for admin bind)
+sudo ldapadd -x -D "cn=admin,dc=example,dc=edu" -W -f /tmp/test_user.ldif
+
+# test with ldapsearch
+ldapsearch -x -LLL -H ldap://localhost -b dc=example,dc=edu "(uid=testuser)" cn uid
+```
+
+Optional enable TLS minimal steps
+```bash
+# create self signed cert quick example
+sudo mkdir -p /etc/ssl/ldap
+sudo openssl req -new -x509 -nodes -days 365 -out /etc/ssl/ldap/ldap.crt -keyout /etc/ssl/ldap/ldap.key -subj "/CN=ldap.example.edu"
+sudo chown -R openldap:openldap /etc/ssl/ldap
+# enable cert in slapd configuration using olcTLS* attributes or via /etc/ldap/slapd.d edits
+# restart slapd
+sudo systemctl restart slapd
+```
+
+NFS server setup (server VM)
+```bash
+sudo apt update
+sudo apt install -y nfs-kernel-server
+
+# create export
+sudo mkdir -p /srv/nfs/shared
+sudo chown nobody:nogroup /srv/nfs/shared
+sudo chmod 0775 /srv/nfs/shared
+
+# export to a specific subnet or client IP
+echo "/srv/nfs/shared 10.0.0.0/24(rw,sync,no_subtree_check,root_squash)" | sudo tee /etc/exports
+
+# apply exports
+sudo exportfs -a
+sudo systemctl restart nfs-kernel-server
+
+# show exports
+sudo exportfs -v
+```
+
+NFS client mount (client VM)
+```bash
+# install client
+sudo apt update
+sudo apt install -y nfs-common
+
+# create mount point
+sudo mkdir -p /mnt/nfs_shared
+
+# mount (replace server_host with server IP or name)
+sudo mount server_host:/srv/nfs/shared /mnt/nfs_shared
+
+# test write
+sudo touch /mnt/nfs_shared/test_from_client.txt
+ls -l /mnt/nfs_shared
+
+# add to fstab for persistence
+echo "server_host:/srv/nfs/shared /mnt/nfs_shared nfs defaults 0 0" | sudo tee -a /etc/fstab
+```
+
+Replace server_host and IP ranges with real values from the lab.
+
+## 4) PowerShell steps to move old assignments to an archive folder and push to git
+Run these in the repository root using pwsh. They are safe but review the list before committing.
+
+Preview folders to move
+```powershell
+# from repo root
+Get-ChildItem .\assignments -Directory | Select Name
+```
+
+Create an archive folder and move everything except the ITEC1475 folder and other active course folders
+```powershell
+# set date token
+$dt = (Get-Date).ToString("yyyy_MM_dd")
+$archive = "assignments\archive_$dt"
+mkdir $archive
+
+# change to repo root if not there
+Set-Location -Path "C:\path\to\repo"  # replace with repo full path if needed
+
+# list directories to move then move them with git mv
+$keep = @('ITEC_1475','ENGL_1110','NSF_STEM')  # edit keep list as needed
+Get-ChildItem assignments -Directory | Where-Object { $keep -notcontains $_.Name } | ForEach-Object {
+  git mv "assignments\$($_.Name)" "$archive\$($_.Name)"
+}
+
+# show git status
+git status --porcelain
+```
+
+Remove empty folders (preview first)
+```powershell
+# find empty directories under repo root
+Get-ChildItem -Recurse -Directory | Where-Object { @(Get-ChildItem $_ -Force -File).Count -eq 0 } | Select FullName
+# remove if you confirm they are safe
+# Get-ChildItem -Recurse -Directory | Where-Object { @(Get-ChildItem $_ -Force -File).Count -eq 0 } | ForEach-Object { Remove-Item $_.FullName -Force -Recurse }
+```
+
+Commit and push
+```powershell
+git add -A
+git commit -m "archive old assignments and add combined vcenter ldap and network filesystems lab"
+# check branch first
+git branch --show-current
+git push origin HEAD
+```
+
+Notes
+- Edit the $keep list to include any folders you want to keep in assignments.
+- Review `git status` before commit.
+- If your default branch is not main use whatever branch is current.
+
+## 5) Checklist to verify before submit
+- Place new combined markdown file in `assignments/ITEC1475/`
+- Run LDAP server commands on server VM and capture output screenshot
+- Run ldapsearch and save output screenshot
+- Run NFS server export commands and show export list
+- Mount from client and save screenshot of mounted files and fstab entry
+- Run the PowerShell move commands to archive old assignments after verifying the list
+- Commit and push
+
+## 6) Short summary and next step
+I prepared the combined assignment content, short plain answers, VM bulk commands, and PowerShell git steps you requested. Tell me if you want:
+- the combined assignment as a ready-to-commit file I can print here in full (I already included it above), or
+- a small bash or ps1 file generated you can paste to run the VM steps automatically, or
+- I should include exact LDIF examples and test outputs for the LDAP portion.
+
+Which of those do you want next?
+
+iltolesjr: test first then combine
+
+GitHub Copilot: I will give a short test plan, the bulk VM commands to run, quick verification checks, and the exact PowerShell git steps to create the combined assignment file, archive old assignments, remove empty folders, and push. Run the VM checks first; if they pass, run the repo cleanup and add the new file.
+
+## Steps (short)
+1. Run tests in the lab VMs (LDAP server on server VM; NFS server on server VM; NFS mount on client VM).  
+2. Verify outputs with the checks listed.  
+3. If tests pass, create the combined assignment file and archive old assignments, remove empties, commit, and push.
+
+## 1 — Test plan and success criteria
+- LDAP server: install slapd, add one user, verify with ldapsearch. Success = ldapsearch returns the test user's uid and cn.  
+- NFS server: export /srv/nfs/shared, exportfs shows the export. Client mounts export and can create a file. Success = server shows export; client shows test file in mount.  
+
+## 2 — Bulk VM commands (run on the VMs; replace placeholders)
+
+LDAP server (run on server VM)
+```bash
+# variables: set BASE_DN and ADMIN_DN if needed
+BASE_DN="dc=example,dc=edu"
+ADMIN_DN="cn=admin,$BASE_DN"
+sudo apt update
+sudo apt install -y slapd ldap-utils
+
+# reconfigure interactively if needed
+sudo dpkg-reconfigure slapd
+
+# create test user ldif and add it (will prompt for admin password)
+cat > /tmp/test_user.ldif <<'LDIF'
+dn: uid=testuser,ou=people,dc=example,dc=edu
+objectClass: inetOrgPerson
+sn: User
+cn: Test User
+uid: testuser
+userPassword: password
+LDIF
+sudo ldapadd -x -D "cn=admin,dc=example,dc=edu" -W -f /tmp/test_user.ldif
+
+# verify
+ldapsearch -x -LLL -H ldap://localhost -b dc=example,dc=edu "(uid=testuser)" cn uid
+```
+
+NFS server (run on server VM)
+```bash
+sudo apt update
+sudo apt install -y nfs-kernel-server
+sudo mkdir -p /srv/nfs/shared
+sudo chown nobody:nogroup /srv/nfs/shared
+sudo chmod 0775 /srv/nfs/shared
+
+# export to client subnet or single IP - replace 10.0.0.0/24 or client_ip
+echo "/srv/nfs/shared 10.0.0.0/24(rw,sync,no_subtree_check,root_squash)" | sudo tee /etc/exports
+
+sudo exportfs -a
+sudo systemctl restart nfs-kernel-server
+
+# show exports
+sudo exportfs -v
+```
+
+NFS client (run on client VM; replace SERVER_HOST)
+```bash
+sudo apt update
+sudo apt install -y nfs-common
+sudo mkdir -p /mnt/nfs_shared
+
+# replace SERVER_HOST with the server IP or hostname
+SERVER_HOST=server_host
+sudo mount ${SERVER_HOST}:/srv/nfs/shared /mnt/nfs_shared
+
+# test write
+sudo touch /mnt/nfs_shared/test_from_client.txt
+ls -l /mnt/nfs_shared
+
+# add persistence
+echo "${SERVER_HOST}:/srv/nfs/shared /mnt/nfs_shared nfs defaults 0 0" | sudo tee -a /etc/fstab
+```
+
+## 3 — Quick verification checklist (run after commands)
+- LDAP test:
+  - Command: ldapsearch -x -LLL -H ldap://localhost -b dc=example,dc=edu "(uid=testuser)" cn uid  
+  - Success: outputs "cn: Test User" and "uid: testuser"
+- NFS server:
+  - Command: sudo exportfs -v  
+  - Success: shows `/srv/nfs/shared` exported to the expected subnet/IP
+- NFS client:
+  - Command: ls -l /mnt/nfs_shared  
+  - Success: shows `test_from_client.txt` and created time matches test run
+
+If all three checks succeed, proceed to combine files and repo cleanup.
+
+## 4 — Create combined assignment file (PowerShell in repo root)
+This creates `assignments/ITEC_1475/vcenter_lab_ldap_and_network_filesystems.md`. Edit the short header if you want.
+
+Run in PowerShell (repo root):
+```powershell
+$md = @'
+VCenter Lab LDAP Server and Network Filesystems
+
+Course: ITEC 1475
+Instructor: Brian Huilman
+Semester: Fall 2025
+
+Overview
+This lab combines LDAP server setup and NFS network filesystem setup. Follow steps, capture required screenshots, answer the lab questions, and submit the document.
+
+Deliverables
+- Answers to copied questions from the original labs
+- Screenshots: slapd install, ldapsearch output, exportfs output, client mount and test file, /etc/fstab entry
+- One final reflection paragraph
+
+Basic tasks
+1. LDAP server
+  - install slapd ldap-utils
+  - add test user by ldif
+  - verify with ldapsearch
+2. NFS server and client
+  - install nfs-kernel-server and nfs-common
+  - export /srv/nfs/shared and mount on client
+  - test read/write and add fstab entry
+
+Submission
+Place the completed document in the assignment folder and submit per instructor instructions.
+'@
+
+$target = ".\assignments\ITEC_1475\vcenter_lab_ldap_and_network_filesystems.md"
+New-Item -ItemType Directory -Path (Split-Path $target) -Force | Out-Null
+Set-Content -Path $target -Value $md -Encoding UTF8
+Write-Host "Created $target"
+```
+
+## 5 — Archive old assignments, remove empty folders, commit and push (PowerShell)
+Preview, then move everything under assignments except the folders you keep. Edit the `$keep` list if needed.
+
+```powershell
+# set variables and keep list
+$repoRoot = (Get-Location).ProviderPath
+Set-Location -Path $repoRoot
+$dt = (Get-Date).ToString("yyyy_MM_dd")
+$archive = "assignments\archive_$dt"
+New-Item -ItemType Directory -Path $archive -Force | Out-Null
+
+# edit this list to keep folders you want to keep under assignments
+$keep = @('ITEC_1475','ENGL_1110','NSF_STEM')
+
+# preview
+Get-ChildItem assignments -Directory | ForEach-Object { "{0}" -f $_.Name }
+
+# move (git mv) everything not in $keep
+Get-ChildItem assignments -Directory | Where-Object { $keep -notcontains $_.Name } | ForEach-Object {
+  $src = $_.FullName
+  $dest = Join-Path -Path $archive -ChildPath $_.Name
+  git mv "$src" "$dest"
+}
+
+# remove empty directories (preview first)
+Get-ChildItem -Recurse -Directory | Where-Object { @(Get-ChildItem $_ -Force -File).Count -eq 0 } | Select FullName
+
+# commit and push
+git add -A
+git commit -m "archive old assignments; add combined vcenter ldap and network filesystems lab"
+git push origin HEAD
+```
+
+Notes:
+- Run the preview lines and confirm the list before the `git mv` step.
+- If `git mv` fails because the folder is already moved, fix manually or use native Move-Item then git add/remove.
+- Replace remote or branch name if your repo uses a different default.
+
+## 6 — Short next action
+1. Run the VM test commands and verification checklist.  
+2. If tests pass, run the PowerShell snippet to create the combined markdown and then the archive/push commands.  
+
+Tell me when you finish the tests and I will produce a ready-to-commit markdown file content adjusted to any changes you found, or I can generate a small PS1 file that runs the repo cleanup steps for you. Which do you want now?
+
+iltolesjr: put this in one file.after finishing what i asked for already
+
+GitHub Copilot: I will produce one combined markdown file with the lab, short plain answers, VM bulk commands, and PowerShell git steps — paste the content below into `assignments/ITEC_1475/vcenter_lab_ldap_and_network_filesystems.md`.
+
+## Combined file content (copy and save)
+
+```markdown
+VCenter Lab LDAP Server and Network Filesystems
+
+Course: ITEC 1475
+Instructor: Brian Huilman
+Semester: Fall 2025
+
+Overview
+This file combines the LDAP server lab and the network filesystems lab. Follow the steps, capture required screenshots, answer the questions, and submit the document.
+
+Deliverables
+- Answers to the lab questions (copied then answered)
+- Screenshots: slapd install, ldapsearch output, exportfs output, client mount and test file, /etc/fstab entry
+- One short reflection paragraph
+
+Tasks
+
+LDAP Server
+1. Install slapd and ldap-utils.
+2. Configure base domain and admin password.
+3. Add one test user using an LDIF file.
+4. Verify with ldapsearch.
+5. Optionally enable TLS and restart slapd.
+
+Network Filesystems
+1. Install nfs-kernel-server on server VM.
+2. Create and export /srv/nfs/shared.
+3. Mount the export on a client VM.
+4. Test read and write from the client.
+5. Add an /etc/fstab entry for persistence.
+
+Short answers to lab questions
+
+Question 1: What command would you use to search for available web server packages?
+Answer: Use apt search with a keyword. Example:
+apt search apache2
+
+Question 2: What is the main difference between APT and YUM/DNF package managers?
+Answer: APT is for Debian based systems. YUM and DNF are for RedHat based systems.
+
+Question 3: What are two advantages of using Snap packages compared to traditional package managers?
+Answer: Snaps bundle dependencies. Snaps update automatically and roll back easily.
+
+Question 4: How do Flatpak and Snap differ in their approach to application sandboxing?
+Answer: Flatpak uses runtimes and portal based permissions. Snap uses confinement via AppArmor and packaged dependencies.
+
+Question 5: What makes AppImage different from Snap and Flatpak?
+Answer: AppImage is a single executable file. No install required and no auto updates by default.
+
+Question 6: In what scenarios would an AppImage be more useful than a Snap or Flatpak package?
+Answer: When you need a portable app that runs without root on many distributions.
+
+Question 7: What is the primary difference between a Docker container and a virtual machine?
+Answer: Containers share the host kernel and are lightweight. VMs include a full guest OS and more isolation.
+
+Question 9: After extracting a tarball, what file(s) should you look for to find installation instructions?
+Answer: Look for README or INSTALL files, or a configure script.
+
+Question 10: What command installs the compiler and build tools needed to compile programs from source?
+Answer: sudo apt install build-essential
+
+Question 11: Why might you prefer installing a pre-compiled binary over compiling from source?
+Answer: It is faster and avoids installing build dependencies.
+
+Question 12: Comparison table of package methods
+
+| Method | Advantage | Disadvantage |
+| APT YUM | Well integrated, reliable updates | Package versions may lag |
+| Snap | Bundles deps, auto updates | Larger disk use, confinement issues |
+| Flatpak | Good sandboxing, cross distro | Needs runtimes, larger disk use |
+| AppImage | Portable, no install | No auto updates, not integrated |
+| Docker | Consistent runtime, isolation | Overhead for system services |
+| Tarball | Simple distribution | Manual install and updates |
+| Source code | Full control, optimizable | Requires build tools and time |
+
+Question 13: Recommendations
+- System administrator managing many servers: Use APT or YUM with configuration management.
+- Developer testing across distributions: Use Docker or containers for consistent environments.
+- User who wants latest version: Use Snap Flatpak or AppImage depending on the app and distro.
+
+Question 14: What security considerations should you keep in mind when installing software from different sources?
+Answer: Verify sources and signatures. Use TLS for directory services. Restrict NFS exports to trusted IPs. Use firewall rules and least privilege.
+
+Question 15: Why read the whole lab first?
+Answer: Reading first prevents missing prerequisites, installing packages in the wrong order, and misconfiguring TLS or exports. Examples: TLS certificates must be prepared before enabling TLS. Exports should restrict clients to correct IPs. Some installs need build tools first.
+
+Minimal reflection
+LDAP centralizes user data and should be secured with TLS. NFS is simple for file sharing but needs export restrictions and root squashing. Use the right tool for the use case.
+
+VM bulk commands to run (run on the correct VM; replace placeholders)
+
+LDAP server setup (server VM)
+```bash
+sudo apt update
+sudo apt install -y slapd ldap-utils
+sudo dpkg-reconfigure slapd
+cat > /tmp/test_user.ldif <<'LDIF'
+dn: uid=testuser,ou=people,dc=example,dc=edu
+objectClass: inetOrgPerson
+sn: User
+cn: Test User
+uid: testuser
+userPassword: password
+LDIF
+sudo ldapadd -x -D "cn=admin,dc=example,dc=edu" -W -f /tmp/test_user.ldif
+ldapsearch -x -LLL -H ldap://localhost -b dc=example,dc=edu "(uid=testuser)" cn uid
+```
+
+Quick TLS (optional)
+```bash
+sudo mkdir -p /etc/ssl/ldap
+sudo openssl req -new -x509 -nodes -days 365 -out /etc/ssl/ldap/ldap.crt -keyout /etc/ssl/ldap/ldap.key -subj "/CN=ldap.example.edu"
+sudo chown -R openldap:openldap /etc/ssl/ldap
+sudo systemctl restart slapd
+```
+
+NFS server setup (server VM)
+```bash
+sudo apt update
+sudo apt install -y nfs-kernel-server
+sudo mkdir -p /srv/nfs/shared
+sudo chown nobody:nogroup /srv/nfs/shared
+sudo chmod 0775 /srv/nfs/shared
+# replace 10.0.0.0/24 with client subnet or client IP
+echo "/srv/nfs/shared 10.0.0.0/24(rw,sync,no_subtree_check,root_squash)" | sudo tee /etc/exports
+sudo exportfs -a
+sudo systemctl restart nfs-kernel-server
+sudo exportfs -v
+```
+
+NFS client steps (client VM)
+```bash
+sudo apt update
+sudo apt install -y nfs-common
+sudo mkdir -p /mnt/nfs_shared
+# replace server_host with server IP or name
+SERVER_HOST=server_host
+sudo mount ${SERVER_HOST}:/srv/nfs/shared /mnt/nfs_shared
+sudo touch /mnt/nfs_shared/test_from_client.txt
+ls -l /mnt/nfs_shared
+echo "${SERVER_HOST}:/srv/nfs/shared /mnt/nfs_shared nfs defaults 0 0" | sudo tee -a /etc/fstab
+```
+
+Quick verification checklist
+- LDAP: ldapsearch returns cn Test User and uid testuser
+- NFS server: exportfs -v shows /srv/nfs/shared exported to expected IP/subnet
+- NFS client: ls -l /mnt/nfs_shared shows test_from_client.txt
+
+PowerShell git steps to create the file, archive old assignments, remove empty folders, commit and push
+
+Create the combined file in repo (run from repo root; adjust path if needed)
+```powershell
+# create folder and file
+$target = ".\assignments\ITEC_1475\vcenter_lab_ldap_and_network_filesystems.md"
+New-Item -ItemType Directory -Path (Split-Path $target) -Force | Out-Null
+# paste the content into the file manually or use Set-Content if you saved content to a variable
+Write-Host "Save the combined markdown into $target"
+```
+
+Archive old assignments and move them (preview first)
+```powershell
+$dt = (Get-Date).ToString("yyyy_MM_dd")
+$archive = "assignments\archive_$dt"
+New-Item -ItemType Directory -Path $archive -Force | Out-Null
+
+# edit keep list to match folders you want to keep
+$keep = @('ITEC_1475','ENGL_1110','NSF_STEM')
+
+# preview folders under assignments
+Get-ChildItem assignments -Directory | ForEach-Object { $_.Name }
+
+# move folders not in keep using git mv
+Get-ChildItem assignments -Directory | Where-Object { $keep -notcontains $_.Name } | ForEach-Object {
+  $src = $_.FullName
+  $dest = Join-Path -Path $archive -ChildPath $_.Name
+  git mv "$src" "$dest"
+}
+
+# preview empty directories before removal
+Get-ChildItem -Recurse -Directory | Where-Object { @(Get-ChildItem $_ -Force -File).Count -eq 0 } | Select FullName
+
+# commit and push
+git add -A
+git commit -m "archive old assignments and add combined vcenter ldap and network filesystems lab"
+git push origin HEAD
+```
+
+Notes
+- Replace server_host and IP/subnet with actual lab values.
+- Run previews before running git mv.
+- Save screenshots as required and include them in your submission document.
+
+File path to save
+Save this file as:
+`assignments/ITEC_1475/vcenter_lab_ldap_and_network_filesystems.md`
+
+End
+```
+
+If you want, I can generate a ready to commit `ps1` script that creates the markdown file and runs the git archive steps. Which do you want next: the ps1 script or just the markdown file ready to paste?
+
+iltolesjr: where are cmds for ldap server assignment
+
+GitHub Copilot: I’ll point you to the exact LDAP commands and where they live, then paste the LDAP command block so you can copy and run it.
+
+Where the commands are
+- In the combined file content you were given: `assignments/ITEC_1475/vcenter_lab_ldap_and_network_filesystems.md` (or your unsaved `Untitled-2` if you pasted there).
+- The LDAP setup commands are under the “LDAP server setup (server VM)” section.
+
+LDAP server commands (run on the server VM; replace domain/admin values as needed)
+```bash
+sudo apt update
+sudo apt install -y slapd ldap-utils
+
+# optionally reconfigure interactively to set domain and admin password
+sudo dpkg-reconfigure slapd
+
+# create test user LDIF
+cat > /tmp/test_user.ldif <<'LDIF'
+dn: uid=testuser,ou=people,dc=example,dc=edu
+objectClass: inetOrgPerson
+sn: User
+cn: Test User
+uid: testuser
+userPassword: password
+LDIF
+
+# add the test user (will prompt for admin password)
+sudo ldapadd -x -D "cn=admin,dc=example,dc=edu" -W -f /tmp/test_user.ldif
+
+# verify the user exists
+ldapsearch -x -LLL -H ldap://localhost -b dc=example,dc=edu "(uid=testuser)" cn uid
+```
+
+Optional quick TLS (if you enable TLS)
+```bash
+sudo mkdir -p /etc/ssl/ldap
+sudo openssl req -new -x509 -nodes -days 365 -out /etc/ssl/ldap/ldap.crt -keyout /etc/ssl/ldap/ldap.key -subj "/CN=ldap.example.edu"
+sudo chown -R openldap:openldap /etc/ssl/ldap
+sudo systemctl restart slapd
+```
+
+Do you want me to:
+- Save the combined file to `assignments/ITEC_1475/vcenter_lab_ldap_and_network_filesystems.md` now, or  
+- Generate a ready-to-run shell script for the server VM?
+
+iltolesjr: Are there any placeholders in this file? That I need to edit or no?
+
+GitHub Copilot: I will list every placeholder in your file that you should edit, where it appears, and what to change it to.
+
+Placeholders to edit (exact text to search and replace)
+- `dc=example,dc=edu` — base DN for LDAP. Replace with your real domain components (for example `dc=school,dc=edu`) and use the same value when reconfiguring slapd.
+- `cn=admin,dc=example,dc=edu` — admin DN used by ldapadd. Replace to match your slapd admin DN.
+- `password` (in the LDIF) — test user password. Replace with a stronger test password or leave as-is if instructor expects that value.
+- `server_host` — NFS server hostname or IP. Replace with the server VM actual name or IP wherever `server_host` appears.
+- `10.0.0.0/24` — NFS export subnet. Replace with the real client subnet or a single client IP (for example `10.1.2.34`).
+- `SERVER_HOST=server_host` — client VM environment variable; update to the server IP/name (same as `server_host` above).
+- `assignments\ITEC_1475\...` vs existing folder ITEC-1475 — pick one and be consistent. Update the PowerShell `$target` path to match your repo folder name (underscore vs hyphen).
+- PowerShell `$keep` list (`'ITEC_1475','ENGL_1110','NSF_STEM'`) — edit to include the exact folder names you want to keep under assignments before running the archive step.
+- Commit message text in the PowerShell snippet — change if you want a different commit message.
+- Any example CN in the TLS subj: `"/CN=ldap.example.edu"` — change to your LDAP FQDN if you generate certs.
+
+Notes and quick checks
+- The LDAP commands will prompt for the admin password; ensure the DN and base DN match the slapd configuration you set during `dpkg-reconfigure slapd`.
+- If you use the instructor-provided StarID authentication or different domain, match those exact values instead of the `example` values.
+- If you plan to enable TLS, update the certificate subject and file ownership lines as needed for your distro.
+- After editing, do a quick search for the words `example`, `server_host`, `10.0.0.0`, and `ITEC_1475` to find any remaining placeholders.
+
+If you want, I can:
+- update the file now with your real values (tell me the base DN, admin DN, server IP, and correct assignments folder name), or
+- generate a small script that prompts you to enter those values and writes the final markdown and PS1 files. Which do you prefer?
+
+iltolesjr: what server vm
+
+GitHub Copilot: Use the VM in the vCenter lab that will act as the server for services (LDAP and NFS). Short checklist to identify and use the correct server VM:
+
+- In vCenter web UI: look for a VM named something like ldap, nfs, server, or lab-server. Open the VM console or notes to confirm purpose.
+- If you are already SSH’d into a VM and need to confirm it is the server, run on that VM:
+  ```
+  hostnamectl
+  ip -4 addr show scope global
+  cat /etc/os-release
+  ```
+  Use the IP address shown as the SERVER_HOST in the scripts.
+
+- Recommended mapping:
+  - Server VM: run LDAP and NFS commands (install slapd, export /srv/nfs/shared).
+  - Client VM: run NFS client commands (mount server:/srv/nfs/shared and test write).
+
+- If no VM is labeled clearly, pick a VM with enough RAM and network access, confirm you can reach other lab VMs by ping, and use that as the server.
+
+Reminder: replace the placeholder `server_host` in the commands with the server VM’s hostname or IP you get from the steps above.
+
+iltolesjr: i dont hae a rocky machine
+
+GitHub Copilot: Good — I’ll assume you only have Debian/Ubuntu lab VMs and will remove Rocky/RHEL-specific steps. Below are the corrected, minimal LDAP server commands (no duplicates) and quick notes on what to run where. If this looks good I will save the cleaned file into `assignments/ITEC-1475/vcenter_lab_ldap_and_network_filesystems.md`.
+
+Corrected LDAP server commands (run on server VM)
+```bash
+sudo apt update
+sudo apt install -y slapd ldap-utils
+
+# optionally reconfigure interactively to set domain and admin password
+sudo dpkg-reconfigure slapd
+
+# create test user LDIF (edit dc=example,dc=edu to your base DN and change password)
+cat > /tmp/test_user.ldif <<'LDIF'
+dn: uid=testuser,ou=people,dc=example,dc=edu
+objectClass: inetOrgPerson
+sn: User
+cn: Test User
+uid: testuser
+userPassword: password
+LDIF
+
+# add the test user (will prompt for admin password)
+sudo ldapadd -x -D "cn=admin,dc=example,dc=edu" -W -f /tmp/test_user.ldif
+
+# verify the user exists
+ldapsearch -x -LLL -H ldap://localhost -b dc=example,dc=edu "(uid=testuser)" cn uid
+```
+
+Notes and small fixes I applied / you should check
+- Removed duplicate `apt update` / `apt install` lines.
+- All commands use apt (Ubuntu/Debian). No Rocky/CentOS commands included.
+- Replace placeholders before running:
+  - `dc=example,dc=edu` → your base DN
+  - `cn=admin,dc=example,dc=edu` → your slapd admin DN
+  - `password` → test password
+- Use a single server VM (enough RAM, reachable IP). Run LDAP + NFS server steps on that VM. Use a different client VM to mount and test NFS.
+- To confirm a VM is Debian/Ubuntu run: `cat /etc/os-release` on the VM.
+
+Do you want me to:
+A) Save the cleaned combined markdown into `assignments/ITEC-1475/vcenter_lab_ldap_and_network_filesystems.md` now (I will also remove Rocky references), or  
+B) Also generate a ready-to-run shell script for the server VM with prompts to fill placeholders?
+
+Pick A or B.
+
+iltolesjr: b
+
+GitHub Copilot: I will generate a ready-to-run bash script you can run on the server VM to install and test slapd. The script is interactive: it asks for the values you must supply (base DN, admin DN, test user password, etc.) and uses secure prompts for the admin bind password. It removes duplicate commands and keeps only Debian/Ubuntu steps.
+
+Save the script as `setup_ldap_server.sh` on the server VM, make it executable, then run it. Below is the script and short usage notes.
+
+Script: setup_ldap_server.sh
+```bash
+#!/usr/bin/env bash
+# Interactive LDAP server setup for Debian/Ubuntu lab VMs
+# Save as setup_ldap_server.sh, make executable: chmod +x setup_ldap_server.sh
+# Run on the server VM: ./setup_ldap_server.sh
+
+set -e
+
+echo "This script will install slapd and ldap-utils and add a test user."
+read -p "Proceed? (y/N): " proceed
+if [[ "${proceed,,}" != "y" ]]; then
+  echo "Aborted."
+  exit 1
+fi
+
+# Ask for values
+read -p "Enter base DN (example: dc=school,dc=edu): " BASE_DN
+read -p "Enter admin DN (example: cn=admin,$BASE_DN): " ADMIN_DN
+echo "You will be prompted for the admin bind password when needed."
+read -p "Enter test user uid (default: testuser): " TEST_UID
+TEST_UID=${TEST_UID:-testuser}
+read -p "Enter test user CN (default: Test User): " TEST_CN
+TEST_CN=${TEST_CN:-Test User}
+read -s -p "Enter password for the test user (will be stored in LDIF): " TEST_PASS
+echo
+read -p "Run dpkg-reconfigure slapd to set domain and admin password now? (y/N): " RECONF
+
+# install packages
+sudo apt update
+sudo apt install -y slapd ldap-utils
+
+if [[ "${RECONF,,}" == "y" ]]; then
+  echo "Launching dpkg-reconfigure slapd. Follow prompts to set domain and admin password."
+  sudo dpkg-reconfigure slapd
+else
+  echo "Skipping dpkg-reconfigure. Ensure slapd is configured correctly before ldapadd."
+fi
+
+# prepare LDIF
+LDIF_FILE="/tmp/${TEST_UID}.ldif"
+cat > "${LDIF_FILE}" <<LDIF
+dn: uid=${TEST_UID},ou=people,${BASE_DN}
+objectClass: inetOrgPerson
+sn: ${TEST_CN}
+cn: ${TEST_CN}
+uid: ${TEST_UID}
+userPassword: ${TEST_PASS}
+LDIF
+
+echo "LDIF created at ${LDIF_FILE}:"
+ls -l "${LDIF_FILE}"
+
+echo
+echo "Now adding the test user. You will be prompted for the admin bind password."
+sudo ldapadd -x -D "${ADMIN_DN}" -W -f "${LDIF_FILE}"
+
+echo
+echo "Verifying the test user with ldapsearch..."
+ldapsearch -x -LLL -H ldap://localhost -b "${BASE_DN}" "(uid=${TEST_UID})" cn uid
+
+echo
+echo "Done. If ldapsearch returned the test user, the setup succeeded."
+echo "Clean up: the LDIF is at ${LDIF_FILE}. Remove it if you prefer: sudo rm ${LDIF_FILE}"
+```
+
+What the script does
+- Installs slapd and ldap-utils using apt.
+- Optionally runs `dpkg-reconfigure slapd` so you can set the domain and admin password interactively.
+- Creates an LDIF for a test user with values you supply.
+- Runs `ldapadd` (prompts for admin password) to add the user.
+- Runs `ldapsearch` to verify the user was added.
+
+Placeholders you must supply when running
+- base DN (example: dc=school,dc=edu)
+- admin DN (example: cn=admin,dc=school,dc=edu)
+- admin bind password (entered interactively when ldapadd runs)
+- test user uid, CN, and test password (entered interactively)
+
+How to use
+1. Copy the script to the server VM (home directory).
+2. Make it executable:
+   ```bash
+   chmod +x setup_ldap_server.sh
+   ```
+3. Run it:
+   ```bash
+   ./setup_ldap_server.sh
+   ```
+   - Answer prompts, provide the admin DN and base DN that match your slapd configuration.
+   - When `ldapadd` runs it will prompt for the admin bind password (type it securely).
+
+Quick verification checklist after the script
+- ldapsearch output shows:
+  - cn: <Test CN>
+  - uid: <Test UID>
+- slapd service is active:
+  ```bash
+  sudo systemctl status slapd
+  ```
+- If you need TLS later, run the certificate steps separately.
+
+Would you like me to:
+- Save this script into the repository at `scripts/setup_ldap_server.sh` for you, or
+- Generate an alternative non-interactive script that sets slapd config automatically (requires providing admin password on the command line)?
+
+iltolesjr: rocky mahine is week 4 assignment. why cant you give me proper instructions
+
+GitHub Copilot: I’ll explain why Rocky steps were missing, what I changed to match your available VMs, and give concise Rocky-specific commands you can use for the week‑4 assignment if you want them added back into the lab file. Tell me if you want those Rocky commands inserted into the combined markdown or saved as a script.
+
+Why Rocky steps were removed
+- You told me you did not have a Rocky machine, so I removed Rocky/RHEL-specific commands and provided Debian/Ubuntu (apt) instructions only.  
+- I can add Rocky instructions back — I avoided them to keep the lab matching the VMs you actually have.
+
+Rocky (RHEL/CentOS) quick instructions — concise and ready to run on a Rocky VM
+
+LDAP (OpenLDAP) on Rocky
+- Install, enable service, add a test user (assumes slapd configured or you will run the initial configuration interactively).
+```bash
+sudo dnf install -y openldap-servers openldap-clients
+sudo systemctl enable --now slapd
+
+# generate a test user LDIF (edit base DN and password)
+cat > /tmp/test_user.ldif <<'LDIF'
+dn: uid=testuser,ou=people,dc=example,dc=edu
+objectClass: inetOrgPerson
+sn: User
+cn: Test User
+uid: testuser
+userPassword: password
+LDIF
+
+# add the user (use your admin DN and bind password)
+sudo ldapadd -x -D "cn=admin,dc=example,dc=edu" -W -f /tmp/test_user.ldif
+
+# verify
+ldapsearch -x -LLL -H ldap://localhost -b dc=example,dc=edu "(uid=testuser)" cn uid
+```
+Notes:
+- On Rocky you may need to run an initial configuration step if slapd is not configured — let me know and I’ll add a non-interactive sequence to set olcRootPW etc.
+- If SELinux is enforcing, LDAP operations normally work, but some advanced config edits may require correct permissions.
+
+NFS on Rocky
+- Install, export, enable service, open firewall and adjust SELinux.
+```bash
+sudo dnf install -y nfs-utils
+sudo mkdir -p /srv/nfs/shared
+sudo chown nfsnobody:nfsnobody /srv/nfs/shared
+sudo chmod 0775 /srv/nfs/shared
+
+# export to subnet or client IP (edit subnet)
+echo "/srv/nfs/shared 10.0.0.0/24(rw,sync,no_subtree_check,root_squash)" | sudo tee /etc/exports
+
+sudo systemctl enable --now nfs-server
+sudo exportfs -r
+
+# firewall (open NFS)
+sudo firewall-cmd --add-service=nfs --permanent
+sudo firewall-cmd --add-service=mountd --permanent
+sudo firewall-cmd --add-service=rpc-bind --permanent
+sudo firewall-cmd --reload
+
+# SELinux: allow exports (simple, commonly used)
+sudo setsebool -P nfs_export_all_rw 1
+```
+Client mount (Rocky or other Linux)
+```bash
+sudo dnf install -y nfs-utils        # or nfs-common on Debian
+sudo mkdir -p /mnt/nfs_shared
+sudo mount server_ip:/srv/nfs/shared /mnt/nfs_shared
+sudo touch /mnt/nfs_shared/test_from_client.txt
+ls -l /mnt/nfs_shared
+
+# persistent fstab entry
+echo "server_ip:/srv/nfs/shared /mnt/nfs_shared nfs defaults 0 0" | sudo tee -a /etc/fstab
+```
+
+Differences to keep in mind (short)
+- Package manager: use dnf on Rocky; apt on Debian.
+- Services: same names mostly (slapd, nfs-server), but firewall (firewalld) and SELinux are present on Rocky — you must open ports and set SELinux booleans or contexts.
+- Initial slapd config on RHEL often needs extra steps to set the admin password in cn=config; I can provide those exact commands if you want them.
+
+What I can do next (pick one)
+1) Insert the Rocky commands above into the combined markdown file (same file) — quick update.  
+2) Create a separate Week‑4 file for the Rocky assignment (cleanly separated).  
+3) Generate a ready-to-run script for Rocky (interactive or non-interactive) that performs LDAP + NFS setup and basic verification.
+
+Which option do you want? If you choose a script, tell me:
+- the base DN you want to use (or say “I’ll set during run”)
+- whether you want the script interactive for admin passwords (recommended) or non-interactive (less secure)
+
+iltolesjr: 3 but create script for everything from week 4 up to now. same format. questions and answers short answers no special characters 4th grade reading level. put it all in one file so i dont have to keep looking for files. never use placeholders because i send those cmds and you make me look stupid
+
+GitHub Copilot: Got it. I’ll give you one single file you can paste into your repo that includes:
+- a ready to run all in one Linux script with no placeholders
+- short questions and short answers in plain text
+- Debian and Rocky flows handled automatically in the script
+- NFS export uses a safe any client rule to avoid subnet placeholders
+- PowerShell steps at the end to archive old assignments and push
+
+Paste everything below into a new file named:
+assignments/ITEC-1475/week4_to_now_all_in_one.md
+
+Then follow the “how to use” section inside.
+
+## week 4 to now all in one
+
+how to use
+1. copy the bash script block into a file named week4_to_now_all_in_one.sh on your linux vm
+2. make it executable
+3. run it and follow prompts
+4. copy the short answers from the answers section into your turn in doc
+5. on windows run the powershell block to archive old stuff and push
+
+scripts
+
+bash week4_to_now_all_in_one.sh
+```bash
+#!/usr/bin/env bash
+# all in one lab helper
+# handles debian ubuntu and rocky
+# no placeholders. prompts for values as needed
+
+set -euo pipefail
+
+is_cmd() { command -v "$1" >/dev/null 2>&1; }
+
+detect_os() {
+  if [ -r /etc/os-release ]; then
+    . /etc/os-release
+    case "${ID,,}" in
+      ubuntu|debian) echo "debian"; return;;
+      rocky|rhel|centos|almalinux) echo "rocky"; return;;
+    esac
+    case "${ID_LIKE:-}" in
+      *debian*) echo "debian"; return;;
+      *rhel*|*fedora*) echo "rocky"; return;;
+    esac
+  fi
+  echo "debian"
+}
+
+pause() { read -r -p "press enter to continue"; }
+
+print_header() {
+  echo
+  echo "=============================="
+  echo "$1"
+  echo "=============================="
+}
+
+ldap_setup_debian() {
+  print_header "ldap server setup debian"
+  sudo apt update
+  sudo apt install -y slapd ldap-utils
+  echo "we will run the reconfigure tool so you can set domain and admin password"
+  echo "follow the prompts on screen"
+  sudo dpkg-reconfigure slapd
+  echo
+  echo "now add a test user"
+  read -r -p "enter base dn for example dc=school,dc=edu: " BASE_DN
+  read -r -p "enter admin dn for example cn=admin,$BASE_DN: " ADMIN_DN
+  read -r -p "enter test user id default testuser: " TEST_UID
+  TEST_UID=${TEST_UID:-testuser}
+  read -r -p "enter test user common name default Test User: " TEST_CN
+  TEST_CN=${TEST_CN:-Test User}
+  read -r -s -p "enter test user password: " TEST_PW; echo
+  cat > /tmp/${TEST_UID}.ldif <<LDIF
+dn: uid=${TEST_UID},ou=people,${BASE_DN}
+objectClass: inetOrgPerson
+sn: ${TEST_CN}
+cn: ${TEST_CN}
+uid: ${TEST_UID}
+userPassword: ${TEST_PW}
+LDIF
+  sudo ldapadd -x -D "${ADMIN_DN}" -W -f "/tmp/${TEST_UID}.ldif" || {
+    echo "could not add user. check admin dn and password and base dn"; return 1; }
+  echo "verify"
+  ldapsearch -x -LLL -H ldap://localhost -b "${BASE_DN}" "(uid=${TEST_UID})" cn uid
+}
+
+ldap_setup_rocky() {
+  print_header "ldap server setup rocky"
+  sudo dnf install -y openldap-servers openldap-clients
+  sudo systemctl enable --now slapd
+  echo "if ldap is not yet configured you must set the admin dn and password first"
+  echo "this script will try to add a test user. if it fails with invalid credentials configure slapd then try again"
+  read -r -p "enter base dn for example dc=school,dc=edu: " BASE_DN
+  read -r -p "enter admin dn for example cn=admin,$BASE_DN: " ADMIN_DN
+  read -r -p "enter test user id default testuser: " TEST_UID
+  TEST_UID=${TEST_UID:-testuser}
+  read -r -p "enter test user common name default Test User: " TEST_CN
+  TEST_CN=${TEST_CN:-Test User}
+  read -r -s -p "enter test user password: " TEST_PW; echo
+  cat > /tmp/${TEST_UID}.ldif <<LDIF
+dn: uid=${TEST_UID},ou=people,${BASE_DN}
+objectClass: inetOrgPerson
+sn: ${TEST_CN}
+cn: ${TEST_CN}
+uid: ${TEST_UID}
+userPassword: ${TEST_PW}
+LDIF
+  sudo ldapadd -x -D "${ADMIN_DN}" -W -f "/tmp/${TEST_UID}.ldif" || {
+    echo "could not add user. set admin dn and password in slapd then try again"; return 1; }
+  echo "verify"
+  ldapsearch -x -LLL -H ldap://localhost -b "${BASE_DN}" "(uid=${TEST_UID})" cn uid
+}
+
+nfs_server_debian() {
+  print_header "nfs server debian"
+  sudo apt update
+  sudo apt install -y nfs-kernel-server
+  sudo mkdir -p /srv/nfs/shared
+  sudo chown nobody:nogroup /srv/nfs/shared
+  sudo chmod 0775 /srv/nfs/shared
+  echo "/srv/nfs/shared *(rw,sync,no_subtree_check,root_squash)" | sudo tee /etc/exports >/dev/null
+  sudo exportfs -a
+  sudo systemctl enable --now nfs-kernel-server
+  sudo exportfs -v
+}
+
+nfs_server_rocky() {
+  print_header "nfs server rocky"
+  sudo dnf install -y nfs-utils
+  sudo mkdir -p /srv/nfs/shared
+  sudo chown nfsnobody:nfsnobody /srv/nfs/shared
+  sudo chmod 0775 /srv/nfs/shared
+  echo "/srv/nfs/shared *(rw,sync,no_subtree_check,root_squash)" | sudo tee /etc/exports >/dev/null
+  sudo systemctl enable --now nfs-server
+  sudo exportfs -r
+  if is_cmd firewall-cmd; then
+    sudo firewall-cmd --add-service=nfs --permanent || true
+    sudo firewall-cmd --add-service=mountd --permanent || true
+    sudo firewall-cmd --add-service=rpc-bind --permanent || true
+    sudo firewall-cmd --reload || true
+  fi
+  if is_cmd setsebool; then
+    sudo setsebool -P nfs_export_all_rw 1 || true
+  fi
+  sudo exportfs -v
+}
+
+nfs_client_local_mount() {
+  print_header "nfs client local mount on same machine for quick test"
+  if grep -q "ID=ubuntu\|ID=debian" /etc/os-release 2>/dev/null; then
+    sudo apt update
+    sudo apt install -y nfs-common
+  else
+    sudo dnf install -y nfs-utils
+  fi
+  sudo mkdir -p /mnt/nfs_shared
+  sudo mount -t nfs localhost:/srv/nfs/shared /mnt/nfs_shared
+  sudo touch /mnt/nfs_shared/test_from_client.txt
+  ls -l /mnt/nfs_shared
+  echo "localhost:/srv/nfs/shared /mnt/nfs_shared nfs defaults 0 0" | sudo tee -a /etc/fstab >/dev/null
+}
+
+software_managers_debian() {
+  print_header "software managers debian"
+  sudo apt update
+  echo "apt search web server"
+  apt search "^apache2$" | head -n 5 || true
+  echo "snap basic"
+  sudo apt install -y snapd
+  snap --version || true
+  sudo snap install hello-world || true
+  hello-world || true
+  echo "flatpak basic"
+  sudo apt install -y flatpak
+  flatpak --version || true
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || true
+  flatpak search text editor | head -n 10 || true
+  echo "docker basic"
+  sudo apt install -y docker.io || true
+  docker --version || true
+  sudo docker run --rm hello-world || true
+  echo "tarball demo"
+  mkdir -p ~/test-app
+  echo "application files" > ~/test-app/readme.txt
+  tar -czf ~/test-app.tar.gz -C ~ test-app
+  tar -tzf ~/test-app.tar.gz | head -n 5
+  echo "build tools"
+  sudo apt install -y build-essential
+}
+
+software_managers_rocky() {
+  print_header "software managers rocky"
+  sudo dnf makecache
+  echo "dnf search httpd"
+  dnf search httpd | head -n 10 || true
+  echo "flatpak basic"
+  sudo dnf install -y flatpak
+  flatpak --version || true
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || true
+  flatpak search text editor | head -n 10 || true
+  echo "podman basic as docker alt"
+  sudo dnf install -y podman || true
+  podman --version || true
+  echo "tarball demo"
+  mkdir -p ~/test-app
+  echo "application files" > ~/test-app/readme.txt
+  tar -czf ~/test-app.tar.gz -C ~ test-app
+  tar -tzf ~/test-app.tar.gz | head -n 5
+  echo "build tools group"
+  sudo dnf groupinstall -y "Development Tools" || true
+}
+
+main_menu() {
+  OS=$(detect_os)
+  echo "detected os: $OS"
+  while true; do
+    echo
+    echo "pick a task"
+    echo "1 ldap server setup"
+    echo "2 nfs server setup"
+    echo "3 nfs client local mount test"
+    echo "4 software managers demo"
+    echo "5 quit"
+    read -r -p "enter number: " CH
+    case "$CH" in
+      1) [ "$OS" = "debian" ] && ldap_setup_debian || ldap_setup_rocky; pause;;
+      2) [ "$OS" = "debian" ] && nfs_server_debian || nfs_server_rocky; pause;;
+      3) nfs_client_local_mount; pause;;
+      4) [ "$OS" = "debian" ] && software_managers_debian || software_managers_rocky; pause;;
+      5) echo "done"; exit 0;;
+      *) echo "not a choice";;
+    esac
+  done
+}
+
+main_menu
+```
+
+windows powershell repo cleanup and push
+```powershell
+# run from repo root in pwsh
+$dt = (Get-Date).ToString("yyyy_MM_dd")
+$archive = "assignments\archive_$dt"
+New-Item -ItemType Directory -Path $archive -Force | Out-Null
+
+# keep only exact names you want to keep
+$keep = @('ITEC-1475','ENGL-1110','NSF-STEM')
+
+Get-ChildItem assignments -Directory | Where-Object { $keep -notcontains $_.Name } | ForEach-Object {
+  git mv ("assignments\{0}" -f $_.Name) ("{0}\{1}" -f $archive,$_.Name)
+}
+
+git add -A
+git commit -m "archive old assignments and add week4 to now all in one"
+git push origin HEAD
+```
+
+questions and answers short and simple
+
+ldap
+1 what is ldap  
+a central list of users and groups
+
+2 how do you test ldap  
+use ldapsearch with base dn
+
+3 how do you add a user  
+make an ldif then run ldapadd
+
+4 how to secure ldap  
+use tls and strong admin password
+
+nfs
+1 what is nfs  
+it shares a folder over the network
+
+2 how to export a folder  
+add a line to etc exports then run exportfs
+
+3 how to mount on a client  
+use mount server colon path space mount point
+
+4 why root squash  
+it makes remote root less powerful
+
+software managers
+1 what is apt  
+a tool to install and update software on debian and ubuntu
+
+2 what is snap  
+apps that bundle what they need and auto update
+
+3 what is flatpak  
+apps that run in a safe box and work on many linux
+
+4 what is appimage  
+one file app that runs without install
+
+5 why use docker or podman  
+same app runs the same on many machines
+
+6 what to read in a tarball  
+readme or install file
+
+7 why use a pre built binary  
+it is fast and easy
+
+compare short
+apt and dnf easy and safe but may be old  
+snap and flatpak easy and new but use more space  
+appimage very simple but no auto update  
+docker and podman very stable but more parts  
+tarball simple but manual work  
+source full control but slow and hard
+
+notes
+- no placeholders used in the script
+- the script asks for values when needed
+- the nfs export allows any client so it runs without subnet edits
+- if rocky ldap add fails configure slapd first then run again
+
+want me to save this into the repo and push now, or do you want to paste it yourself and run the steps?
+
+iltolesjr: istructions suck idk how to run it. if you say copy the block into vm then show me the damn script or command 
+
+GitHub Copilot: Here’s the exact, copy-once block to paste into your Linux VM console. It creates a script, makes it executable, and runs it. No placeholders. The script will prompt you for the base dn, admin dn, and a test user. It sets up LDAP and NFS, and does a local NFS mount test.
+
+Run this on your Debian or Ubuntu VM
+```bash
+cat > setup_ldap_nfs.sh <<'SH'
+#!/usr/bin/env bash
+set -e
+
+echo "ldap and nfs setup for debian or ubuntu"
+
+# install
+sudo apt update
+sudo apt install -y slapd ldap-utils nfs-kernel-server nfs-common
+
+# configure slapd
+echo
+echo "slapd reconfigure will open. set domain and admin password"
+sudo dpkg-reconfigure slapd
+
+# prompt values (no placeholders in the script)
+echo
+read -p "base dn example dc=school,dc=edu: " BASE_DN
+read -p "admin dn example cn=admin,$BASE_DN: " ADMIN_DN
+read -p "test user id default testuser: " TEST_UID
+TEST_UID=${TEST_UID:-testuser}
+read -p "test user name default Test User: " TEST_CN
+TEST_CN=${TEST_CN:-Test User}
+read -s -p "test user password: " TEST_PW
+echo
+
+# add ldap test user
+LDIF="/tmp/${TEST_UID}.ldif"
+cat > "$LDIF" <<LDIF
+dn: uid=${TEST_UID},ou=people,${BASE_DN}
+objectClass: inetOrgPerson
+sn: ${TEST_CN}
+cn: ${TEST_CN}
+uid: ${TEST_UID}
+userPassword: ${TEST_PW}
+LDIF
+
+echo
+echo "adding ldap user"
+sudo ldapadd -x -D "${ADMIN_DN}" -W -f "$LDIF"
+
+echo "verify ldap user"
+ldapsearch -x -LLL -H ldap://localhost -b "${BASE_DN}" "(uid=${TEST_UID})" cn uid || true
+
+# nfs server and local client test
+echo
+echo "set up nfs server"
+sudo mkdir -p /srv/nfs/shared
+# handle owner on ubuntu and debian variants
+if id nobody >/dev/null 2>&1 && id nogroup >/dev/null 2>&1; then
+  sudo chown nobody:nogroup /srv/nfs/shared
+fi
+sudo chmod 0775 /srv/nfs/shared
+echo "/srv/nfs/shared *(rw,sync,no_subtree_check,root_squash)" | sudo tee /etc/exports >/dev/null
+sudo exportfs -a
+sudo systemctl enable --now nfs-kernel-server
+sudo exportfs -v || true
+
+echo
+echo "mount nfs locally and write a test file"
+sudo mkdir -p /mnt/nfs_shared
+sudo mount -t nfs localhost:/srv/nfs/shared /mnt/nfs_shared
+echo "hello from client" | sudo tee /mnt/nfs_shared/test_from_client.txt >/dev/null
+ls -l /mnt/nfs_shared
+echo "localhost:/srv/nfs/shared /mnt/nfs_shared nfs defaults 0 0" | sudo tee -a /etc/fstab >/dev/null
+
+echo
+echo "done"
+echo "screenshots to take:"
+echo "- ldapsearch output above"
+echo "- exportfs -v"
+echo "- ls -l /mnt/nfs_shared and the test file"
+SH
+chmod +x setup_ldap_nfs.sh
+sudo ./setup_ldap_nfs.sh
+```
+
+What to screenshot after it runs
+- ldapsearch output that shows cn and uid  
+- exportfs -v  
+- ls -l /mnt/nfs_shared showing test_from_client.txt
+
+Want the Rocky version too? Say “Rocky script” and I’ll drop a paste-once block for Rocky.
+
+iltolesjr: And I can't ever find the files in githubs he is
+
+GitHub Copilot: To make this easy to find in GitHub, I’ll create one markdown file in your repo with the full script and short answers, placed at assignments/ITEC-1475/week4_to_now_all_in_one.md on your default branch. Then I’ll confirm the branch and share the direct URL.
+
+Ran List branches 
+Completed with input: {
+  "owner": "iltolesjr",
+  "repo": "Fall-2025",
+  "perPage": 100
+}
+
+Ran Create or update file 
+Completed with input: {
+  "owner": "iltolesjr",
+  "repo": "Fall-2025",
+  "branch": "main",
+  "path": "assignments/ITEC-1475/week4_to_now_all_in_one.md",
+  "message": "add one-file catch-up with no placeholders: script + answers + usage",
+  "content": "week 4 to now all in one\n\nhow to use\n1. open a linux vm console\n2. copy the script block below into the vm\n3. run the two command lines shown under run it\n4. take the screenshots listed\n\nscript\n```bash\ncat > setup_ldap_nfs.sh <<'SH'\n#!/usr/bin/env bash\nset -e\n\necho \"ldap and nfs setup for debian or ubuntu\"\n\n# install\nsudo apt update\nsudo apt install -y slapd ldap-utils nfs-kernel-server nfs-common\n\n# configure slapd\necho\necho \"slapd reconfigure will open. set domain and admin password\"\nsudo dpkg-reconfigure slapd\n\n# prompts (no placeholders hard coded)\necho\nread -p \"base dn example dc=school,dc=edu: \" BASE_DN\nread -p \"admin dn example cn=admin,$BASE_DN: \" ADMIN_DN\nread -p \"test user id default testuser: \" TEST_UID\nTEST_UID=${TEST_UID:-testuser}\nread -p \"test user name default Test User: \" TEST_CN\nTEST_CN=${TEST_CN:-Test User}\nread -s -p \"test user password: \" TEST_PW\necho\n\n# add ldap test user\nLDIF=\"/tmp/${TEST_UID}.ldif\"\ncat > \"$LDIF\" <<LDIF\ndn: uid=${TEST_UID},ou=people,${BASE_DN}\nobjectClass: inetOrgPerson\nsn: ${TEST_CN}\ncn: ${TEST_CN}\nuid: ${TEST_UID}\nuserPassword: ${TEST_PW}\nLDIF\n\necho\necho \"adding ldap user\"\nsudo ldapadd -x -D \"${ADMIN_DN}\" -W -f \"$LDIF\"\n\necho \"verify ldap user\"\nldapsearch -x -LLL -H ldap://localhost -b \"${BASE_DN}\" \"(uid=${TEST_UID})\" cn uid || true\n\n# nfs server and local client test\necho\necho \"set up nfs server\"\nsudo mkdir -p /srv/nfs/shared\nif id nobody >/dev/null 2>&1 && id nogroup >/dev/null 2>&1; then\n  sudo chown nobody:nogroup /srv/nfs/shared\nfi\nsudo chmod 0775 /srv/nfs/shared\necho \"/srv/nfs/shared *(rw,sync,no_subtree_check,root_squash)\" | sudo tee /etc/exports >/dev/null\nsudo exportfs -a\nsudo systemctl enable --now nfs-kernel-server\nsudo exportfs -v || true\n\necho\necho \"mount nfs locally and write a test file\"\nsudo mkdir -p /mnt/nfs_shared\nsudo mount -t nfs localhost:/srv/nfs/shared /mnt/nfs_shared\necho \"hello from client\" | sudo tee /mnt/nfs_shared/test_from_client.txt >/dev/null\nls -l /mnt/nfs_shared\necho \"localhost:/srv/nfs/shared /mnt/nfs_shared nfs defaults 0 0\" | sudo tee -a /etc/fstab >/dev/null\n\necho\necho \"done\"\necho \"screenshots to take:\"\necho \"- ldapsearch output above\"\necho \"- exportfs -v\"\necho \"- ls -l /mnt/nfs_shared and the test file\"\nSH\nchmod +x setup_ldap_nfs.sh\nsudo ./setup_ldap_nfs.sh\n```\n\nrun it\n- paste the whole block above into the vm\n- press enter through prompts and fill in simple values\n\nscreenshots to take\n- ldapsearch output with cn and uid\n- exportfs -v\n- ls -l /mnt/nfs_shared showing test_from_client.txt\n\nshort answers\nldap\n1 what is ldap\na central list of users and groups\n2 how do you test ldap\nuse ldapsearch with base dn\n3 how do you add a user\nmake an ldif then run ldapadd\n4 how to secure ldap\nuse tls and strong admin password\n\nnfs\n1 what is nfs\nit shares a folder over the network\n2 how to export a folder\nadd a line to etc exports then run exportfs\n3 how to mount on a client\nuse mount server colon path space mount point\n4 why root squash\nit makes remote root less powerful\n\nsoftware managers\n1 what is apt\na tool to install and update software on debian and ubuntu\n2 what is snap\napps that bundle what they need and auto update\n3 what is flatpak\napps that run in a safe box and work on many linux\n4 what is appimage\none file app that runs without install\n5 why use docker or podman\nsame app runs the same on many machines\n6 what to read in a tarball\nreadme or install file\n7 why use a pre built binary\nit is fast and easy\n\nfind this file on github\n- path assignments/ITEC-1475/week4_to_now_all_in_one.md\n- in the main branch\n"
+}
+
+iltolesjr: can you put the whole file in comments so i know wich lines to run and run
+
+GitHub Copilot: Here are the exact lines to paste and run. First block creates the script and runs it. Second block is the same script but fully commented so you can read it safely.
+
+Run these lines on your Debian or Ubuntu VM
+```bash
+# 1) Create the script file with all commands
+cat > setup_ldap_nfs.sh <<'SH'
+#!/usr/bin/env bash
+set -e
+
+echo "ldap and nfs setup for debian or ubuntu"
+
+# install needed packages
+sudo apt update
+sudo apt install -y slapd ldap-utils nfs-kernel-server nfs-common
+
+# configure ldap server
+echo
+echo "slapd reconfigure will open. set domain and admin password"
+sudo dpkg-reconfigure slapd
+
+# ask for values
+echo
+read -p "base dn example dc=school,dc=edu: " BASE_DN
+read -p "admin dn example cn=admin,$BASE_DN: " ADMIN_DN
+read -p "test user id default testuser: " TEST_UID
+TEST_UID=${TEST_UID:-testuser}
+read -p "test user name default Test User: " TEST_CN
+TEST_CN=${TEST_CN:-Test User}
+read -s -p "test user password: " TEST_PW
+echo
+
+# create ldif and add user
+LDIF="/tmp/${TEST_UID}.ldif"
+cat > "$LDIF" <<LDIF
+dn: uid=${TEST_UID},ou=people,${BASE_DN}
+objectClass: inetOrgPerson
+sn: ${TEST_CN}
+cn: ${TEST_CN}
+uid: ${TEST_UID}
+userPassword: ${TEST_PW}
+LDIF
+
+echo
+echo "adding ldap user"
+sudo ldapadd -x -D "${ADMIN_DN}" -W -f "$LDIF"
+
+echo "verify ldap user"
+ldapsearch -x -LLL -H ldap://localhost -b "${BASE_DN}" "(uid=${TEST_UID})" cn uid || true
+
+# nfs server and local mount test
+echo
+echo "set up nfs server"
+sudo mkdir -p /srv/nfs/shared
+if id nobody >/dev/null 2>&1 && id nogroup >/dev/null 2>&1; then
+  sudo chown nobody:nogroup /srv/nfs/shared
+fi
+sudo chmod 0775 /srv/nfs/shared
+echo "/srv/nfs/shared *(rw,sync,no_subtree_check,root_squash)" | sudo tee /etc/exports >/dev/null
+sudo exportfs -a
+sudo systemctl enable --now nfs-kernel-server
+sudo exportfs -v || true
+
+echo
+echo "mount nfs locally and write a test file"
+sudo mkdir -p /mnt/nfs_shared
+sudo mount -t nfs localhost:/srv/nfs/shared /mnt/nfs_shared
+echo "hello from client" | sudo tee /mnt/nfs_shared/test_from_client.txt >/dev/null
+ls -l /mnt/nfs_shared
+echo "localhost:/srv/nfs/shared /mnt/nfs_shared nfs defaults 0 0" | sudo tee -a /etc/fstab >/dev/null
+
+echo
+echo "done"
+echo "screenshots:"
+echo "- ldapsearch output"
+echo "- exportfs -v"
+echo "- ls -l /mnt/nfs_shared"
+SH
+
+# 2) Make it executable
+chmod +x setup_ldap_nfs.sh
+
+# 3) Run it
+sudo ./setup_ldap_nfs.sh
+```
+
+Same script fully commented for reference only
+```bash
+# #!/usr/bin/env bash
+# set -e
+#
+# echo "ldap and nfs setup for debian or ubuntu"
+#
+# # install needed packages
+# sudo apt update
+# sudo apt install -y slapd ldap-utils nfs-kernel-server nfs-common
+#
+# # configure ldap server
+# echo
+# echo "slapd reconfigure will open. set domain and admin password"
+# sudo dpkg-reconfigure slapd
+#
+# # ask for values
+# echo
+# read -p "base dn example dc=school,dc=edu: " BASE_DN
+# read -p "admin dn example cn=admin,$BASE_DN: " ADMIN_DN
+# read -p "test user id default testuser: " TEST_UID
+# TEST_UID=${TEST_UID:-testuser}
+# read -p "test user name default Test User: " TEST_CN
+# TEST_CN=${TEST_CN:-Test User}
+# read -s -p "test user password: " TEST_PW
+# echo
+#
+# # create ldif and add user
+# LDIF="/tmp/${TEST_UID}.ldif"
+# cat > "$LDIF" <<LDIF
+# dn: uid=${TEST_UID},ou=people,${BASE_DN}
+# objectClass: inetOrgPerson
+# sn: ${TEST_CN}
+# cn: ${TEST_CN}
+# uid: ${TEST_UID}
+# userPassword: ${TEST_PW}
+# LDIF
+#
+# echo
+# echo "adding ldap user"
+# sudo ldapadd -x -D "${ADMIN_DN}" -W -f "$LDIF"
+#
+# echo "verify ldap user"
+# ldapsearch -x -LLL -H ldap://localhost -b "${BASE_DN}" "(uid=${TEST_UID})" cn uid || true
+#
+# # nfs server and local mount test
+# echo
+# echo "set up nfs server"
+# sudo mkdir -p /srv/nfs/shared
+# if id nobody >/dev/null 2>&1 && id nogroup >/dev/null 2>&1; then
+#   sudo chown nobody:nogroup /srv/nfs/shared
+# fi
+# sudo chmod 0775 /srv/nfs/shared
+# echo "/srv/nfs/shared *(rw,sync,no_subtree_check,root_squash)" | sudo tee /etc/exports >/dev/null
+# sudo exportfs -a
+# sudo systemctl enable --now nfs-kernel-server
+# sudo exportfs -v || true
+#
+# echo
+# echo "mount nfs locally and write a test file"
+# sudo mkdir -p /mnt/nfs_shared
+# sudo mount -t nfs localhost:/srv/nfs/shared /mnt/nfs_shared
+# echo "hello from client" | sudo tee /mnt/nfs_shared/test_from_client.txt >/dev/null
+# ls -l /mnt/nfs_shared
+# echo "localhost:/srv/nfs/shared /mnt/nfs_shared nfs defaults 0 0" | sudo tee -a /etc/fstab >/dev/null
+#
+# echo
+# echo "done"
+# echo "screenshots:"
+# echo "- ldapsearch output"
+# echo "- exportfs -v"
+# echo "- ls -l /mnt/nfs_shared"
+```
+
+Want me to drop this into your repo at assignments/ITEC-1475/week4_to_now_all_in_one.md and push so you can find it in GitHub easily?
+
+iltolesjr: yes. on the top level or something so i cn find it
+
+GitHub Copilot: I’m going to add a single top-level file to your repo with the script and short answers so it’s easy to find on GitHub; it’ll be created on the main branch at the repo root.
+
+Ran Create or update file 
+Completed with input: {
+  "owner": "iltolesjr",
+  "repo": "Fall-2025",
+  "branch": "main",
+  "path": "week4_to_now_all_in_one.md",
+  "message": "add top-level all-in-one lab script and answers (no placeholders)",
+  "content": "week 4 to now all in one\n\nhow to use\n1. open a linux vm console\n2. copy the script block below into the vm\n3. run the two command lines shown under run it\n4. take the screenshots listed\n\nscript\n```bash\ncat > setup_ldap_nfs.sh <<'SH'\n#!/usr/bin/env bash\nset -e\n\necho \"ldap and nfs setup for debian or ubuntu\"\n\n# install\nsudo apt update\nsudo apt install -y slapd ldap-utils nfs-kernel-server nfs-common\n\n# configure slapd\necho\necho \"slapd reconfigure will open. set domain and admin password\"\nsudo dpkg-reconfigure slapd\n\n# prompts (no placeholders hard coded)\necho\nread -p \"base dn example dc=school,dc=edu: \" BASE_DN\nread -p \"admin dn example cn=admin,$BASE_DN: \" ADMIN_DN\nread -p \"test user id default testuser: \" TEST_UID\nTEST_UID=${TEST_UID:-testuser}\nread -p \"test user name default Test User: \" TEST_CN\nTEST_CN=${TEST_CN:-Test User}\nread -s -p \"test user password: \" TEST_PW\necho\n\n# add ldap test user\nLDIF=\"/tmp/${TEST_UID}.ldif\"\ncat > \"$LDIF\" <<LDIF\ndn: uid=${TEST_UID},ou=people,${BASE_DN}\nobjectClass: inetOrgPerson\nsn: ${TEST_CN}\ncn: ${TEST_CN}\nuid: ${TEST_UID}\nuserPassword: ${TEST_PW}\nLDIF\n\necho\necho \"adding ldap user\"\nsudo ldapadd -x -D \"${ADMIN_DN}\" -W -f \"$LDIF\"\n\necho \"verify ldap user\"\nldapsearch -x -LLL -H ldap://localhost -b \"${BASE_DN}\" \"(uid=${TEST_UID})\" cn uid || true\n\n# nfs server and local client test\necho\necho \"set up nfs server\"\nsudo mkdir -p /srv/nfs/shared\nif id nobody >/dev/null 2>&1 && id nogroup >/dev/null 2>&1; then\n  sudo chown nobody:nogroup /srv/nfs/shared\nfi\nsudo chmod 0775 /srv/nfs/shared\necho \"/srv/nfs/shared *(rw,sync,no_subtree_check,root_squash)\" | sudo tee /etc/exports >/dev/null\nsudo exportfs -a\nsudo systemctl enable --now nfs-kernel-server\nsudo exportfs -v || true\n\necho\necho \"mount nfs locally and write a test file\"\nsudo mkdir -p /mnt/nfs_shared\nsudo mount -t nfs localhost:/srv/nfs/shared /mnt/nfs_shared\necho \"hello from client\" | sudo tee /mnt/nfs_shared/test_from_client.txt >/dev/null\nls -l /mnt/nfs_shared\necho \"localhost:/srv/nfs/shared /mnt/nfs_shared nfs defaults 0 0\" | sudo tee -a /etc/fstab >/dev/null\n\necho\necho \"done\"\necho \"screenshots to take:\"\necho \"- ldapsearch output above\"\necho \"- exportfs -v\"\necho \"- ls -l /mnt/nfs_shared and the test file\"\nSH\nchmod +x setup_ldap_nfs.sh\nsudo ./setup_ldap_nfs.sh\n```\n\nrun it\n- paste the whole block above into the vm\n- press enter through prompts and fill in simple values\n\nscreenshots to take\n- ldapsearch output with cn and uid\n- exportfs -v\n- ls -l /mnt/nfs_shared showing test_from_client.txt\n\nshort answers\nldap\n1 what is ldap\na central list of users and groups\n2 how do you test ldap\nuse ldapsearch with base dn\n3 how do you add a user\nmake an ldif then run ldapadd\n4 how to secure ldap\nuse tls and strong admin password\n\nnfs\n1 what is nfs\nit shares a folder over the network\n2 how to export a folder\nadd a line to etc exports then run exportfs\n3 how to mount on a client\nuse mount server colon path space mount point\n4 why root squash\nit makes remote root less powerful\n\nsoftware managers\n1 what is apt\na tool to install and update software on debian and ubuntu\n2 what is snap\napps that bundle what they need and auto update\n3 what is flatpak\napps that run in a safe box and work on many linux\n4 what is appimage\none file app that runs without install\n5 why use docker or podman\nsame app runs the same on many machines\n6 what to read in a tarball\nreadme or install file\n7 why use a pre built binary\nit is fast and easy\n\nfind this file on github\n- path week4_to_now_all_in_one.md\n- in the main branch\n"
+}
+
+Done. I put a single, easy-to-find file at the repo root:
+
+- File: week4_to_now_all_in_one.md
+- Link: https://github.com/iltolesjr/Fall-2025/blob/main/week4_to_now_all_in_one.md
+
+What’s inside
+- Paste-once block that creates and runs setup_ldap_nfs.sh on a Debian or Ubuntu VM (no placeholders; it prompts you for values).
+- Short answers at the bottom for your submission.
+- Screenshot checklist.
+
+How to run
+- Open your Linux VM console and paste only the “script” block from that file.
+- Then run:
+  - chmod +x setup_ldap_nfs.sh
+  - sudo ./setup_ldap_nfs.sh
+
+Want me to also add a Windows PowerShell helper at the repo root to archive old assignments and push, or keep it as-is for now?
+
+iltolesjr: so i love the format of thiw file but the instructions suck and it had to be fixed but copilt fixed it i think. but does this show the required cmds for assingment
+
+GitHub Copilot: Yes. That top-level file covers the required commands for the combined LDAP + Network Filesystems assignment.
+
+What it includes and maps to
+- LDAP server
+  - Install: sudo apt update; sudo apt install -y slapd ldap-utils
+  - Configure: sudo dpkg-reconfigure slapd (sets domain and admin password)
+  - Add user: creates an LDIF, runs sudo ldapadd -x -D "<admin dn>" -W -f <ldif>
+  - Verify: ldapsearch -x -LLL -H ldap://localhost -b "<base dn>" "(uid=<user>)" cn uid
+- NFS server
+  - Setup: sudo apt install -y nfs-kernel-server; create /srv/nfs/shared; set perms
+  - Export: writes /etc/exports; sudo exportfs -a; sudo systemctl enable --now nfs-kernel-server
+  - Verify: sudo exportfs -v
+  - Client test: mounts localhost:/srv/nfs/shared; writes a test file; adds /etc/fstab line
+
+If your instructor requires mounting from a separate client VM
+Run this small, no-placeholder client helper on the client VM (it prompts for the server IP and mounts it):
+```bash
+cat > nfs_client_mount.sh <<'SH'
+#!/usr/bin/env bash
+set -e
+read -p "enter server ip: " SIP
+sudo apt update
+sudo apt install -y nfs-common
+sudo mkdir -p /mnt/nfs_shared
+sudo mount -t nfs ${SIP}:/srv/nfs/shared /mnt/nfs_shared
+echo "mounted from ${SIP}"
+ls -l /mnt/nfs_shared
+echo "${SIP}:/srv/nfs/shared /mnt/nfs_shared nfs defaults 0 0" | sudo tee -a /etc/fstab >/dev/null
+SH
+chmod +x nfs_client_mount.sh
+./nfs_client_mount.sh
+```
+
+Screenshots to capture
+- ldapsearch output showing cn and uid
+- exportfs -v
+- ls -l /mnt/nfs_shared showing test_from_client.txt (on server local test) or the mounted share (on client)
+
+Note
+- This file does not include Snap/Flatpak/Docker/AppImage/tarball steps from the “Other Software Managers” lab. If you also need those in the same one-file, say “add software managers” and I’ll append a short, Debian-only block that installs snapd, flatpak, docker.io, runs hello-world, creates a tarball, and installs build-essential.
+
+iltolesjr: and is there parts that i should hide from screenshots
+
+GitHub Copilot: Short answer: yes, hide a few things. Here’s exactly what to show and what to crop for each screenshot so you meet the requirements without leaking anything.
+
+What to hide in any screenshot
+- Passwords or prompts for passwords (never capture while typing).
+- Your StarID, campus email, or mpls domain info.
+- Public or campus IPs and VPN or vCenter URLs.
+- Your real name in paths (e.g., /home/yourname). Crop if it shows.
+
+Required screenshots in this lab and how to capture them
+
+1) ldapsearch verification
+- Show: the lines with cn and uid for the test user.
+- Safe example to show:
+  cn: Test User
+  uid: testuser
+- Hide/crop: admin DN, full base DN, or anything above the result. Don’t include your typed password prompt.
+
+2) exportfs -v
+- Show: the line that includes /srv/nfs/shared and options.
+- Hide/crop: any specific client IPs/subnets if you used them. If your export uses *(rw,...) already, it’s fine as-is.
+
+3) ls -l /mnt/nfs_shared
+- Show: the listing that includes test_from_client.txt.
+- Hide/crop: your real username if it appears in ownership. It’s okay to show just the file list.
+
+4) fstab (if you include it)
+- Show: the single line that mounts /mnt/nfs_shared.
+- Hide/crop: the server IP/hostname if you don’t want it public.
+
+Tips to make it easy
+- Run the command, then select only the few result lines you need before taking the screenshot.
+- On Windows, use Snipping Tool to crop; you can blur the IP or name if needed.
+
+If you want, I can add tiny “print only what you need” versions of the commands (that output just cn/uid and just the export line) so screenshots are clean with no extra info.
+
+iltolesjr: you have to push it to github
+
+GitHub Copilot: Pushing your nfs_client_mount.sh helper script to the repo root so it’s easy to find; I’ll commit it on main and return the direct link.
+
+Ran Create or update file 
+Completed with input: {
+  "owner": "iltolesjr",
+  "repo": "Fall-2025",
+  "branch": "main",
+  "path": "nfs_client_mount.sh",
+  "message": "add NFS client helper: nfs_client_mount.sh",
+  "content": "#!/usr/bin/env bash\nset -e\nread -p \"enter server ip: \" SIP\nsudo apt update\nsudo apt install -y nfs-common\nsudo mkdir -p /mnt/nfs_shared\nsudo mount -t nfs ${SIP}:/srv/nfs/shared /mnt/nfs_shared\necho \"mounted from ${SIP}\"\nls -l /mnt/nfs_shared\necho \"${SIP}:/srv/nfs/shared /mnt/nfs_shared nfs defaults 0 0\" | sudo tee -a /etc/fstab >/dev/null\n"
+}
+
+Pushed. You’ll find the client script at the repo root:
+
+- File: nfs_client_mount.sh
+- Link: https://github.com/iltolesjr/Fall-2025/blob/main/nfs_client_mount.sh
+
+Notes
+- It’s executable content; on your Linux VM you can make it executable and run it.
+- It prompts for the server IP and mounts /srv/nfs/shared to /mnt/nfs_shared, then appends the fstab entry.
+
+iltolesjr: its askeing me questions like break the configuration proceess
+
+GitHub Copilot: 
+
+iltolesjr: move old device?
+
+GitHub Copilot: That prompt is from reconfiguring slapd. It says “move old database.” Pick Yes on a fresh lab VM.
+
+Here are the safe answers for all the slapd questions. Keep it simple.
+
+- Omit configuration: No
+- DNS domain name: use your lab domain, for example school.edu
+- Organization name: your name or ITEC 1475
+- Administrator password: set a lab password
+- Confirm password: same as above
+- Database backend: MDB
+- Remove database when slapd is purged: No
+- Move old database: Yes
+- Allow LDAPv2 protocol: No
+
+After it finishes, check the service
+sudo systemctl status slapd
+
+Then continue with the ldapadd and ldapsearch steps from the script.
+
+iltolesjr: says enter to continue slapd config i did it like 4x what now?
+
+GitHub Copilot: You’re stuck in the slapd config loop. Do this fast and clean.
+
+Quick try first
+- In the blue dialog, use Tab to move to Yes/No, Space to select, Enter to continue.
+- If it still loops, press Ctrl+C to exit, then run:
+  sudo dpkg --configure -a
+
+If it still loops, run this reset + auto-config script
+- Paste the whole block on your Debian/Ubuntu VM. It asks for domain, org, and admin password, then installs and configures slapd without the endless prompts.
+
+```bash
+cat > fix_slapd_reconfigure.sh <<'SH'
+#!/usr/bin/env bash
+set -e
+echo "resetting slapd and configuring non-interactively"
+
+# stop and purge
+sudo systemctl stop slapd || true
+sudo apt-get purge -y slapd || true
+sudo rm -rf /etc/ldap/slapd.d /var/lib/ldap || true
+
+# ask for values (no hard-coded placeholders)
+read -p "dns domain like school.edu: " DOMAIN
+read -p "org name default ITEC 1475: " ORG; ORG=${ORG:-ITEC 1475}
+read -s -p "admin password: " PW; echo
+
+# make base DN from the domain (school.edu -> dc=school,dc=edu)
+BASE_DN=$(awk -F. '{printf "dc=%s", $1; for(i=2;i<=NF;i++) printf ",dc=%s", $i; print ""}' <<<"$DOMAIN")
+
+# seed debconf answers
+cat <<EOF | sudo debconf-set-selections
+slapd slapd/domain string $DOMAIN
+slapd shared/organization string $ORG
+slapd slapd/no_configuration boolean false
+slapd slapd/password1 password $PW
+slapd slapd/password2 password $PW
+slapd slapd/backend select MDB
+slapd slapd/purge_database boolean false
+slapd slapd/move_old_database boolean true
+slapd slapd/allow_ldap_v2 boolean false
+EOF
+
+# install without prompting
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y slapd ldap-utils
+
+echo "slapd status:"
+sudo systemctl status slapd --no-pager || true
+
+echo "base dn is $BASE_DN"
+echo "verify naming contexts:"
+ldapsearch -x -LLL -H ldap://localhost -b "$BASE_DN" -s base namingContexts || true
+
+echo "done. next: add your test user with ldapadd using cn=admin,$BASE_DN"
+SH
+chmod +x fix_slapd_reconfigure.sh
+sudo ./fix_slapd_reconfigure.sh
+```
+
+Then add your test user (no placeholders; it will ask what it needs)
+```bash
+read -p "base dn (same as above, like dc=school,dc=edu): " BASE_DN
+read -p "admin dn (like cn=admin,$BASE_DN): " ADMIN_DN
+read -p "test user id default testuser: " TEST_UID; TEST_UID=${TEST_UID:-testuser}
+read -p "test user name default Test User: " TEST_CN; TEST_CN=${TEST_CN:-Test User}
+read -s -p "test user password: " TEST_PW; echo
+cat > /tmp/${TEST_UID}.ldif <<LDIF
+dn: uid=${TEST_UID},ou=people,${BASE_DN}
+objectClass: inetOrgPerson
+sn: ${TEST_CN}
+cn: ${TEST_CN}
+uid: ${TEST_UID}
+userPassword: ${TEST_PW}
+LDIF
+sudo ldapadd -x -D "${ADMIN_DN}" -W -f /tmp/${TEST_UID}.ldif
+ldapsearch -x -LLL -H ldap://localhost -b "${BASE_DN}" "(uid=${TEST_UID})" cn uid
+```
+
+If it still won’t configure
+- Finish any pending package config: sudo dpkg --configure -a
+- Check logs: sudo journalctl -u slapd -n 50 --no-pager
+
+Tell me what message you see if it fails again, and I’ll zero in on it.
+
+iltolesjr: auto push to gitbub always 
+
+GitHub Copilot: Ran Create or update file 
+Completed with input: {
+  "owner": "iltolesjr",
+  "repo": "Fall-2025",
+  "branch": "main",
+  "path": ".githooks/post-commit",
+  "message": "add auto-push git hook (post-commit) to push current branch",
+  "content": "#!/usr/bin/env bash\nset -e\nbranch=$(git rev-parse --abbrev-ref HEAD)\nif [ -z \"$branch\" ]; then\n  exit 0\nfi\n# push current branch after every commit\ngit push origin \"$branch\" >/dev/null 2>&1 || true\n"
+}
+
+Ran Create or update file 
+Completed with input: {
+  "owner": "iltolesjr",
+  "repo": "Fall-2025",
+  "branch": "main",
+  "path": "auto_push.ps1",
+  "message": "add auto push script for Windows PowerShell (watches repo and pushes on changes)",
+  "content": "param(\n  [int]$intervalSec = 10,\n  [string]$remote = 'origin',\n  [string]$ref = 'HEAD'\n)\n\nWrite-Host \"auto push: watching repo every $intervalSec seconds. press Ctrl+C to stop.\" -ForegroundColor Cyan\n\nfunction Get-GitStatusClean {\n  $status = git status --porcelain 2>$null\n  if ($LASTEXITCODE -ne 0) { return $false }\n  return [string]::IsNullOrWhiteSpace($status)\n}\n\nwhile ($true) {\n  if (-not (Get-GitStatusClean)) {\n    try {\n      git add -A | Out-Null\n      $ts = (Get-Date).ToString('yyyy-MM-dd HH:mm:ss')\n      git commit -m \"auto: $ts\" | Out-Null\n      git push $remote $ref | Out-Null\n      Write-Host \"pushed at $ts\" -ForegroundColor Green\n    } catch {\n      Write-Warning \"auto push failed: $($_.Exception.Message)\"\n    }\n  }\n  Start-Sleep -Seconds $intervalSec\n}\n"
+}
+
+I added two simple “always push” options to your repo so you can pick what fits your workflow.
+
+What I set up for you
+- Git hook (tracked): .githooks/post-commit
+  - Link: https://github.com/iltolesjr/Fall-2025/blob/main/.githooks/post-commit
+  - Purpose: After every git commit, automatically push the current branch.
+
+- PowerShell auto push script: auto_push.ps1
+  - Link: https://github.com/iltolesjr/Fall-2025/blob/main/auto_push.ps1
+  - Purpose: Watches the repo every few seconds; if it sees changes, it adds, commits with a timestamp, and pushes.
+
+How to enable the tracked git hook once (run in your repo on Windows)
+- This tells git to use the .githooks folder from your repo:
+  - git config core.hooksPath .githooks
+- After that, any git commit will auto-push the current branch.
+- If a push fails (offline, conflicts), it silently skips; you can push manually when ready.
+
+How to run the auto push loop in PowerShell
+- From the repo root:
+  - pwsh -File .\auto_push.ps1
+- It prints “pushed at …” when it commits and pushes. Ctrl+C to stop.
+- Optional: change interval seconds or remote/ref:
+  - pwsh -File .\auto_push.ps1 -intervalSec 5 -remote origin -ref HEAD
+
+Which to use
+- Use the hook if you already commit frequently and want push to happen right after.
+- Use the PowerShell loop if you don’t commit often and want it to auto-commit for you on any change.
+
+Notes
+- The hook requires you to make a commit; it doesn’t auto-commit.
+- The PowerShell loop will commit everything in the repo, so let it run only in repos you’re OK auto-committing.
+- If you work on a non-main branch, both methods push that branch (current HEAD).
+
+Want me to also enable core.hooksPath for you via a one-time command, or keep it manual?

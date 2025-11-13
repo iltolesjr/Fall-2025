@@ -1,0 +1,25 @@
+#cloud-config
+hostname: lab-srv
+manage_etc_hosts: true
+package_update: true
+package_upgrade: false
+users:
+  - name: student
+    gecos: Student
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    groups: [adm, sudo]
+    lock_passwd: false
+    passwd: "$6$rounds=4096$zHqk6b2lqGz3$kY1x3tJ2e2Z8nCAcZV5aWm0tQvJt8YjYfZzYvZy4w9Q3pX1fM2lVf8c0oZV0mVQ4lKc6V2iS2oD8e9wI/"  # password: Password1!
+packages:
+  - openssh-server
+  - vim
+  - net-tools
+  - ldap-utils
+  - chrony
+  - nfs-kernel-server
+  - samba
+runcmd:
+  - [ bash, -lc, 'systemctl enable --now ssh' ]
+  - [ bash, -lc, 'timedatectl set-ntp true || true' ]
+  - [ bash, -lc, 'echo "setup complete on $(hostname)"' ]

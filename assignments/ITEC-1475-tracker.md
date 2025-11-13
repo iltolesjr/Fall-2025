@@ -1,63 +1,32 @@
 # ITEC 1475 - Fall 2025 Assignment Tracker
 
-## Course Information
-- **Course**: ITEC 1475-80
-- **Instructor**: Brian Huilman
-- **Semester**: Fall 2025
+## status snapshot (2025-11-01)
 
-## Assignment Overview
+| item | due | status |
+|------|-----|--------|
+| vcenter lab: change hostname | week 2 | needs resubmit (fast guide ready) |
+| vcenter lab: users and ssh | week 3 | not submitted |
+| vcenter lab: ntp and dns | week 4 | not submitted |
+| vcenter lab: desktops | week 5 | submitted, needs clean pdf |
+| on-campus: other software managers | week 6 | partial (one-file pack ready) |
+| vcenter lab: ldap server | week 7 | not submitted (all-in-one ready) |
+| midterm | week 8 | graded |
+| vcenter lab: network filesystems | week 9 | not submitted (all-in-one ready) |
+| on-campus: samba to windows | week 10 | next up |
+| many quizzes (weeks 2-10) | see list | in progress (sprint plan ready) |
 
-| Assignment | Due Date | Status | Priority | Notes |
-|------------|----------|--------|----------|-------|
-| vCenter Lab: Change Hostname | TBD | In Progress | High | Linux system administration lab - [Completion Guide](ITEC-1475/week2-linux-completion-guide.md) |
-| Assignment 1 | TBD | Not Started | Medium | Introduction assignment |
-| Project 1 | TBD | Not Started | High | Database design project |
-| Midterm Exam | TBD | Not Started | High | Covers chapters 1-5 |
-| Final Project | TBD | Not Started | High | Comprehensive project |
+## quick links
+- catch-up plan: `schedules/itec-1475-catchup-2025-11-01.md`
+- hostname fast resubmit: `assignments/ITEC-1475/vcenter-lab-hostname-resubmit-fast.md`
+- users + ssh: `assignments/ITEC-1475/vcenter-lab-users-ssh.md`
+- ntp + dns: `assignments/ITEC-1475/vcenter-lab-ntp-dns.md`
+- ldap: `assignments/ITEC-1475/vcenter-lab-ldap-one-file.md`
+- nfs: `assignments/ITEC-1475/vcenter-lab-nfs-one-file.md`
+- samba: `assignments/ITEC-1475/vcenter-lab-samba-to-windows.md`
+- quizzes sprint: `assignments/ITEC-1475/quizzes-sprint-checklist.md`
 
-## How to Use This Tracker
-
-1. **Update Status**: Change status as you progress (Not Started → In Progress → Completed)
-2. **Set Priorities**: High, Medium, Low based on due dates and complexity
-3. **Add Notes**: Include important details, requirements, or reminders
-
-## Copilot Integration Examples
-
-You can ask Copilot:
-- "Help me break down Project 1 into smaller tasks"
-- "What should I prioritize this week based on my due dates?"
-- "Create a study plan for the midterm exam"
-- "Generate a checklist for Assignment 1 requirements"
-
-## Task Breakdown Template
-
-For each major assignment, Copilot can help create:
-
-### Assignment Analysis
-- Requirements understanding
-- Resource identification
-- Time estimation
-- Skill requirements
-
-### Task Breakdown
-- Research phase
-- Planning phase
-- Implementation phase
-- Review and revision phase
-
-### Timeline Creation
-- Milestone dates
-- Buffer time
-- Final review time
-- Submission preparation
-
-## Study Reminders
-
-- Review syllabus regularly for updated due dates
-- Check course announcements for changes
-- Plan assignments well in advance
-- Ask for help when needed
-
----
-
-*This tracker is designed to work with GitHub Copilot for enhanced academic workflow management.*
+## proof shots to always include
+- vcenter console window visible (not local vm)
+- ip address via `ip a`
+- service status (systemctl) or config snippet (testparm, exportfs, chronyc)
+- the success line (ping/mount/ssh/connect)
