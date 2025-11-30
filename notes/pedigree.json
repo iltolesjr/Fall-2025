@@ -1,0 +1,190 @@
+{
+  "last_updated": "2025-11-30",
+  "self": {
+    "full_name": "Ira Toles",
+    "aka": [],
+    "birth_place": "East St. Louis, Illinois, USA",
+    "raised_in": "Springfield Gardens, Queens, New York, USA",
+    "timeline": [
+      { "year_approx": 1991, "event": "Moved to Queens, NY" }
+    ],
+    "schools": ["PS 132", "PS 134"]
+  },
+  "parents": {
+    "mother": {
+      "full_name": "Gloria",
+      "aka": [],
+      "birth_place": null,
+      "father": {
+        "full_name": "Walter",
+        "birth_place": "Natchez, Mississippi, USA",
+        "notes": "Identified as Gloria's father; additional verification desirable."
+      },
+      "notes": [
+        "Daughter of Willieva Johnson (murder victim; shooter Ray Williams acquitted by 12-man jury)."
+      ]
+    },
+    "father": {
+      "full_name": "Ira Toles",
+      "aka": [],
+      "notes": [
+        "Raised the requester with strict reading practice; complex relationship noted in personal narratives."
+      ]
+    }
+  },
+  "paternal_branch": {
+    "primary_surnames": ["Toles", "Walker", "Bess"],
+    "locations": [
+      "Caruthersville, Pemiscot County, Missouri, USA",
+      "Cooter, Pemiscot County, Missouri, USA",
+      "Bootheel region (MO)"
+    ],
+    "lineage_hypotheses": [
+      {
+        "relation": "grandmother",
+        "person": { "full_name": "Betty Toles" },
+        "evidence": ["1950 US Census lists Betty Toles (~8 y/o) with Wilma Toles and Lucinda Carter (Caruthersville)"]
+      },
+      {
+        "relation": "grandfather",
+        "person": { "full_name": "Ira Lee Walker" },
+        "evidence": ["1950 US Census page shows Ira Lee Walker (paternal grandfather) in Caruthersville"]
+      },
+      {
+        "relation": "great_grandmother",
+        "person": { "full_name": "Wilma Toles" },
+        "evidence": ["1950 US Census shows Wilma Toles (~18 y/o) with Betty; relationship labels vary across years"]
+      },
+      {
+        "relation": "2x_great_grandmother",
+        "person": { "full_name": "Lucinda Carter", "aka": ["Lucinda Moore"] },
+        "evidence": ["Appears with Wilma and Betty in Caruthersville records"]
+      },
+      {
+        "relation": "(possible) great_grandfather",
+        "person": { "full_name": "Henry Bess" },
+        "status": "uncertain",
+        "notes": "Referenced in family narratives; placement may conflict with Walker/Toles line",
+        "evidence": []
+      },
+      {
+        "relation": "(possible) 2x_great_grandfather",
+        "person": { "full_name": "Elvin Oscar Bess" },
+        "status": "uncertain",
+        "notes": "Referenced in lineage string '...son of Henry Bess, son of Elvin Oscar Bess'",
+        "evidence": []
+      }
+    ],
+    "collateral_names_mentioned": [
+      { "full_name": "Larry Toles", "relation": "uncle", "evidence": ["1950 US Census entry"] },
+      { "full_name": "Little Berry Walker Carter", "relation": "collateral (census mention)", "evidence": ["Pemiscot County census iterations"] }
+    ]
+  },
+  "maternal_branch": {
+    "primary_surnames": ["Johnson", "Cobbs"],
+    "locations": [
+      "Natchez, Adams County, Mississippi, USA",
+      "Camden, Ouachita County, Arkansas, USA",
+      "Caruthersville, Pemiscot County, Missouri, USA"
+    ],
+    "lineage": [
+      {
+        "relation": "grandmother",
+        "person": { "full_name": "Willieva Johnson" },
+        "notes": [
+          "Murdered; shooter Ray Williams acquitted. Case referenced in court papers.",
+          "Children separated after her death; later family reunifications recorded."
+        ]
+      },
+      {
+        "relation": "great_grandmother",
+        "person": {
+          "full_name": "Claudia Mae Johnson",
+          "aka": ["Claudie Mae Cobbs", "Cordie Johnson", "Cordie Cobbs"]
+        },
+        "evidence": [
+          "Headstone: 'Claudia Mae Johnson' at Magnolia Cemetery (Caruthersville)",
+          "1920 US Census: 'Cordie Johnson' (age ~16) in household of Mittie James and Louis/Lewis Johnson in Camden, Ouachita, Arkansas"
+        ],
+        "notes": [
+          "Name appears as 'Cordie' in some records; likely same person as Claudia/Claudie."
+        ]
+      },
+      {
+        "relation": "(guardians/household heads in 1920 record)",
+        "person": { "full_name": "Mittie James" },
+        "notes": ["Household where 'Cordie Johnson' (likely Claudia) appears in 1920"]
+      },
+      {
+        "relation": "(guardians/household heads in 1920 record)",
+        "person": { "full_name": "Louis (Lewis) Johnson" },
+        "notes": ["Household where 'Cordie Johnson' (likely Claudia) appears in 1920"]
+      }
+    ]
+  },
+  "dna_evidence": [
+    {
+      "relative": "Tina",
+      "platform": "AncestryDNA",
+      "shared_cM": 1700,
+      "relationship_inference": "Maternal aunt (full)",
+      "notes": "Located via daughter's (Yvonda) test; Yvonda serves in the Air Force."
+    }
+  ],
+  "evidence_log": [
+    {
+      "type": "census",
+      "year": 1950,
+      "place": "Caruthersville, Pemiscot County, Missouri, USA",
+      "key_entries": ["Ira Lee Walker", "Lucinda Carter", "Wilma Toles (~18)", "Betty Toles (~8)", "Larry Toles (child)"]
+    },
+    {
+      "type": "census",
+      "year": 1940,
+      "place": "Caruthersville, Pemiscot County, Missouri, USA",
+      "note": "Lucinda lists Wilma as 'daughter'; later records list Wilma as 'granddaughter'—possible enumeration/household reporting shift"
+    },
+    {
+      "type": "census",
+      "year": 1920,
+      "place": "Camden, Ouachita County, Arkansas, USA",
+      "key_entries": ["Cordie Johnson (~16) in household of Mittie James and Louis/Lewis Johnson"]
+    },
+    {
+      "type": "headstone",
+      "name": "Claudia Mae Johnson",
+      "cemetery": "Magnolia Cemetery, Caruthersville, Missouri",
+      "birth_name_variant": "Claudie/Claudia Mae Cobbs"
+    },
+    {
+      "type": "court_record_note",
+      "subject": "Murder of Willieva Johnson",
+      "note": "Shooter Ray Williams; found not guilty by 12-man jury. Cab driver murder referenced earlier the same year."
+    }
+  ],
+  "uncertainties": [
+    {
+      "topic": "Placement of Henry Bess and Elvin Oscar Bess in paternal line",
+      "candidates": [
+        "Henry Bess as paternal grandfather (conflicts with 'Ira Lee Walker' entry)",
+        "Bess line as parallel/earlier paternal branch"
+      ],
+      "status": "requires document correlation"
+    },
+    {
+      "topic": "Why Wilma is listed as daughter in 1940 and granddaughter in later records",
+      "hypotheses": ["enumeration variation", "household structure change", "non-parental caregiving"],
+      "status": "open"
+    }
+  ],
+  "glossary_notes": [
+    {
+      "term": "Beat (census enumeration)",
+      "note": "'Beat 3', 'Beat 4' appear in Mississippi records; refers to local voting/administrative district, not physical street name."
+    },
+    {
+      "term": "Bootheel",
+      "note": "Southeastern Missouri region including Pemiscot County."
+    }
+  ]
+}
