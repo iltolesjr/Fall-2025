@@ -1,12 +1,50 @@
 # ENGL 1110 - Fall 2025 Assignments
 
 **Course**: ENGA/ENGL 1110 College Composition  
-**Instructor**: [Instructor Name]  
+**Instructor**: ENGL 1110 Instructor  
 **Semester**: Fall 2025  
+ 
+## Single-file view
+
+Open `ALL-IN-ONE-ENGL-1110.md` for a consolidated portfolio: readings scope, evidence plan, recycled quotes, AI writing brief, final reflection (my voice), and page bank ranges. Citations are audit-safe and use only local materials. When page numbers are unknown, cite by reading name or chapter and mark “verify pages.”
 
 ## Course Assignments
 
 This directory contains all assignments, essays, and writing materials for ENGL 1110.
+
+### Final Narrative Pack (this folder)
+
+- `raw_final_narrative.txt` – your word-for-word thoughts, unedited
+- `cleaned_final_draft.md` – organized, concise draft preserving your voice
+- `ai_writing_brief.md` – audit-style parameters to guide AI writing
+  - `quote-bank.md` – exact passages + pages (fill from your edition)
+  - `page-bank.md` – centralized citation index tracking pages/chapters actually used
+  - `reading-cues-and-citations.md` – emotion beats and citation guardrails
+  - `source-map.md` – targets and anchor phrases for safe drafting
+  - Consolidated exports:
+    - `combined_pack.json` – machine-friendly single file containing readings, draft, and quotes
+    - `combined_pack.txt` – human-readable combined sections for quick sharing
+
+New for 2025-12-06 (Essay 3 workflow):
+
+- `essays/2025-12-06-essay-3-raw-voice-dump.txt` – verbatim voice-to-text dump saved for transparency
+- `essays/2025-12-06-essay-3-cleaned-from-raw.md` – moderated, structured draft derived from the raw dump
+- `prompts/2025-12-06-essay3-final-instructions.md` – ready-to-use GPT instructions wired to our audit rules
+- `prompts/2025-12-06-final-portfolio-instructions.md` – system+user prompt to generate the revised essay + reflective letter and require updating `page-bank.md`
+
+How to iterate:
+
+1. Read the assigned chapters first.
+2. Update `cleaned_final_draft.md` with real page numbers and quotations.
+3. Use `ai_writing_brief.md` to prompt ChatGPT: paste the brief and the cleaned draft.
+4. Check the output against the brief; reject any invented quotes or pages.
+5. Revise and repeat until the essay meets rubric targets.
+
+Integrity notes:
+
+- Disclose AI assistance in your method section.
+- Do not submit unverified AI output.
+- Keep the raw file for transparency; submit the cleaned, verified essay.
 
 ### Reading Assignments
 
@@ -15,10 +53,13 @@ This directory contains all assignments, essays, and writing materials for ENGL 
 
 ### Essay Assignments
 
-- **[Essay 1: Literary Analysis](essays/essay-1-literary-analysis.md)** - Analysis of character development and social themes
-- **[Essay 2: Comparative Analysis](essays/essay-2-comparative-analysis.md)** - Compare and contrast literary techniques across texts
-- **[Essay 3: Research Paper](essays/essay-3-research-paper.md)** - Extended research project on contemporary social issues in literature
-- **[Final Portfolio](essays/final-portfolio.md)** - Collection of revised essays and reflection
+**[Essay 1: Literary Analysis](essays/essay-1-literary-analysis.md)** - Analysis of character development and social themes
+**[Essay 2: Comparative Analysis](essays/essay-2-comparative-analysis.md)** - Compare and contrast literary techniques across texts
+**[Essay 3: Research Paper](essays/essay-3-research-paper.md)** - Extended research project on contemporary social issues in literature
+**[Final Portfolio](essays/final-portfolio.md)** - Collection of revised essays and reflection
+**[Essay 3: Reading, Numbers, and Noise (2025-12-04)](essays/2025-12-04-essay-3-reading-numbers-and-noise.md)** - Draft focusing on reading-first evidence, race, and AI
+**[Essay 3: Raw Voice Dump (2025-12-06)](essays/2025-12-06-essay-3-raw-voice-dump.txt)** - Unedited source for transparency
+**[Essay 3: Cleaned From Raw (2025-12-06)](essays/2025-12-06-essay-3-cleaned-from-raw.md)** - Structured draft ready for final expansion
 
 ### Discussion Assignments
 
@@ -32,10 +73,12 @@ This directory contains all assignments, essays, and writing materials for ENGL 
 - **[Literary Analysis Templates](writing-support/literary-analysis-templates.md)** - Structured templates for analyzing literature
 - **[Citation Guide](writing-support/citation-guide.md)** - MLA and APA citation formats for academic writing
 - **[Peer Review Worksheets](writing-support/peer-review-worksheets.md)** - Structured peer feedback forms
+**[Final Portfolio — GPT Instructions (2025-12-06)](prompts/2025-12-06-final-portfolio-instructions.md)** - System+user prompt to generate the revised essay and reflective letter under audit rules; references `quote-bank.md` and `page-bank.md`
 
 ### Assignment Organization
 
 Each assignment follows the naming convention:
+
 - `YYYY-MM-DD_assignment-name.md` for dated assignments
 - Include due dates, requirements, and submission guidelines
 - Use clear headings and structured formatting
@@ -44,6 +87,7 @@ Each assignment follows the naming convention:
 ### Getting Help with Assignments
 
 You can ask Copilot for assistance with:
+
 - "Help me outline my literary analysis essay"
 - "Create a thesis statement for my comparison essay"
 - "Generate discussion questions for this reading"
