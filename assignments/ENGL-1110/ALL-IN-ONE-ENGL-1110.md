@@ -53,6 +53,8 @@ AI wasn’t there to fake it; it was there to help me iterate. We read what was 
 
 Cisneros and Children of the Sea made me feel the heavy presence without naming it. I know that thing. I lived it. Being Black in systems that mark you: courts, foster care, landlords. I don’t remember the jokes adults made; I remember the moments hiding, the missing mother, the cycles that repeat unless someone teaches you the before.
 
+I haven’t seen my daughters in years now. That absence is a constant, and it shapes how I read stories about separation and return. When a chapter shows a family pulled apart by policy or force, I don’t need a quote to understand it—I carry the evidence in my own life. This portfolio is part of how I keep moving forward: honoring what I’ve lived, citing what I’ve read, and refusing to let the systems that divide us also silence us.
+
 Words are variables. America is stuck in a for-loop of bullshit: racism, policies that murder quietly, databases that decide futures. My genealogy shows the pattern—draft cards, enlistments, World Wars—men taken, families split, then judged for how broken they look.
 
 Thomas’s chapter by chapter, or Danticat’s pages, are more than quotes; they’re anchors. When the story spends time on the wrong man’s whimsy while kids should be hiding, I feel that mismatch. Whoever wrote that likely never got taken from their mother and ran from foster care to get back home. I did.
@@ -139,5 +141,6 @@ Use your physical anthology, PDFs, and handouts to replace placeholders. Audit-s
     - Humor flipping the script: p. ____
     - Direct address (“you”) confronting the gaze: p. ____
     - Larger argument about symbols vs. full personhood: p. ____
+<!-- Removed per portfolio scope: do not use Haydar for this submission -->
 
 Once filled, update the citations in the essay/body text accordingly.
