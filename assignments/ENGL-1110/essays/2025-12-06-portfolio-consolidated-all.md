@@ -33,8 +33,8 @@ Goal: Produce an A-level essay that shows strong understanding of Cisneros and �
  
 ### Sources & Citations
 
-- Cisneros (assigned selections): include page numbers.
-- “Children of the Sea” (from Danticat): include page numbers.
+- Cisneros (assigned selection): use assigned range or summarize; add exact pages only if available.
+- “Children of the Sea” (from Danticat): cite assigned range (pp. 3–29) or add exact pages if available.
 - Class materials (videos/notes): paraphrase with dates.
 - No external sources unless approved.
 
@@ -44,7 +44,7 @@ Goal: Produce an A-level essay that shows strong understanding of Cisneros and �
 1. Hook + context (course rhythm, my analytical lens).
 2. Thesis (blend of analysis + subjective voice).
 3. Method (reading-first; AI as structuring aid).
-4. Close readings (Cisneros; Children of the Sea) with quotes.
+4. Close readings (Cisneros; Children of the Sea) — summarize or quote briefly (only if helpful).
 5. Personal lens (genealogy/statistics) informing interpretation.
 6. Social context (policy, community, truth vs. lies) tied back to texts.
 7. Integrity and AI ethics (how I avoided misuse).
@@ -55,7 +55,7 @@ Goal: Produce an A-level essay that shows strong understanding of Cisneros and �
 
 - No invented quotes or chapters; verify with schedule.
 - Keep word count within assignment guidelines (fill once known).
-- Include 2–4 direct quotes with analysis.
+- Quotes optional. Include only when they serve the point; ranges or summaries are acceptable.
 
  
 ### Checklist
@@ -91,16 +91,12 @@ Comparative prompts to offer GPT (pick one):
 - Public rumor vs private voice: Danticat’s radio motif vs Cisneros’s brag cadence as narrative strategies.
 - Dignity under scarcity and danger: ritual language vs playful voice, aiming at the same ethical center.
 
-Strict constraints for GPT:
+Strict constraints:
 
-- Never fabricate quotes or pages; pull page numbers from the student-provided `quote-bank.md` or the physical text.
-- If a page number is missing, insert (p. ___) and flag as NEEDS PAGE.
-- Keep the student’s voice; prefer precise claims over generalizations.
-- Always connect quote → analysis → course theme.
-
-Suggested system message (outline):
-
-- You are a careful academic writing assistant. You must not invent quotes or page numbers. Use only quotes supplied with page numbers; otherwise use (p. ___) and mark NEEDS PAGE. Follow the provided structure, preserve first‑person reflective voice, and align evidence to course themes. Keep sentences clean and precise.
+- Do not fabricate quotes or pages.
+- Use assigned ranges or chapters when exact pages aren’t available.
+- Keep my voice primary; connect evidence → analysis → course theme.
+Note: Do not embed prompts or instructions in the final portfolio.
 [[END ai_writing_brief.md]]
 
 ---
@@ -330,7 +326,7 @@ Purpose: Turn my voice-to-text dump into a clear, professional reflection that m
 ### 2) My method (AI used responsibly)
 
 - Process: read → speak thoughts (voice‑to‑text) → get help organizing → I verify pages/chapters myself.
-- Guardrails: we do not fabricate chapters, quotes, or page numbers; if a page is unknown, it stays (p. ___) until I look it up in my edition.
+- Page policy: no fabrication; if exact pages aren’t available, use assigned ranges or summarize without a direct quote.
 - Goal: preserve my voice while improving clarity and structure.
 
 ## 3) Readings and themes I’m working with
@@ -358,12 +354,11 @@ Even as someone who thinks in numbers, I learned that my best essays grow from c
 
 ## 7) Evidence plan (to fill before final)
 
-- Cisneros — "Barbie‑Q": short quote 1; short quote 2. Both will be analyzed, not just dropped in.
+- Cisneros — "Barbie‑Q": summarize assigned selection in my own words or use short quotes with pages from my edition (optional).
 
-- Danticat — "Children of the Sea" (pp. 3–29): short quote 1; short quote 2. I will explain how the letter form shapes witness and responsibility.
+- Danticat — "Children of the Sea" (pp. 3–29): cite by assigned range if exact pages aren’t handy; quotes optional.
 
-- Thomas — "The Hate U Give" (ch. 10, pp. 164–180): short quote 1; short quote 2. Analysis will connect chapter events to responsibility and voice.
-- If I use Thomas, I will cite by chapter and analyze how voice develops under public pressure.
+- Thomas — "The Hate U Give" (Ch. 10; PDF pp. 164–180): cite by chapter or PDF page; quotes optional.
 
 ## 8) Integrity and tone
 
@@ -374,8 +369,8 @@ Even as someone who thinks in numbers, I learned that my best essays grow from c
 ## 9) Outline I will follow
 
 1. Introduction: reading‑first workflow, why iteration prevents bad uploads; how numbers-thinking meets voice.
-2. Close reading A: Cisneros (2 quotes with pages) → what they show about dignity/voice.
-3. Close reading B: Children of the Sea (2 quotes with pages) → letters as witness; rumor vs truth.
+2. Close reading A: Cisneros — summarize or quote briefly (if helpful) → dignity/voice.
+3. Close reading B: Children of the Sea — summarize or quote briefly (if helpful) → letters as witness; rumor vs truth.
 4. Personal lens: genealogy patterns; why patterns change how I read and argue.
 5. Social context: careful links from text themes to community experience; name policies precisely where relevant.
 6. Method and integrity: how I used AI, how I verified pages, and how I kept my voice.
@@ -391,21 +386,21 @@ Even as someone who thinks in numbers, I learned that my best essays grow from c
 
 ---
 
-## Recycled quotes (sentence + page only)
+## Recycled quotes (sentence + page or range)
 
 Source: aggregated from `assignments/ENGL-1110/quote-bank.md` and verified local ranges.
 
 - Danticat — Children of the Sea (assigned pp. 3–29)
 
-   - "They say behind the mountains are more mountains. Now I know it's true. I also know there are timeless waters, endless seas, and lots of people in this world whose names don't matter to anyone but themselves." (p. [within 3–29]; verify exact page)
-   - "There was a beautiful woman who had wings, like butterflies' wings. She came flying to our town and when she smiled, my son smiled too." (p. [within 3–29]; verify exact page)
-   - "We have to learn to let go. We have to learn to let the dead bury the dead. But most importantly, we have to teach the children about the sea." (p. [within 3–29]; verify exact page)
+   - "They say behind the mountains are more mountains. Now I know it's true. I also know there are timeless waters, endless seas, and lots of people in this world whose names don't matter to anyone but themselves." (pp. 3–29)
+   - "There was a beautiful woman who had wings, like butterflies' wings. She came flying to our town and when she smiled, my son smiled too." (pp. 3–29)
+   - "We have to learn to let go. We have to learn to let the dead bury the dead. But most importantly, we have to teach the children about the sea." (pp. 3–29)
 
 - Cisneros — Barbie‑Q (assigned selection)
 
-   - "…" (p. ___)
-   - "…" (p. ___)
-   - "…" (p. ___)
+   - "…" (assigned selection; pages pending)
+   - "…" (assigned selection; pages pending)
+   - "…" (assigned selection; pages pending)
 
 - Thomas — The Hate U Give (Chapter 10; PDF pp. 164–180)
 
