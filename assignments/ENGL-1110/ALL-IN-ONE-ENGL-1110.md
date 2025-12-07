@@ -75,3 +75,34 @@ I’m not asking for a king; I’m asking for honest measures and a way out of t
 - Verify pages against local materials; update placeholders.
 - Single H1; no duplicate headings; lists spaced properly.
 - Commit, push, and share this file link.
+
+---
+
+## Quotes and References Used (Class-wide)
+
+This consolidated list captures the quotes and references we’ve used across logs, drafts, and discussions. Citations are audit-safe and limited to local materials.
+
+### Danticat — Children of the Sea (assigned pp. 3–29)
+
+- "They say behind the mountains are more mountains. Now I know it's true. I also know there are timeless waters, endless seas, and lots of people in this world whose names don't matter to anyone but themselves." (p. [within 3–29]; verify)
+- "There was a beautiful woman who had wings, like butterflies' wings. She came flying to our town and when she smiled, my son smiled too." (p. [within 3–29]; verify)
+- "We have to learn to let go. We have to learn to let the dead bury the dead. But most importantly, we have to teach the children about the sea." (p. [within 3–29]; verify)
+
+### Cisneros — Barbie‑Q (assigned selection)
+
+- "…" (p. ___; verify pages)
+- "…" (p. ___; verify pages)
+- "…" (p. ___; verify pages)
+
+### Thomas — The Hate U Give (Chapter 10; PDF pp. 164–180)
+
+- "…" (Ch. 10)
+- "…" (Ch. 10)
+- "…" (Ch. 10)
+
+### Course References and Prompts
+
+- `assignments/ENGL-1110/ai_writing_brief.md` — audit constraints and method disclosure.
+- `assignments/ENGL-1110/quote-bank.md` — source of exact quotes; pages pending verification.
+- `assignments/ENGL-1110/page-bank.md` — centralized ranges: Danticat pp. 3–29; THUG Ch.10 (PDF pp. 164–180); Cisneros selection.
+- `assignments/ENGL-1110/prompts/2025-12-06-full-cycle-synthesis-prompt.md` — local-only synthesis instructions.
