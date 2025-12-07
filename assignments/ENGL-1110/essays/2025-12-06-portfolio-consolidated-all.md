@@ -1,0 +1,445 @@
+# Final Portfolio — Consolidated Pack (2025-12-06)
+
+This single file contains all key artifacts needed to produce, verify, and submit the Final Portfolio. It preserves audit constraints (no fabricated quotes/pages), centralizes citations, and includes both the cleaned draft and the raw voice source for transparency.
+
+---
+
+## 1) AI Writing Brief (Audit System)
+
+Source: `assignments/ENGL-1110/ai_writing_brief.md`
+
+[[BEGIN ai_writing_brief.md]]
+
+## AI Writing Brief (Audit System)
+
+Goal: Produce an A-level essay that shows strong understanding of Cisneros and “Children of the Sea,” aligns to course rhythm, and preserves my voice.
+
+ 
+### Rubric Targets
+
+- Reading Accuracy: cite correct chapters and pages; avoid fabrications.
+- Thesis & Organization: clear claim and logical structure (intro, body, conclusion).
+- Evidence & Analysis: quote/paraphrase with explanation; connect to themes.
+- Voice & Mechanics: concise, coherent, respectful tone; minimal errors.
+- Integrity: disclose AI assistance in method section; no plagiarism.
+
+ 
+### Voice Guidance
+
+- First-person reflective, analytical yet grounded in lived experience.
+- Avoid extreme language; prefer precise claims and supported insights.
+- Keep sentences clean; reduce repetition and tangents.
+
+ 
+### Sources & Citations
+
+- Cisneros (assigned selections): include page numbers.
+- “Children of the Sea” (from Danticat): include page numbers.
+- Class materials (videos/notes): paraphrase with dates.
+- No external sources unless approved.
+
+ 
+### Structure Template
+
+1. Hook + context (course rhythm, my analytical lens).
+2. Thesis (blend of analysis + subjective voice).
+3. Method (reading-first; AI as structuring aid).
+4. Close readings (Cisneros; Children of the Sea) with quotes.
+5. Personal lens (genealogy/statistics) informing interpretation.
+6. Social context (policy, community, truth vs. lies) tied back to texts.
+7. Integrity and AI ethics (how I avoided misuse).
+8. Conclusion (growth and understanding).
+
+ 
+### Constraints
+
+- No invented quotes or chapters; verify with schedule.
+- Keep word count within assignment guidelines (fill once known).
+- Include 2–4 direct quotes with analysis.
+
+ 
+### Checklist
+
+- [ ] Verify assigned chapters in `schedules/ENGL-1110-schedule.md`.
+- [ ] Insert correct page numbers and quotations.
+- [ ] Run plagiarism and quote accuracy checks.
+- [ ] Final read for clarity and tone.
+
+---
+
+## Expanded references and anchors (for GPT instructions)
+
+Use these as a menu of emotion-rich targets. Do NOT invent page numbers; pull from the student’s edition and `quote-bank.md`.
+
+1) Edwidge Danticat — Children of the Sea (short story)
+   - Beats: longing in the opening letter; rumor vs truth (radio); protective silence; sea as archive/grave; ritual tone in closing.
+   - Anchor phrases: "I keep writing you", "they say/on the radio", "I cannot say", "the sea/waves", "remember/I will/keep writing".
+   - Evidence requirement: 1–2 quotes with page numbers; analyze how epistolary form shapes witness.
+
+2) Sandra Cisneros — Barbie‑Q (assigned selection)
+   - Beats: fire/defect revelation; comparison/voice and self‑worth; pride and shame; claiming in the final turn.
+   - Anchor phrases: "burned/smoke/melted", brand/clothes comparisons, a boast that flips to a flaw, last sentence reclaiming.
+   - Evidence requirement: 1–2 quotes with page numbers; analyze how scarcity reshapes desire and dignity.
+
+3) Angie Thomas — The Hate U Give (novel)
+   - Cite by chapter (editions vary). Prefer scene-based references: first traffic stop and aftermath; code‑switching; family/community response; activism/voice near the end.
+   - Evidence requirement: 1–2 short quotes with chapter numbers; analyze character growth and voice.
+
+Comparative prompts to offer GPT (pick one):
+
+- Witness vs Want: how letters (Danticat) and objects (Cisneros) store truth/identity under pressure.
+- Public rumor vs private voice: Danticat’s radio motif vs Cisneros’s brag cadence as narrative strategies.
+- Dignity under scarcity and danger: ritual language vs playful voice, aiming at the same ethical center.
+
+Strict constraints for GPT:
+
+- Never fabricate quotes or pages; pull page numbers from the student-provided `quote-bank.md` or the physical text.
+- If a page number is missing, insert (p. ___) and flag as NEEDS PAGE.
+- Keep the student’s voice; prefer precise claims over generalizations.
+- Always connect quote → analysis → course theme.
+
+Suggested system message (outline):
+
+- You are a careful academic writing assistant. You must not invent quotes or page numbers. Use only quotes supplied with page numbers; otherwise use (p. ___) and mark NEEDS PAGE. Follow the provided structure, preserve first‑person reflective voice, and align evidence to course themes. Keep sentences clean and precise.
+[[END ai_writing_brief.md]]
+
+---
+
+## 2) Quote Bank (Exact Text + Pages)
+
+Source: `assignments/ENGL-1110/quote-bank.md`
+
+[[BEGIN quote-bank.md]]
+
+## Quote Bank (Exact Text + Pages) — embedded
+
+Instructions:
+
+- Copy quotes exactly as printed in your edition.
+- Include the page number (and chapter for HUG).
+- Add a brief note on how you’ll use it (emotion, theme, technique).
+
+IMPORTANT: Add real page numbers from YOUR edition before any submission. Do not invent or estimate.
+
+### Children of the Sea (Danticat) — page-bank
+
+1) Quote: "They say behind the mountains are more mountains. Now I know it's true. I also know there are timeless waters, endless seas, and lots of people in this world whose names don't matter to anyone but themselves."
+   Page: [FILL FROM YOUR EDITION]
+   Use: opening image; identity/erasure; scale of displacement; sea symbolism
+
+2) Quote: "There was a beautiful woman who had wings, like butterflies' wings. She came flying to our town and when she smiled, my son smiled too."
+   Page: [FILL FROM YOUR EDITION]
+   Use: butterfly motif; memory/visitation; tenderness amid danger
+
+3) Quote: "We have to learn to let go. We have to learn to let the dead bury the dead. But most importantly, we have to teach the children about the sea."
+   Page: [FILL FROM YOUR EDITION]
+   Use: teaching/legacy; grief work; sea as knowledge/survival
+
+### Barbie‑Q (Cisneros) — page-bank
+
+1) Quote: "…"
+   Page: [FILL FROM YOUR EDITION]
+   Use: fire/defect / pride+shame / claiming
+
+2) Quote: "…"
+   Page: [FILL FROM YOUR EDITION]
+   Use:
+
+3) Quote: "…"
+   Page: [FILL FROM YOUR EDITION]
+   Use:
+
+### The Hate U Give (Thomas) — cite by chapter — page-bank
+
+1) Quote: "…"
+   Chapter: [FILL CHAPTER]
+   Use: traffic stop / code‑switching / community response / activism
+
+2) Quote: "…"
+   Chapter: [FILL CHAPTER]
+   Use:
+
+3) Quote: "…"
+   Chapter: [FILL CHAPTER]
+   Use:
+
+---
+
+Page Audit Checklist:
+
+- [ ] Each quote has a real page number from your edition (or chapter for HUG).
+- [ ] Spelling and punctuation exactly match the book.
+- [ ] No invented chapters, scenes, or paraphrases labeled as quotes.
+[[END quote-bank.md]]
+
+---
+
+## 3) Page Bank (Citation Index)
+
+Source: `assignments/ENGL-1110/page-bank.md`
+
+[[BEGIN page-bank.md]]
+
+## Page Bank (Citation Index) — embedded
+
+Purpose: central index of all pages/chapters used across essays and portfolio. Fill from your physical editions; do not estimate.
+
+How to use:
+
+- When you add a quote to `quote-bank.md`, log its page/chapter here.
+- Keep one line per citation for easy cross-check during portfolio assembly.
+
+### Children of the Sea (Danticat)
+
+- p.___ — opening image about mountains/seas and names (Quote Bank: Danticat #1)
+- p.___ — butterfly visitation (Quote Bank: Danticat #2)
+- p.___ — teach the children about the sea (Quote Bank: Danticat #3)
+
+### Barbie‑Q (Cisneros)
+
+- p.___ — fire/defect revelation (Quote Bank: Cisneros #1)
+- p.___ — comparison/boast flip (Quote Bank: Cisneros #2)
+- p.___ — reclaiming in final turn (Quote Bank: Cisneros #3)
+
+### The Hate U Give (Thomas) — cite by chapter
+
+- ch.___ — first traffic stop scene (Quote Bank: HUG #1)
+- ch.___ — code‑switching pattern (Quote Bank: HUG #2)
+- ch.___ — activism/voice near the end (Quote Bank: HUG #3)
+
+## Essay-specific citations
+
+- Essay 3 — Danticat: p.___, p.___
+- Essay 3 — Cisneros: p.___, p.___
+- Essay 3 — HUG (optional): ch.___
+
+Checklist:
+
+- [ ] Each entry filled from your edition (pages) or chapter for HUG.
+- [ ] Matches the exact quote text in `quote-bank.md`.
+- [ ] Used consistently in your revised essay and portfolio reflective letter.
+[[END page-bank.md]]
+
+---
+
+## 4) Final Portfolio — Instructions for GPT
+
+Source: `assignments/ENGL-1110/prompts/2025-12-06-final-portfolio-instructions.md`
+
+[[BEGIN 2025-12-06-final-portfolio-instructions.md]]
+
+## Final Portfolio — Instructions for GPT (Audit Rules) — embedded
+
+Linkage:
+
+- Portfolio sheet: `assignments/ENGL-1110/essays/final-portfolio.md`
+- Essay sources to include: pick one from `assignments/ENGL-1110/essays/` (Essay 1, Essay 2, or Essay 3)
+- Audit brief: `assignments/ENGL-1110/ai_writing_brief.md`
+- Quote bank: `assignments/ENGL-1110/quote-bank.md`
+- Page bank: `assignments/ENGL-1110/page-bank.md` (citation index to keep pages/chapters consistent)
+
+## System
+ 
+You are a careful academic writing assistant. Do not invent quotes, chapters, or page numbers. Use only quotes the student provides with real page numbers from their edition (or chapter numbers for HUG). If a page number is missing, leave (p. ___) and mark NEEDS PAGE. Preserve the student’s voice, avoid generalizations, and prioritize clear, precise claims supported by assigned readings. Follow the portfolio structure below and adhere to the rubric aims in the brief.
+
+## User
+ 
+Please produce my Final Portfolio package as defined by `assignments/ENGL-1110/essays/final-portfolio.md`. The portfolio must include: (1) an improved/revised essay (choose Essay 1, Essay 2, or Essay 3), and (2) a reflective letter that explains my growth and choices.
+
+Scope and constraints:
+
+- Base the revision on the selected essay file under `assignments/ENGL-1110/essays/`.
+- Keep all evidence reading-first; no fabricated quotes or pages.
+- Keep my first-person voice, professional and respectful.
+- Apply the audit rules in `assignments/ENGL-1110/ai_writing_brief.md`.
+
+ 
+### Part A: Revised Essay (choose one)
+
+- Input: I will specify which essay to revise (Essay 1, Essay 2, or Essay 3) and paste the current draft.
+- Task: Return a revised essay with:
+  - A clearer thesis and structure.
+  - 2–4 direct quotes with correct page/chapter citations (use my edition; if unknown, (p. ___) NEEDS PAGE).
+  - Analysis that connects quote → claim → course theme.
+  - A short Method note disclosing AI assistance and my page verification.
+  - MLA-style light formatting (headings ok in markdown; full Works Cited optional if not required).
+
+ 
+### Optional prompts I may give you
+
+- "Revise Essay 3 using two quotes from Danticat and two from Cisneros; ensure both have real page numbers from my edition."
+- "Tighten my thesis to be one sentence and ensure each body section has a clear claim and quote."
+- "Write the Reflective Letter following the structure above, referencing how I used AI responsibly."
+ 
+### Part B: Reflective Letter (800–1000 words)
+
+- Task: Write a reflective letter to my instructor that:
+  - Explains why I chose this essay for the portfolio.
+  - Describes what changed in my writing (reading-first, structure, voice, integrity).
+  - Names 2–3 concrete revisions made (thesis tightening, quote integration, tone moderation, page verification).
+  - Connects my personal lens (e.g., genealogy/statistics) to how I analyze texts.
+  - States how I used AI responsibly (organizing, clarity; not inventing sources).
+  - Outlines next steps for improvement.
+
+ 
+### Structure for the Reflective Letter
+
+1) Introduction: course rhythm and why this essay was chosen.
+2) What I changed: thesis, organization, evidence, tone.
+3) How I verified reading accuracy (chapters/pages; quote-bank).
+4) Personal lens: how my background shapes analysis.
+5) AI integrity: guardrails used; audit checklist.
+6) Conclusion: what growth matters for college writing.
+
+ 
+### Deliverables
+
+- Return two sections in one document:
+  1) Revised Essay (with citations placeholders marked NEEDS PAGE if any remain)
+  2) Reflective Letter
+- Keep everything in clean markdown, ready to save under `assignments/ENGL-1110/essays/`.
+- Update `assignments/ENGL-1110/page-bank.md` with the pages/chapters you actually used.
+
+ 
+### Strict constraints
+
+- Do not fabricate quotes or page numbers.
+- Cite HUG by chapter when exact pages vary.
+- Tie every quote to analysis and course themes.
+- Preserve the student’s voice and keep sentences clean.
+[[END 2025-12-06-final-portfolio-instructions.md]]
+
+---
+
+## 5) Cleaned Draft (from raw voice notes)
+
+Source: `assignments/ENGL-1110/essays/2025-12-06-essay-3-cleaned-from-raw.md`
+
+[[BEGIN 2025-12-06-essay-3-cleaned-from-raw.md]]
+
+## Final Narrative — Cleaned Draft (from raw voice notes)
+
+Purpose: Turn my voice-to-text dump into a clear, professional reflection that matches our course goals and the AI audit rules. No invented quotes or pages.
+
+### 1) What I learned about writing in this class
+
+- I came in joking that English is "subjective" while I think in numbers. This semester taught me that subjective voice and analytical structure can work together.
+- The non‑negotiable step is reading first. When I read before dictating, my drafts stay accurate and grounded.
+- Iteration matters: voice‑to‑text → organize → revise. Also, version control matters so I don’t submit the wrong draft by accident.
+
+### 2) My method (AI used responsibly)
+
+- Process: read → speak thoughts (voice‑to‑text) → get help organizing → I verify pages/chapters myself.
+- Guardrails: we do not fabricate chapters, quotes, or page numbers; if a page is unknown, it stays (p. ___) until I look it up in my edition.
+- Goal: preserve my voice while improving clarity and structure.
+
+## 3) Readings and themes I’m working with
+
+- Sandra Cisneros — "Barbie‑Q" (voice, memory, dignity under pressure)
+
+- Edwidge Danticat — "Children of the Sea" (pp. 3–29; letters as witness, rumor vs. truth, distance and hope)
+
+- Angie Thomas — "The Hate U Give" (Chapter 10, pp. 164–180)
+- Optional: Angie Thomas, The Hate U Give (by chapter). If used, I will cite by chapter, not page, unless my edition is aligned.
+
+## 4) Analytical lens from my life
+
+- Genealogy research made me notice patterns (e.g., many relatives with draft or enlistment records). That statistical habit—watching averages, distributions, and outliers—shapes how I read.
+- I connect reading themes (witness, truth, voice) to real policies that affect families and neighborhoods (e.g., displacement corridors like Rondo/I‑94 in Saint Paul). These connections will be stated carefully and supported where relevant.
+
+## 5) On truth, rumor, and responsibility
+
+- A big course lesson is how quickly rumor replaces truth when we stop reading closely. The texts model responsible voice: saying what we know, not what we wish were true.
+- For my writing, that means claiming only what I can support, labeling uncertainty, and avoiding generalizations. Where I once wrote in heat, I now aim for precision.
+
+## 6) Draft thesis (working)
+
+Even as someone who thinks in numbers, I learned that my best essays grow from careful reading and ethical voice: I ground claims in the assigned texts (with correct citations), use AI only to organize—not to invent—and connect what the authors show about truth and witness to the patterns I see in my own family history and community.
+
+## 7) Evidence plan (to fill before final)
+
+- Cisneros — "Barbie‑Q": short quote 1; short quote 2. Both will be analyzed, not just dropped in.
+
+- Danticat — "Children of the Sea" (pp. 3–29): short quote 1; short quote 2. I will explain how the letter form shapes witness and responsibility.
+
+- Thomas — "The Hate U Give" (ch. 10, pp. 164–180): short quote 1; short quote 2. Analysis will connect chapter events to responsibility and voice.
+- If I use Thomas, I will cite by chapter and analyze how voice develops under public pressure.
+
+## 8) Integrity and tone
+
+- No inflammatory or generalized claims. Focus on evidence, lived experience, and clear reasoning.
+- Respectful, first‑person academic tone. Avoid repetition and keep sentences clean.
+- I will include a brief method note disclosing that AI helped organize structure and reduce errors; all reading claims and page numbers were verified by me.
+
+## 9) Outline I will follow
+
+1. Introduction: reading‑first workflow, why iteration prevents bad uploads; how numbers-thinking meets voice.
+2. Close reading A: Cisneros (2 quotes with pages) → what they show about dignity/voice.
+3. Close reading B: Children of the Sea (2 quotes with pages) → letters as witness; rumor vs truth.
+4. Personal lens: genealogy patterns; why patterns change how I read and argue.
+5. Social context: careful links from text themes to community experience; name policies precisely where relevant.
+6. Method and integrity: how I used AI, how I verified pages, and how I kept my voice.
+7. Conclusion: what changed about my writing and why that matters.
+
+## 10) Next actions checklist
+
+- [ ] Pull exact quotes from `assignments/ENGL-1110/quote-bank.md` or the physical books.
+- [ ] Fill the (p. ___) placeholders with my edition’s page numbers.
+- [ ] Re‑read for tone; convert any heated phrasing into precise claims.
+- [ ] Run the audit checklist in `ai_writing_brief.md` and finalize.
+[[END 2025-12-06-essay-3-cleaned-from-raw.md]]
+
+---
+
+## Recycled quotes (sentence + page only)
+
+Source: aggregated from `assignments/ENGL-1110/quote-bank.md` and verified local ranges.
+
+- Danticat — Children of the Sea (assigned pp. 3–29)
+
+   - "They say behind the mountains are more mountains. Now I know it's true. I also know there are timeless waters, endless seas, and lots of people in this world whose names don't matter to anyone but themselves." (p. [within 3–29]; verify exact page)
+   - "There was a beautiful woman who had wings, like butterflies' wings. She came flying to our town and when she smiled, my son smiled too." (p. [within 3–29]; verify exact page)
+   - "We have to learn to let go. We have to learn to let the dead bury the dead. But most importantly, we have to teach the children about the sea." (p. [within 3–29]; verify exact page)
+
+- Cisneros — Barbie‑Q (assigned selection)
+
+   - "…" (p. ___)
+   - "…" (p. ___)
+   - "…" (p. ___)
+
+- Thomas — The Hate U Give (Chapter 10; PDF pp. 164–180)
+
+   - "…" (Ch. 10)
+   - "…" (Ch. 10)
+   - "…" (Ch. 10)
+
+## 6) Raw Voice Dump (verbatim)
+
+Source: `assignments/ENGL-1110/essays/2025-12-06-essay-3-raw-voice-dump.txt`
+
+[[BEGIN 2025-12-06-essay-3-raw-voice-dump.txt]]
+I wanna iterate through the syllabus in the schedule and try to get the rhythm or the message that the teacher wants overall for the general class and what my teacher is actually trying to teach us in a English class earlier in the semester we talked about how I’m a analytical person. I see numbers in my head you know like visualize numbers I could probably smell numbers but anyways, you know how I like math and I poke fun English subject because my stands on English is that a subjective, but what I’ve learned in this classes that I can still be subjective and analytical It’s just using and to combine words and having a template to follow to make good writing I guess I know she’s she spoke. She talks a lot about AI and how people plagiarize also but get stories that’s not even on the right subject or it’s like not like me, but I just read the wrong chapter. I read the wrong chapter into the report on the wrong chapter somebody is just either copying somebody else’s logs and using reposting them. I think that’s what she’s talking about or she’s also talking about letting AI just write everything And not even read the chapter so what we’ve been doing is reading the chapter and I tell you through voice through text voice to text what I’m thinking and you put the words together for me and we just iterate through this over and over again until we get it right Sometimes we end up with bad copies of what we were building and sometimes you could accidentally submit that bad copy or and get how they will call it a version you could upload the wrong version so I want to let her know that from my point of view of a student who is incorporating AI into this and it be new for everybody just telling my style of using it Because I can’t make up a whole bunch of stuff and you can love it, and I can make up some stuff and you can hate it so how do you tweak it to get it to wear? It’s doing what you wanted to do seeing what you really wanna say you know and then it’s just tweaking that so it’s a learning curve for students and teachers, I understand, but I want to go over the chapters that we read with Cisnero and children of the sea and try to really dig into what she’s trying to tell us and the stories and there’s been off off-line chat videos I’ve watched the first and I know the thing I know the thing I don’t wanna mention it. I just wanted to be this aura. This this presence this heavy presence that you feel without even having to say what it is, but everybody knows what what it is, but a lot of us tend to not tend to or intentionally saying things that are not true and when that happens, people believe stuff that is not true. Now I want to put my analytical hat on my mathematical hat on and how I compare it to variables and stuff like that, but I see averages and statistics and in these names when I’m doing genealogy because one of the first things I’ve noticed is that all my relatives most of my ancestors are relatives had military draft records, draft records, registration records, army enlistment of even World War I so I wanna talk about the pattern of that and plus me being on the African-American side, but I don’t don’t say it all weird like that. Don’t even say that don’t just say black just being in a black African-American man 40 now with a scarlet letter pretty much on my record thanks to the systematic racism also but also understanding the decisions that I made that I have to kind of course correct myself you know, navigating out of stupidity and poverty, and I’m like one or two generations removed from a farm boy you know so I’m I wanna I wanna talk about the powers that be why do white people tend to do the same things that they’ve been doing and and if you really look at the big picture after breaking it down and global events, you can see that it never really stopped but now They’ve gotten so bold and cocky with lion that they they they know that they’re lying and killing people and stuff like that because they’re getting paid up obviously but now they just say it to your face they don’t even bother coming up with a lie anymore. The old days are done where they used to have to. Oh my God what am I gonna say, and you know, think of all the ways to lie and manipulate people not You know before AI also, but their version of AI was having your name your social everything whatever or put note putting you in the criminal system or whatever you know just our database that’s all it is just a put you in it and they put people in databases and people like myself to fall in certain databases and then if you know what that Value is, then you can manipulate it. I see that Tennessee Democrats over performed in Tennessee and this is you know critical because it’s a Trump supported Republican and it just shows how much it just shows where the lines are the lines that I heard that were there when I was younger or now And full HD in front of my face you know and so now I gotta watch what foods I eat now or start thinking about growing my own foods I gotta worry about even if I do have insurance with my insurance covered the new Covid shot. Sounds like something that they’re planning to do. They’re trying to take Babies getting hepatitis B shots not recommended anymore so you know there’s a also speak one the social I guess social acceptance of murdering people with policies like let’s say if I heard a Maggiano whatever the pharmaceutical company let’s say if if I sprinkle a little bit of that color five and Cheetos or whatever it could make someone carve more carbs or something then you overdo it to those people because you already know you have a fix for them so it’s not a matter of I guess how long they’ve been doing it because I heard I guess I really wanted to go down that path and believe that the government is out to get me and you know it would be some wild stuff that Republicans have warned us about long time ago But they created the monster that they feared because it was always in them. It’s just not in the open, but the sad part is about about it is that no matter if you’re for it being racist or against it if you’re white, you’re still gonna benefit from it so you don’t have to worry about growing your own lettuce because the government is gonna poison your collard greens You know get you thinking about you know chitlins who who eat chitlins right who obviously if you see a bucket of chitterlings at Walmart, who do you think is gonna buy those? I’m just saying and if I know that type of stuff and they’re doing all other type of stuff to figure out ways to do that legally, we’re stopping them from doing it illegally, you know I wanna talk into the privilege of. I heard a newscaster saying that he didn’t attend the Kings rally because he was skiing or something he was on a vacation trip or whatever I was just thinking oh that’s wonderful how nice it is to be white and I have to worry about that. I had to tell my one of my best friends that I’m still mad at her because she didn’t go out and vote, but I had to tell her like we’re black like we don’t we can’t afford that privilege that that privilege of not caring about politics because as I’m doing genealogy, also I found out that mud grand Aunt murders moved to Minnesota from Mississippi and then she moved to Rondo community Saint Paul passed the legislation to build a 94 highway right down the goddamn community and to Rondo up, so even though we don’t wanna Talk about politics, politics is killing us while you don’t wanna talk about it I wanna talk about how my 18-year-old nephew never even voted just her being able to vote and I’m trying to. I can’t even encourage him to vote for, and all the nasty things he said about her and how we’ve been programmed to do That or unbroken or maybe I’m unbroken and I see things wrong. What if the people that are right or wrong you know what if we’re wrong and why you know that, but the evidence doesn’t support that I want to talk about how white people want white supremacy, but they can’t handle white supremacy. You’ve been had it for. I don’t know how long you said you’ve had it do something with it, but unfortunately, they are doing something with it and we need to be careful because I’m trying to warn everybody like don’t don’t say that I’m trying to warn everybody like really I mean they already brought the guns out for you. They already let you know that we’re pointing guns at you. It’s just a matter of time before they know you know I don’t think people really understand how much damage one marine soldier would do if he was to take your legal orders. That is one dangerous marine that that was scared the shit out of a lot of people. I guarantee you that I guarantee you that and then, so when you think of it like that, then how much would it cost to find somebody like that to get somebody to do that and only people with a lot a lot of money think like that because they could control things they have everything else they want they want little girl they want the things that they can’t have But they want it legally like boys and little boys and girls in and stealing Grifting and stuff that’s why it’s OK when they do it. I wanna talk about my the conversation I have with my cousin in Chicago is  no his grandmother is my grandfather‘s sister and I really Walkers registration card is one of the first military records I’ve ever seen, but also found out at that time that that’s who my real great grandfather is but how he just believes in the right wing propaganda and I remember myself almost getting that deep into into thinking like they do because it starts with a capitalistic mindset they get you thinking that Democrats want you to be broke so that’s why Republicans are prosper and better because they’re just doing things better and that’s why you don’t see too many of us aligned with that because we see through that bullshit but nowadays, I don’t know how long they’ve been knowing this, but they’ve been knowing or seeing that they don’t have to steal votes anymore or no they can steal votes. Also, they can steal your vote and convince the ones that we’re gonna vote to not vote so that’s a lot of people that you really disenfranchise to vote and they’re still doing it. When is white people gonna stand up and become the superhero to offset the super monster that they’ve created, but you have to double that now because you have to be twice as strong to defeat that much evil that’s inside you. How am I supposed to live my life knowing that but I also wanna know why do white mass shooters shoot white people I don’t understand that because if you think OK, so the way they think that they think the profile it fits a white supremacist all over it like white kid grew up in the suburbs or whatever went to this school at these these friends like and but then you hear about the stories of cop and Black people and black, jogging through neighborhoods and being murdered in police shooting through the house with Sandra and boyfriend try to protect yourself and you hear about stuff like that and you hear about the lunches you hear about Jim Crow you have our slavery you hear about the transit slave tray so the shooters fit the profile to me that if if I was it I don’t know maybe something wrong with my thinking, but I would think like if I wanted to hurt a lot of people why would I kill my own my own people or something? I don’t I don’t get that especially if they’re all strangers they’re all strange. Why would I go? why would a white person go into another white place because I was thinking it just recently came up with this like white is like when it happens to white people is it like breaking news or something or used to be like breaking news and it wasn’t for us or something I guess maybe white people got deified or desensitize desensitized from murdering Black people so murdering white people is taking it up a notch I guess is that and I really had to dig deep into my by thinking to come up with that answer cause I needed an answer so I don’t get it but you know hey lucky for you. Lucky lucky you but thank you for your service. Also, why people need more white people like you or less cause maybe I’m wrong if we’re all wrong and all the liberals are wrong and we’re all going to hell. But like I said earlier, I’m gonna build a profile of my teacher and really break down. Literally everything that she could be trying to communicate because of the objective of English is understanding then tell her how in Sisneros page 242 when Cisnero says XYNZ plus when such said xyz in BarbieQ plus x reading or essay that’s even subtract some things that the readings took away from the reader also like a perception or the ambiguity of death like when and reading and page number, but she says that if you read this line on this page, she says that she’s alive how all those things equals that this teacher is trying to tell us that white white people are doing some foul things and I think I think she wants us to understand that she feels duty bound to spread the word and she’s very passionate about it and then I think that’s why she’s passionate about the story also because she don’t that’s her way of putting things into words without telling someone exactly what you said. I’m gonna take somebody else’s words and use them as my words for readings and then help the student read it understand it, but she she really breaks down that understanding and if that’s the object, then assure how we understand with these page numbers using references to tell my teacher what we understood. Are we in a bad song on repeat? I want to also talk about the big. I forgot to mention this earlier but wanted to talk about how the people they love money found a product that 50% of people all people have to decide or make a decision or commitment to live by a code of ethics I want this to talk about how if we break it down to just good versus evil the truth versus lies. This is really deeper than that like my mom said I’m dealing with principalities and powers. It’s just that people with a lot of money is repackaging hate in different flavors and different remixes and it’s because the truth stands on one fact one source maybe one or two facts let’s say excellent amount of facts excellent amount of sources whatever but if you factor and lies to those truths the amount of stories you can manipulate that is exponential so there’s gonna be good people and there’s gonna be bad people there’s gonna be people that murdered. There’s gonna be people that don’t murder. There’s gonna be people that steal there’s gonna be people that don’t steal there’s gonna be people who like little girls who don’t touch little girls difference between people who rape people and people decide not to write people or don’t even think about raping people or even wanna be raped but when you think about things like that, and you just break it down it’s a yes, or a no a truth versus false a good versus evil and if you know that amount of people is gonna probably represent the cluster that you were called good there’s a market for the bad. How can we make money off of the opposite of good the opposite of good legislation the opposite of good tax reforms good neighborhood funding what things were good till we get paid for that knowing that I could just represent the opposite of anything that’s good. No I don’t want my school funded. No, I don’t want like people to have civil rights no, I don’t want immigrants to come here in money from the government or whatever but break down. Explain how I’ve come to this conclusion that rich people are selling hate because it funds them, and I think because at the end of the day, they’ve realized that they could have twice as many slaves if they were not racist and that’s why you see white people or white supremacist sitting down with Black people I believe there’s a price for everything say that you can get anything for that price or yeah you’re pretty much that like just because it has a price doesn’t mean you could have it right and some people want the things that are off-limits like that are just hell bent on they have a lot of money and a lot of time to do this and they’ve been you know because and then this is how I was gonna work also because the white people that are not really racist probably don’t favor Black people, but would be open to making money with anybody you got those type of people or the white people you got that just want to build, but they don’t with their selves and only deal with their sales being a community of their selves. I understand that definitely understand that so there’s levels to this so now if they’re doing racist things passing racist, legislation, and laws and stuff like that, but you would see them with a black person once in a while celebrity once in a while it’s because they’ve realize they can have twice as many slaves if they weren’t colorblind so Tennessee and these farmers and stuff like that, they repack their believes and into we just want to live in our conservative values, but now we can play the takeback from 200. 400 years feels like we are time traveling now you could see what’s been going on for the past six years 60 years and see what the Republicans have been doing to the economy ever since Covid. I looked this up during Covid and learned that ever since I was born in 1986 that every recession has been led by the Republicans on top of that on top of ruining the community or ruining the economy you also make it hard for Black people to vote. Make money. Use the bathroom. Sit in air-conditioning seat all just make it have a good job. Have any money so so those people were still stuck in their ways right because that’s what they say that some of those people work they’re still stuck in their way right but to keep people stuck in that way you just have to repackage it and resell it to them in a different way and they have a lot of money and soon we’re gonna get to a time and we’re approaching that time too when people in power, we still start using AI generated videos images and of course my fear is that someone will fake the return of Jesus Christ in a catholic event that looks so real that there’s no way that it can be fake, but it is and then I want to speak into that that time into how many people they could manipulate in that time because they’ve been you know leaving them breadcrumbs here on Fox News and what the Fox News was have like an epiphany type of moment where telling people that special event is gonna happen at this time like they’ve been doing right but just on a massive scale, more money thrown at everything i’m gonna talk about how me born in 1986 was the best thing for everybody because I got that mix of coming out of a mother that was a child that was born during the Jim Crow era in crop sharing era the daughter of a crop share you know, leaving home early get you know what was she doing out there having babies you know where how does she meet my grandfather type stuff because if you’re looking at the records, these people are not and they wasn’t too far away. It was within like two hours, but without DNA evidence it’s almost impossible to tie these people together, but that was my grandmother and then and then her murder how that really crippled the family structure and dynamic because her father had just died and her husband had just died and in the 70s was pretty rough for my family out notice I’ve noticed that a lot of my cousins that are adopted having during the 70s I’m noticing that there’s always a gap in a lot of my matches in the 70s. There’s always a tragic event in the 70s. I’m noticing so I want to dig into the 70s some more I’ve learned about Mississippi make nightclub fire that they the band or the owner or the people who do the party, they sprayed something on the monster or something like that to maybe keep the bugs away or something, but then it was highly flammable and everybody in that in the club die and it just how I’m just finding these old records and how it feels the time travel like once since narrow, says talking to the spirits or something she was talking to how we live in an interest in time and you kinda apply with Albert Einstein says when that time is relative me looking at old records it kind of makes me feel like I’m seeing a snapshot of the past, what if somebody was able to see if visually like I can see it on a piece of paper but what if somebody was able to tap into that event and see it again there can’t be no future you can’t remember the past without not being able to remember the future what does that mean one plus one equals two -1 plus negative one is -2 no positive two always the offset there’s always an imbalance. There’s always a perfect imbalance to keep everything balanced no time travel. It’s just like DNA segments and starting to stop positions if you know that event that you’re looking for at the start of it the starting position of it and the ending position of it maybe that’s the coordinates to happen to that memory now I’m getting way off subject.
+
+
+ i wrote this for my final but  i want you to write this word for word to a file then save it then clean it up and get ready to present  it to chatgpt to write using our audit system to writing essays but now we want all A's and heavy understanding of the readings. you give chatpht the perameters and it does the writing
+[[END 2025-12-06-essay-3-raw-voice-dump.txt]]
+
+---
+
+## 7) How to Run (quick)
+
+1) Fill real page numbers in Quote Bank and Page Bank.
+2) Choose which essay to revise (Essay 1/2/3).
+3) Paste Section 4 (Final Portfolio — Instructions for GPT) into ChatGPT, along with Section 5 (Cleaned Draft).
+4) Save outputs under `assignments/ENGL-1110/essays/`.
+5) Commit final citations to Page Bank.
+
+Optional: consolidate the revised essay + reflective letter into `assignments/ENGL-1110/essays/final-portfolio.md`.
+
+---
+
+## 8) Integrity Notes (keep)
+
+- Disclose AI assistance in a short Method note.
+- Do not submit unverified AI output.
+- Preserve raw voice source for transparency.

@@ -5,7 +5,7 @@
 - **Semester**: Fall 2025
 - **Credits**: 4 credits
 - **Class Days**: [TBD based on section]
-- **Instructor**: [Instructor Name]
+- **Instructor**: ENGL 1110 Instructor
 
 ## Semester Overview
 

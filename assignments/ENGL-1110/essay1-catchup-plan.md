@@ -74,7 +74,7 @@ Refine AFTER picking: Add a “so what” implication (social, ethical, or emoti
 
 Subject: ENGL 1110 – Essay 1 Late Submission (Request for Acceptance)
 
-Hello [Instructor Name],
+Hello Instructor,
 
 I was not able to submit Essay 1 (Literary Analysis) by the Sept 26 deadline. I’ve completed a polished version now and am submitting it today (Oct 1). I focused on [brief thesis focus]. If late penalties apply, I understand and appreciate any consideration for partial credit. I’m also adjusting my workflow using a structured weekly planner to stay current on upcoming comparative essay tasks.
 

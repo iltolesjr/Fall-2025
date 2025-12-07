@@ -1,0 +1,114 @@
+=== ENGL-1110 Combined Pack (Generated 2025-12-05) ===
+
+SECTION: Reading - Children of the Sea (Markdown)
+-------------------------------------------------
+[BEGIN]
+# Reading Assignment: "Children of the Sea" by Edwidge Danticat
+
+**Course**: ENGL 1110 - College Composition  
+**Reading Period**: Week 2  
+**Discussion Date**: September 14, 2025  
+**Length**: Short story (approximately 30 pages)  
+**Found in**: *Krik? Krak!* collection  
+
+## Pre-Reading Context
+...
+### Opening Lines
+"They say behind the mountains are more mountains. Now I know it's true. I also know there are timeless waters, endless seas, and lots of people in this world whose names don't matter to anyone but themselves."
+
+### The Butterfly Imagery
+"There was a beautiful woman who had wings, like butterflies' wings. She came flying to our town and when she smiled, my son smiled too."
+
+### The Teaching Moment
+"We have to learn to let go. We have to learn to let the dead bury the dead. But most importantly, we have to teach the children about the sea."
+[END]
+
+SECTION: Reading - The Bricklayer's Son Chapter 1 (Markdown)
+------------------------------------------------------------
+[BEGIN]
+# Chapter 1 – The Bricklayer's Son (Working Title)
+
+> Replace this block with YOUR summary or brief paraphrased excerpts (<= 30–40 words each). Do not paste full copyrighted text unless explicitly permitted by your instructor. Focus on analysis.
+...
+[END]
+
+SECTION: Reading - The Hate U Give (Markdown)
+---------------------------------------------
+[BEGIN]
+# Reading Assignment: "The Hate U Give" by Angie Thomas
+
+**Course**: ENGL 1110 - College Composition  
+**Reading Period**: Weeks 1-4  
+**Discussion Dates**: September 7, 14, 21  
+**Essay Assignment**: Due September 21  
+...
+[END]
+
+SECTION: Writing - Cleaned Final Draft (Markdown)
+-------------------------------------------------
+[BEGIN]
+# ENGL-1110 Final Narrative (Cleaned Draft)
+
+## Purpose
+Reflect on course rhythm, teacher’s message, and my growth blending analytical thinking with subjective writing—anchored in our readings (Cisneros and “Children of the Sea”), my genealogy research, and present-day social context.
+...
+## Next Actions
+- Insert correct page numbers and quotations from assigned editions.
+- Verify schedule alignment in `schedules/ENGL-1110-schedule.md`.
+- Run our audit checklist before finalizing.
+[END]
+
+SECTION: Quotes - Quote Bank (Markdown)
+---------------------------------------
+[BEGIN]
+# Quote Bank (Exact Text + Pages)
+
+Instructions:
+- Copy quotes exactly as printed in your edition.
+- Include the page number (and chapter for HUG).
+- Add a brief note on how you’ll use it (emotion, theme, technique).
+
+## Children of the Sea (Danticat)
+
+1) Quote: "They say behind the mountains are more mountains. Now I know it's true. I also know there are timeless waters, endless seas, and lots of people in this world whose names don't matter to anyone but themselves."
+   Page: ___
+   Use: opening image; identity/erasure; scale of displacement; sea symbolism
+
+2) Quote: "There was a beautiful woman who had wings, like butterflies' wings. She came flying to our town and when she smiled, my son smiled too."
+   Page: ___
+   Use: butterfly motif; memory/visitation; tenderness amid danger
+
+3) Quote: "We have to learn to let go. We have to learn to let the dead bury the dead. But most importantly, we have to teach the children about the sea."
+   Page: ___
+   Use: teaching/legacy; grief work; sea as knowledge/survival
+
+## Barbie‑Q (Cisneros)
+
+1) Quote: "…"
+   Page: ___
+   Use: fire/defect / pride+shame / claiming
+
+2) Quote: "…"
+   Page: ___
+   Use:
+
+3) Quote: "…"
+   Page: ___
+   Use:
+
+## The Hate U Give (Thomas) — cite by chapter
+
+1) Quote: "…"
+   Chapter: __
+   Use: traffic stop / code‑switching / community response / activism
+
+2) Quote: "…"
+   Chapter: __
+   Use:
+
+3) Quote: "…"
+   Chapter: __
+   Use:
+[END]
+
+=== End Combined Pack ===

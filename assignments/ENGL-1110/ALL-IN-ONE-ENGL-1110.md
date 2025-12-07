@@ -13,19 +13,19 @@ This single file consolidates: syllabus/schedule rhythm, AI writing brief, evide
 ## Evidence Plan
 
 - Use sentence + page (or chapter) from local materials only.
-- When pages are unknown, cite by reading name or chapter and note “verify pages.”
+- When pages are unknown, cite by reading name or assigned range (e.g., Danticat pp. 3–29; THUG Ch. 10 PDF pp. 164–180) and note “verify pages.”
 
 ## Recycled Quotes (sentence + page only)
 
 - Danticat — Children of the Sea (pp. 3–29)
-  - "They say behind the mountains are more mountains…" (p. [within 3–29]; verify)
-  - "There was a beautiful woman who had wings…" (p. [within 3–29]; verify)
-  - "We have to learn to let go… teach the children about the sea." (p. [within 3–29]; verify)
+  - "They say behind the mountains are more mountains…" (pp. 3–29)
+  - "There was a beautiful woman who had wings…" (pp. 3–29)
+  - "We have to learn to let go… teach the children about the sea." (pp. 3–29)
 
 - Cisneros — Barbie‑Q (assigned selection)
-  - "…" (p. ___)
-  - "…" (p. ___)
-  - "…" (p. ___)
+  - "…" (assigned selection; pages pending)
+  - "…" (assigned selection; pages pending)
+  - "…" (assigned selection; pages pending)
 
 - Thomas — The Hate U Give (Ch. 10; PDF pp. 164–180)
   - "…" (Ch. 10)
@@ -35,8 +35,9 @@ This single file consolidates: syllabus/schedule rhythm, AI writing brief, evide
 ## AI Writing Brief (Audit Checklist)
 
 - Source confinement: workspace/local materials only.
-- Page verification: align to Page Bank; note verify when uncertain.
-- Voice integrity: keep my tone; no fabrication.
+- Do not embed prompts or instructions in the final portfolio.
+- Page policy: If exact pages aren’t available, use assigned ranges or summarize without a direct quote.
+- Voice priority: Lead with my own writing; use recycled quotes only when they serve my point. No fabrication.
 
 ## Syllabus Rhythm and Course Message (Short Summary)
 
@@ -80,19 +81,19 @@ I’m not asking for a king; I’m asking for honest measures and a way out of t
 
 ## Quotes and References Used (Class-wide)
 
-This consolidated list captures the quotes and references we’ve used across logs, drafts, and discussions. Citations are audit-safe and limited to local materials.
+This consolidated list captures the quotes and references we’ve used across logs, drafts, and discussions. Citations are audit-safe and limited to local materials. When a quote isn’t needed, we’ll rely on my own summary/analysis instead.
 
 ### Danticat — Children of the Sea (assigned pp. 3–29)
 
-- "They say behind the mountains are more mountains. Now I know it's true. I also know there are timeless waters, endless seas, and lots of people in this world whose names don't matter to anyone but themselves." (p. [within 3–29]; verify)
-- "There was a beautiful woman who had wings, like butterflies' wings. She came flying to our town and when she smiled, my son smiled too." (p. [within 3–29]; verify)
-- "We have to learn to let go. We have to learn to let the dead bury the dead. But most importantly, we have to teach the children about the sea." (p. [within 3–29]; verify)
+- "They say behind the mountains are more mountains. Now I know it's true. I also know there are timeless waters, endless seas, and lots of people in this world whose names don't matter to anyone but themselves." (pp. 3–29)
+- "There was a beautiful woman who had wings, like butterflies' wings. She came flying to our town and when she smiled, my son smiled too." (pp. 3–29)
+- "We have to learn to let go. We have to learn to let the dead bury the dead. But most importantly, we have to teach the children about the sea." (pp. 3–29)
 
 ### Cisneros — Barbie‑Q (assigned selection)
 
-- "…" (p. ___; verify pages)
-- "…" (p. ___; verify pages)
-- "…" (p. ___; verify pages)
+- "…" (assigned selection; pages pending)
+- "…" (assigned selection; pages pending)
+- "…" (assigned selection; pages pending)
 
 ### Thomas — The Hate U Give (Chapter 10; PDF pp. 164–180)
 

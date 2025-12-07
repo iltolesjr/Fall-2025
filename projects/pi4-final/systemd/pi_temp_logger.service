@@ -1,0 +1,12 @@
+[Unit]
+Description=Pi DS18B20 Temperature Logger Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/projects/pi4-final/temp_logger.py
+WorkingDirectory=/home/pi/projects/pi4-final
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
