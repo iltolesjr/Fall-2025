@@ -3,6 +3,10 @@
 
 Because the available source in the workspace is an EPUB, print page numbers vary by device and edition. Use chapter-based citations, which are consistent and accepted.
 
+Local source for Chapter 10 PDF:
+
+- `C:\Users\irato\Downloads\english class readings\Hate U Give  pages chapter 10 pages 164-180.pdf`
+
 - Starr’s opening scene — ch. 1
 - Party and shooting — ch. 1–2
 - Police interview aftermath — ch. 3
@@ -11,13 +15,13 @@ Because the available source in the workspace is an EPUB, print page numbers var
 
 Specific materials present locally:
 
-- Chapter 10 — pp. 164–180 (source: `C:\Users\irato\Downloads\english class readings\Hate U Give  pages chapter 10 pages 164-180.pdf`)
+- Chapter 10 — pp. 164–180 (PDF listed above)
 
 Note: Replace these chapter markers with more precise chapter sub-locations (e.g., early/mid/late paragraph) when you finalize quotes.
 
 ## Edwidge Danticat — Krik? Krak
 
-- “Children of the Sea” — pp. 3–29
+- “Children of the Sea” — pp. 3–29 (assigned range)
 
 ## Sandra Cisneros — Woman Hollering Creek (pages pending edition)
 
@@ -28,6 +32,12 @@ Exact page numbers depend on the print edition. Provide your edition (publisher,
 # Page Bank (Citation Index)
 
 Purpose: central index of all pages/chapters used across essays and portfolio. Fill from your physical editions; do not estimate.
+
+Source recap:
+
+- HUG: EPUB (device‑dependent) + Chapter 10 PDF (pp. 164–180) at the path above
+- Danticat: Krik? Krak — “Children of the Sea” assigned pp. 3–29
+- Cisneros: Woman Hollering Creek — “Barbie‑Q” assigned selection (pages pending edition)
 
 How to use:
 
@@ -40,6 +50,8 @@ How to use:
 - p.___ — butterfly visitation (Quote Bank: Danticat #2)
 - p.___ — teach the children about the sea (Quote Bank: Danticat #3)
 
+Range reference: pp. 3–29 (assigned)
+
 ## Barbie‑Q (Cisneros)
 
 - p.___ — fire/defect revelation (Quote Bank: Cisneros #1)
@@ -51,6 +63,12 @@ How to use:
 - ch.___ — first traffic stop scene (Quote Bank: HUG #1)
 - ch.___ — code‑switching pattern (Quote Bank: HUG #2)
 - ch.___ — activism/voice near the end (Quote Bank: HUG #3)
+
+Local PDF: Chapter 10 — pp. 164–180 (see path above)
+
+- p.___ — quote 1 from Chapter 10 (Quote Bank: HUG #10‑1)
+- p.___ — quote 2 from Chapter 10 (Quote Bank: HUG #10‑2)
+- p.___ — quote 3 from Chapter 10 (Quote Bank: HUG #10‑3)
 
 ## Essay-specific citations
 
