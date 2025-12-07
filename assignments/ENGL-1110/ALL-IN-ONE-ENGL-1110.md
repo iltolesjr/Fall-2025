@@ -106,3 +106,37 @@ This consolidated list captures the quotes and references we’ve used across lo
 - `assignments/ENGL-1110/quote-bank.md` — source of exact quotes; pages pending verification.
 - `assignments/ENGL-1110/page-bank.md` — centralized ranges: Danticat pp. 3–29; THUG Ch.10 (PDF pp. 164–180); Cisneros selection.
 - `assignments/ENGL-1110/prompts/2025-12-06-full-cycle-synthesis-prompt.md` — local-only synthesis instructions.
+
+---
+
+## Page Verification Checklist (Fill-in)
+
+Use your physical anthology, PDFs, and handouts to replace placeholders. Audit-safe: no invented pages.
+
+- Danticat — Children of the Sea
+  - Verify the exact pages for the three quoted lines above within pp. 3–29:
+    - Mountains / timeless waters line: p. ____
+    - Butterfly wings line: p. ____
+    - Teach the children about the sea line: p. ____
+
+- Cisneros — Barbie‑Q (assigned selection)
+  - Anthology page numbers:
+    - Mean eye + ponytail line: p. ____
+    - Bubble hair + who grabbed first line: p. ____
+    - If clothes burned, use your own line: p. ____
+
+- Thomas — The Hate U Give (Chapter 10; PDF pp. 164–180)
+  - Select up to three short sentences; record PDF page numbers:
+    - Quote 1: p. ____
+    - Quote 2: p. ____
+    - Quote 3: p. ____
+
+- Haydar — “Veiled Intentions” (course handout)
+  - For each essay reference, write the actual page number(s) from your handout:
+    - Veil as shortcut to decide who she is: p. ____
+    - Clothing used to judge/control/“save”: p. ____
+    - Humor flipping the script: p. ____
+    - Direct address (“you”) confronting the gaze: p. ____
+    - Larger argument about symbols vs. full personhood: p. ____
+
+Once filled, update the citations in the essay/body text accordingly.
