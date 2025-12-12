@@ -1,0 +1,80 @@
+Raspberry Pi or another Linux System based on a particular project. In this lab you will:
+
+pick a project
+setup your Raspberry Pi or Linux system for that project (30% of your final project grade)
+demonstrate that the system works, enhancing it if desired (10% of your final project grade, +10% extra credit enhancement potential)
+report on your project through a written paper, presentation, video, or demonstration (%60 of your final project grade)
+Read through the project below, taking action (doing or typing something) where the text is highlighted. Along the way, you will answer questions or requirements show in green text, which you will address your final report, and then submit to the appropriate assignment folder (see the bottom of this document).
+
+Please carefully read each section BEFORE you try to take action. Everything you need to know is listed in each section. Some sections tell you exactly what to do, some sections are testing you on what you have already learned and expect you to figure things out on your own.
+
+You have several weeks to complete this project, but get started right away! There are always unexpected issues that will come up that will take more time than you think.
+
+Pick a Project
+
+There are many projects you can do with a Raspberry Pi. Do a simple search for raspberry pi projects and you'll have plenty of results to choose from. You are free to pick any project you want, keeping in mind that some projects will require you to purchase additional hardware.
+
+NOTE: You should review the rubric for your final report (at the bottom of this document) and keep those topics in mind as you pick a project, ensuring that you'll be able to address all areas I want in the final report.
+
+Possible Projects
+
+I am not endorsing any of these projects over any other, they are simply projects I, or fellow students, have found over the years. You are free to pick your own.
+
+Games
+RetroPi classic games 
+Classic PC Games on a Pi
+SNES Pi (emulator) 
+Raspberry Pi VR Goggles 
+2-Player Bartop Arcade Machine 
+Stream Steam Games 
+Raspberry Pi in a Game Boy 
+Portable Projector Gaming System 
+Commodore-64 Mini 
+Raspberry Pi Amiga 
+RaspBMO (Hand-held gaming)  
+Cameras
+"Porch Pirates" Monitor 
+Smart Doorbell / Video Intercom System 
+Android phone as webcam 
+Smart CCTV Camera (with face recognition) 
+Displays
+Smart Mirror 
+LED Cube 
+Phone as a monitor 
+Storage
+HAL 9000 (with Alexa services) 
+Other
+Pet Treat Dispenser 
+Pi Fog Machine 
+Pi Laptop 
+Android 12 on a Pi 
+Raspberry Pi's own projects 
+Setup Your Raspberry Pi or Linux System for that Project
+
+This section counts for 30% of your final project grade. Your ability to get your project working will require you to use all the skills you've learned in the class and may require you to figure some aspects out on your own. This is a great way to learn more about Linux and your system!
+
+You will need to follow your specific project's steps to get your system working. This may involve changing the OS, or installing and configuring new software, or adding new hardware. What ever your project is, there should be steps that you can find and follow, or you may have to figure some aspects out on your own. If you have any questions along the way, feel free to reach out to me and I'll help as best I can, but please be aware that I have not done all of the various projects out there and may not have experience with your particular issue.
+
+Demonstrate that the System Works, Enhancing it if Desired (Extra Credit)
+
+This section counts for 10% of your final project grade, and you have the chance to earn up to 10% extra credit if you enhance your system beyond the original project. For example, if your project involves getting your Pi or Linux system to play classic games, you could enhance your system by figuring out how to automatically have your Pi or Linux system boot directly into the gaming system. This might earn you 5% extra credit (auto-login and auto-run of applications is fairly easy to do).
+
+You can take a video, pictures, screenshots, or whatever will show me that your system is running the project as expected. For example, if your project involves getting your Pi or Linux system to play classic games, you should have a video, picture, or screenshot showing your system playing a game.
+
+Report on Your Project through a Written Paper, Presentation, Video, or Demonstration
+
+This section counts for 60% of your final project grade. I am allowing you to pick the format of your final report to give you flexibility and to let you to choose the area you're strongest in. If you have any questions about what may be acceptable to do for the report, please ask me.
+
+If you want to come to campus to demonstrate your project to me (still addressing all areas below), please schedule a block of time with me through the Microsoft Bookings tool. Select the "Raspberry Pi" service and find a time that works for you to come to campus to demonstrate your project. NOTE: You will need to arrive before that time to setup your demonstration. I will expect you to start your demonstration at the time you schedule. If you choose to do a demonstration, we will coordinate all of this together.
+
+I want you to address each of the areas listed below. Please do not copy and paste the questions directly into your report. Rather, I want you to make sure you address each of these areas in whatever you produce.
+
+Introduce your project and explain what it's supposed to do. (5% of this section's grade)
+Explain why you picked this particular project. (15% of this section's grade)
+Using your own words (do NOT copy and paste!), summarize the steps you took to complete this project. (15% of this section's grade)
+If you enhanced your project, describe your enhancement. If you didn't enhance your project, discuss possible ways you could have. (10% of this section's grade)
+Discuss the hardest part of implementing your project. (20% of this section's grade)
+What did you learn about the Raspberry Pi, your Linux system, or Linux in general by completing this project? (20% of this section's grade)
+If you do this project again in the future, what would you do differently? (5% of this section's grade)
+Conclude your report and discuss other possible projects, different from this one, that you could see doing in the future. (10% of this section's grade)
+Return Your 
